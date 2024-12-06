@@ -2,7 +2,7 @@
 
 <!-- [JavaScript 101 - Fireship.io](https://fireship.io/courses/js/101-basics/) -->
 
-Everything that can be written in JavaScript, will be written in JavaScript.)
+Everything that can be written in JavaScript will be written in JavaScript.)
 
 <img src="./Resources/memes/if.jpg" alt="" width=600>
 
