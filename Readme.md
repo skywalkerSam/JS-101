@@ -1,6 +1,6 @@
 # [Introduction to JavaScript](https://www.youtube.com/watch?v=DHjqpvDnNGE)
 
-[JavaScript 101 - Fireship.io](https://fireship.io/courses/js/101-basics/)
+<!-- [JavaScript 101 - Fireship.io](https://fireship.io/courses/js/101-basics/) -->
 
 Everything that can be written in JavaScript, will be written in JavaScript.)
 
