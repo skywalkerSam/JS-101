@@ -1,4 +1,4 @@
-# Advanced JavaScript Concepts with [Fireship.io](https://fireship.io)
+# JS Fundamentals [Fireship.io](https://fireship.io)
 
 - 102
 
