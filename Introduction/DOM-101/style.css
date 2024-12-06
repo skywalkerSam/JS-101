@@ -1,0 +1,21 @@
+.done {
+    text-decoration: line-through;
+}
+
+.deleteButton {
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+    margin: 1%;
+    border: 2px solid red;
+    border-radius: 6px;
+}
+
+.doneButton {
+    background-color: transparent;
+    color: greenyellow;
+    cursor: pointer;
+    margin: 1%;
+    border: 2px solid greenyellow;
+    border-radius: 6px;
+}
