@@ -1,5 +1,7 @@
 # [Introduction to TypeScript](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 
+Everything that can be written in JavaScript will be eventually written in TypeScript.)
+
 <img src="./Resources/memes/TypeScript-in-a-nutshell.webp" alt="Typescript is better!?" width=600>
 
 TypeScript is a strict superset of **JavaScript**.
