@@ -1,13 +1,13 @@
+// Defining types w/ type
+
 // let human: Human;
 
-// interface
-export interface HumanBeing {
+export type HumanBeing = {
   dna: string;
   age: number;
   sex: HumanSex;
 }
 
-// type
 export type Human = {
   dna: string;
   age: number;
