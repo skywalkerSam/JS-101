@@ -1,12 +1,10 @@
-# JS 30
+# [JS 30](https://leetcode.com/studyplan/30-days-of-javascript/)
 
-Some JS exercise questions...
-
-## LeetCode be like.)
+30 Days of JavaScript
 
 <img src='./Resources/memes/leetcodeBeLike.jpg' alt="LeetCode be like..." width=450>
 
-## Stages of a problem solving session.)
+## 3 Stages of a problem solving session.)
 
 <img src='./Resources/memes/stagesOfLeetcode.jpg' alt="Stages of LeetCode" width=600>
 
