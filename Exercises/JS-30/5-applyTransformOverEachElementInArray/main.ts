@@ -1,4 +1,4 @@
-// create your own equivalent to map()
+// Create your own equivalent to .map()
 
 export const someArr: number[] = [3, 6, 9];
 
