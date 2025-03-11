@@ -1,5 +1,7 @@
+// Use closure patterns
+
 export function createHelloWorld() {
-  // returning a function is a closure pattern i.e a function that returns a function
+  // @ts-ignore intentional type any
   return function (...args: any): string {
     // console.log(args)
     return "Hello, World!";

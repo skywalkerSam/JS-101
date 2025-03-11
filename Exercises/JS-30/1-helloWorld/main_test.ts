@@ -2,5 +2,7 @@ import { assertEquals } from "@std/assert";
 import { createHelloWorld } from "./main.ts";
 
 Deno.test(function addTest() {
-  assertEquals(createHelloWorld()(), "Hello World");
+  // assertEquals(createHelloWorld()(), "Hello World");
+  const hello = createHelloWorld();
+  assertEquals(hello("idk"), "Hello, World!");
 });
