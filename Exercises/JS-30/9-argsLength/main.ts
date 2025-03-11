@@ -6,7 +6,7 @@ type JSONValue =
   | JSONValue[]
   | { [key: string]: JSONValue };
 
-function argumentsLength(...args: JSONValue[]): number {
+export function argumentsLength(...args: JSONValue[]): number {
   return args.length;
 }
 
