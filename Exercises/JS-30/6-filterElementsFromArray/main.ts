@@ -1,18 +1,21 @@
-function greaterThan3(num: number): boolean {
+export function greaterThan3(num: number): boolean {
   if (num >= 3) {
     return true;
   }
   return false;
 }
 
-const anArray: number[] = [0, 1, 3, 6, 9, 12, 15, 18, 21];
+export const anArray: number[] = [0, 1, 3, 6, 9, 12, 15, 18, 21];
 
+// @ts-ignore intentional type any.)
 type Fn = (n: number, i: number) => any;
 
-function filter(arr: number[], fn: Fn): number[] {
+export function filter(arr: number[], fn: Fn): number[] {
   const filteredArr: number[] = [];
   for (let i: number = 0; i < arr.length; i++) {
+    // question requirement: fn(arr[i], i) evaluates to a truthy value.
     if (fn(arr[i], i)) {
+      // console.log(arr[i], i);
       filteredArr.push(arr[i]);
     }
   }
@@ -24,10 +27,10 @@ if (import.meta.main) {
   console.log(filter(anArray, greaterThan3));
 
   //.filter()
-  console.log(anArray.filter((i) => i > 6));
+  // console.log(anArray.filter((i) => i > 6));
 
   //.map()
-  console.log(anArray.map((i) => i ** 2));
+  // console.log(anArray.map((i) => i ** 2));
 }
 
 // https://leetcode.com/problems/filter-elements-from-array/description/?envType=study-plan-v2&envId=30-days-of-javascript
