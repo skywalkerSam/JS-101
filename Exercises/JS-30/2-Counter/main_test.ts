@@ -1,6 +1,10 @@
 import { assertEquals } from "@std/assert";
-import { add } from "./main.ts";
+import { createCounter } from "./main.ts";
 
-Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+Deno.test(function increaseByOneTest() {
+  const increaseByOne = createCounter(3);
+  assertEquals(increaseByOne(), 3);   // bc using i++ and not ++i .)
+  assertEquals(increaseByOne(), 4);
+  assertEquals(increaseByOne(), 5);
+  assertEquals(increaseByOne(), 6);
 });
