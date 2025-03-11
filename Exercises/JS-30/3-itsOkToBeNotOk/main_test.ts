@@ -1,6 +1,7 @@
 import { assertEquals } from "@std/assert";
-import { add } from "./main.ts";
+import { expect } from "./main.ts";
 
-Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+Deno.test(function assertEqualsTest() {
+  assertEquals(expect(3).toBe(3), true);
+  assertEquals(expect(6).notToBe(9), true);
 });

@@ -3,6 +3,7 @@ type ToBeOrNotToBe = {
   notToBe: (val: any) => boolean;
 };
 
+// @ts-ignore intentional type any.)
 export function expect(val: any): ToBeOrNotToBe {
   return {
     toBe: (toBeVal: any) => {
