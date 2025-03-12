@@ -1,3 +1,5 @@
+// Function Composition f(m(l(x)))
+
 type F = (x: number) => number;
 
 export function compose(functions: F[]): F {
@@ -22,8 +24,8 @@ if (import.meta.main) {
   const box = compose([(x) => x + 1, (x) => x * x, (x) => 2 * x]);
   console.log(box(3));
 
-  const emptyBox = compose([])
-  console.log(emptyBox(6))
+  const emptyBox = compose([]);
+  console.log(emptyBox(6));
 }
 
 // https://leetcode.com/problems/function-composition/?envType=study-plan-v2&envId=30-days-of-javascript

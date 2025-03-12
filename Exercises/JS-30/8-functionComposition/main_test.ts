@@ -1,6 +1,19 @@
 import { assertEquals } from "@std/assert";
-import { add } from "./main.ts";
+import { compose } from "./main.ts";
 
-Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+Deno.test(function composeTest() {
+  const someFn = compose([(x) => x + 1, (x) => 2 * x]);
+  assertEquals(someFn(3), 7);
+});
+
+// #2
+Deno.test(function secondComposeTest() {
+  const someOtherFn = compose([(x) => x + 1, (x) => x * x, (x) => 2 * x]);
+  assertEquals(someOtherFn(6), 145);
+});
+
+// #3
+Deno.test(function emptyComposeTest() {
+  const emptyFn = compose([]);
+  assertEquals(emptyFn(9), 9);
 });
