@@ -1,10 +1,4 @@
-// Create your own equivalent to .map()
-
-export const someArr: number[] = [3, 6, 9];
-
-export const plusOne = (x: number, y: number) => {
-  return x + y;
-};
+// Create your own equivalent to `.map()`
 
 export function map(
   arr: number[],
@@ -19,7 +13,8 @@ export function map(
 }
 
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  const out: number[] = map(someArr, plusOne); // not calling the function here directly!
-  console.log(out);
-}
+
+// if (import.meta.main) {
+//   const out: number[] = map(someArr, plusOne); // not calling the function here directly!
+//   console.log(out);
+// }

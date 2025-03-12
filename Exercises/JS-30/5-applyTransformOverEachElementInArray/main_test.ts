@@ -1,6 +1,12 @@
 import { assertEquals } from "@std/assert";
-import { someArr, map, plusOne } from "./main.ts";
+import { map } from "./main.ts";
 import { createMap } from "./map-demo.ts";
+
+const someArr: number[] = [3, 6, 9];
+
+const plusOne = (x: number, y: number) => {
+  return x + y;
+};
 
 Deno.test(function customMapTest() {
   assertEquals(map(someArr, plusOne), [3, 7, 11]);

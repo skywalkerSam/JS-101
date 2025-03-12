@@ -1,4 +1,4 @@
-const someArr = [1, 3, 6, 9];
+// .map() Demo
 
 export function createMap(arr: number[]) {
   //   let localArr = arr;
@@ -28,15 +28,15 @@ export function createMap(arr: number[]) {
   };
 }
 
-if (import.meta.main) {
-  //   const anotherArr = someArr.map((i) => i ** 2);
-  //   console.log(someArr);
-  //   console.log(anotherArr);
+// if (import.meta.main) {
+//   //   const anotherArr = someArr.map((i) => i ** 2);
+//   //   console.log(someArr);
+//   //   console.log(anotherArr);
 
-  // map demo
-  const fuckAroundAndFindOut = createMap(someArr);
-  console.log(fuckAroundAndFindOut.plus(9));
-  console.log(fuckAroundAndFindOut.exponent(2));
-  console.log(fuckAroundAndFindOut.exponent(3));
-  console.log(fuckAroundAndFindOut.exponent(10));
-}
+//   // map demo
+//   const fuckAroundAndFindOut = createMap(someArr);
+//   console.log(fuckAroundAndFindOut.plus(9));
+//   console.log(fuckAroundAndFindOut.exponent(2));
+//   console.log(fuckAroundAndFindOut.exponent(3));
+//   console.log(fuckAroundAndFindOut.exponent(10));
+// }
