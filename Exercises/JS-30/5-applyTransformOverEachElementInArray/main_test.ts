@@ -6,6 +6,7 @@ Deno.test(function customMapTest() {
   assertEquals(map(someArr, plusOne), [3, 7, 11]);
 });
 
+// #2
 Deno.test(function mapDemoTest() {
   const mapped = createMap(someArr);
   assertEquals(mapped.exponent(2), [9, 36, 81]);
