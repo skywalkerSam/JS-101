@@ -1,14 +1,4 @@
-// Custom reduce
-
-export const someArr: number[] = [3, 6, 9];
-
-export function sumFn(acc: number, curr: number): number {
-  return acc + curr;
-}
-
-export function multipleFn(acc: number, curr: number): number {
-  return acc * curr;
-}
+// Custom .reduce()
 
 type Fn = (accum: number, curr: number) => number;
 
@@ -26,17 +16,18 @@ export function reduce(nums: number[], fn: Fn, init: number): number {
 }
 
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  const box: number = reduce(someArr, sumFn, 0);
-  console.log(box);
 
-  // .reduce()
-  const wholeSum: number = someArr.reduce((acc, curr) => acc * curr, 1);
-  console.log(wholeSum);
+// if (import.meta.main) {
+//   const box: number = reduce(someArr, sumFn, 0);
+//   console.log(box);
 
-  // other arr methods
-  // console.log(someArr.map((i) => i + 3));
-  // console.log(someArr.filter((i) => i > 3));
-}
+//   // .reduce()
+//   const wholeSum: number = someArr.reduce((acc, curr) => acc * curr, 1);
+//   console.log(wholeSum);
+
+//   // other arr methods
+//   // console.log(someArr.map((i) => i + 3));
+//   // console.log(someArr.filter((i) => i > 3));
+// }
 
 // https://leetcode.com/problems/array-reduce-transformation/?envType=study-plan-v2&envId=30-days-of-javascript
