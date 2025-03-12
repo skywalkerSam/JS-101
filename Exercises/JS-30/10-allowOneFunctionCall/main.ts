@@ -1,3 +1,5 @@
+// Allow only one fn() call.)
+
 type JSONValue =
   | null
   | boolean
