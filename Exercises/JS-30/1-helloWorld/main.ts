@@ -1,4 +1,4 @@
-// Use closure patterns
+// NOTE: Use closure patterns!
 
 export function createHelloWorld() {
   // @ts-ignore intentional type any
@@ -8,13 +8,13 @@ export function createHelloWorld() {
   };
 }
 
-if (import.meta.main) {
-  // console.log(createHelloWorld()())
+// if (import.meta.main) {
+//   // console.log(createHelloWorld()())
 
-  // And now, you can do this:
-  const sayHello = createHelloWorld();
-  console.log(sayHello())
-}
+//   // And now, you can do this:
+//   const sayHello = createHelloWorld();
+//   console.log(sayHello())
+// }
 
 /**
  * const f = createHelloWorld();
