@@ -1,5 +1,6 @@
-// NOTE: Use closure patterns!
+// Hello, World!
 
+// NOTE: Use closure patterns!
 export function createHelloWorld() {
   // @ts-ignore intentional type any
   return function (...args: any): string {
