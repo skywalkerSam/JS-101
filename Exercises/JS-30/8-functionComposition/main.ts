@@ -1,9 +1,7 @@
-// f(m(l(x))): Function Composition.)
-
 type F = (x: number) => number;
 
 /**
- * Composes an array of functions from right to left.
+ * f(m(l(x))): Function Composition (composes an array of functions from right to left.)
  * @param functions - Array of functions to compose
  * @returns A function that represents the composition of the input functions
  * @example
@@ -22,20 +20,3 @@ export function compose(functions: F[]): F {
     return x;
   };
 }
-
-// const fn = compose([(x) => x + 1, (x) => 2 * x]);
-// fn(4); // 9
-
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-
-// if (import.meta.main) {
-//   console.log(fn(4));
-
-//   const box = compose([(x) => x + 1, (x) => x * x, (x) => 2 * x]);
-//   console.log(box(3));
-
-//   const emptyBox = compose([]);
-//   console.log(emptyBox(6));
-// }
-
-

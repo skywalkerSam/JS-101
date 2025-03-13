@@ -3,6 +3,11 @@ import { filter } from "./main.ts";
 
 const anArray: number[] = [0, 1, 3, 6, 9, 12, 15, 18, 21];
 
+/**
+ * Checks if a number is greater than or equal to 3.
+ * @param num - The number to check
+ * @returns True if the number is greater than or equal to 3, false otherwise
+ */
 function greaterThan3(num: number): boolean {
   if (num >= 3) {
     return true;
@@ -10,6 +15,11 @@ function greaterThan3(num: number): boolean {
   return false;
 }
 
+/**
+ * Checks if a number is greater than 15.
+ * @param num - The number to check
+ * @returns True if the number is greater than 15, false otherwise
+ */
 function greaterThan15(num: number): boolean {
   if (num > 15) {
     return true;

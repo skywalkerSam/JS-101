@@ -1,42 +1,33 @@
-// .map() Demo
+// Demo: `.map()`
 
+/**
+ * Creates an object with methods to transform an array of numbers.
+ * @param arr - The input array of numbers to transform
+ * @returns An object with transformed values
+ * @example
+ * const transformer = createMap(arr);
+ * transformer.plus(3);
+ * transformer.exponent(2);
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+ */
 export function createMap(arr: number[]) {
-  //   let localArr = arr;
   return {
     plus: function (plusValue: number) {
-      const output = arr.map((i) => i + plusValue);
-      return output;
+      const transformedArr= arr.map((i) => i + plusValue);
+      return transformedArr;
     },
     exponent: (exponentValue: number) => {
-      const output = arr.map((i) => i ** exponentValue);
-      return output;
+      const transformedArr= arr.map((i) => i ** exponentValue);
+      return transformedArr;
     },
-    // square: function () {
-    //   localArr.map((i) => i ** 2);
-    //   return localArr;
-    // },
+    square: function () {
+      const transformedArr= arr.map((i) => i ** 2);
+      return transformedArr;
+    },
 
-    // cube: function () {
-    //   localArr.map((i) => i ** 3);
-    //   return localArr;
-    // },
-
-    // reset: () => {
-    //   localArr = arr;
-    //   return localArr;
-    // },
+    cube: function () {
+      const transformedArr= arr.map((i) => i ** 3);
+      return transformedArr;
+    },
   };
 }
-
-// if (import.meta.main) {
-//   //   const anotherArr = someArr.map((i) => i ** 2);
-//   //   console.log(someArr);
-//   //   console.log(anotherArr);
-
-//   // map demo
-//   const fuckAroundAndFindOut = createMap(someArr);
-//   console.log(fuckAroundAndFindOut.plus(9));
-//   console.log(fuckAroundAndFindOut.exponent(2));
-//   console.log(fuckAroundAndFindOut.exponent(3));
-//   console.log(fuckAroundAndFindOut.exponent(10));
-// }

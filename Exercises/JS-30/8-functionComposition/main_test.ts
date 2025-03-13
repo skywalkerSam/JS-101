@@ -8,6 +8,7 @@ Deno.test(function composeTest() {
 
 // #2
 Deno.test(function secondComposeTest() {
+  // Functions are composed right-to-left: first double, then square, then increment.
   const someOtherFn = compose([(x) => x + 1, (x) => x * x, (x) => 2 * x]);
   assertEquals(someOtherFn(6), 145);
 });

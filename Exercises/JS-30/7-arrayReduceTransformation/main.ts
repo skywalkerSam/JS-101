@@ -2,6 +2,17 @@
 
 type Fn = (accum: number, curr: number) => number;
 
+/**
+ * Reduces an array of numbers by applying a reduction function from left to right.
+ * @param nums - The array of numbers to reduce
+ * @param fn - The reduction function to apply
+ * @param init - The initial value of the accumulator
+ * @returns The final value of the accumulator
+ * @example
+ * reduce(arr, (acc, curr) => acc + curr, 0); // 6
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+ * @see https://leetcode.com/problems/array-reduce-transformation/?envType=study-plan-v2&envId=30-days-of-javascript
+ */
 export function reduce(nums: number[], fn: Fn, init: number): number {
   let reducedVal: number = 0;
   let acc: number = init;
@@ -14,20 +25,3 @@ export function reduce(nums: number[], fn: Fn, init: number): number {
   }
   return reducedVal;
 }
-
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-
-// if (import.meta.main) {
-//   const box: number = reduce(someArr, sumFn, 0);
-//   console.log(box);
-
-//   // .reduce()
-//   const wholeSum: number = someArr.reduce((acc, curr) => acc * curr, 1);
-//   console.log(wholeSum);
-
-//   // other arr methods
-//   // console.log(someArr.map((i) => i + 3));
-//   // console.log(someArr.filter((i) => i > 3));
-// }
-
-// https://leetcode.com/problems/array-reduce-transformation/?envType=study-plan-v2&envId=30-days-of-javascript
