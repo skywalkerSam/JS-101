@@ -4,7 +4,7 @@
  * Creates an object to transform an array of numbers.
  * @param arr - The input array of numbers to transform
  * @param fn() - The function to transform the array
- * @returns An object with transformed values
+ * @returns An array with transformed values
  * @example
  * map(arr, someFn);
  * @see https://leetcode.com/problems/apply-transform-over-each-element-in-array/description/?envType=study-plan-v2&envId=30-days-of-javascript
