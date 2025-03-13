@@ -1,9 +1,11 @@
 type Fn = (...params: number[]) => number
 
 export function memoize(fn: Fn): Fn {
-    
+    let memoizedArgs: number[] = [];
     return function(...args) {
-        
+        for(let i: number = 0; i < args.length; i++) {
+          memoizedArgs.push(args[i]);
+        }
     }
 }
 
