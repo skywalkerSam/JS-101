@@ -21,7 +21,7 @@ export function fibonacciSeq(params: number): number {
 }
 ```
 
-With Assembly (yeah, fr*)
+w/ Assembly (yeah, fr*)
 
 ```armasm
 area ascen,code,readonly
@@ -48,7 +48,7 @@ back add r0,r1
  end
 ```
 
-If you got that, you have my upmost respect.)
+If you got that, you have my utmost respect.)
 
 Until next time...
 
