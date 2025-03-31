@@ -1,8 +1,8 @@
 import { assertEquals } from "@std/assert";
 import { memo, memoize } from "./main.ts";
 
-// #1
 // memoize()
+// #1
 Deno.test(function memoizeTest() {
   let callCount = 0;
   const memoizedFn = memoize(function (a, b) {
@@ -39,8 +39,8 @@ Deno.test(function freshMemoizeInsertionTest() {
   assertEquals(callCount, 3);
 });
 
-// #4
 // memo()
+// #4
 Deno.test(function memoTest() {
   let callCount = 0;
   const memoFn = memo(function (a, b) {

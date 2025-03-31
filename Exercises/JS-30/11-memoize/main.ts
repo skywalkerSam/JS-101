@@ -2,6 +2,7 @@ type Fn = (...params: number[]) => number;
 
 /**
  * Memoizes a given function.
+ *
  * @param fn - The function to memoize
  * @returns A memoized version of the given function
  * @see https://leetcode.com/problems/memoize/description/?envType=study-plan-v2&envId=30-days-of-javascript
@@ -23,18 +24,10 @@ export function memoize(fn: Fn): Fn {
 }
 
 /**
- * JSON.stringify() bc, JavaScript is JavaScript.)
+ * Memoizes a given function
  *
- * let one = JSON.stringify([5, 6])
- * let another = JSON.stringify([5, 6])
- * console.log(one === another) //true
- *
- *
- * w/o JSON.stringify()
- *
- * let one = [3, 6]
- * let another = [3, 6]
- * console.log(one === another) //false
+ * @param fn - The function to memoize
+ * @returns A memoized version of the given function upto `1` cached value
  *
  */
 export function memo(fn: Fn): Fn {
@@ -61,4 +54,20 @@ export function memo(fn: Fn): Fn {
  * memoizedFn(2, 3) // 5
  * memoizedFn(2, 3) // 5
  * console.log(callCount) // 1
+ */
+
+/**
+ * JSON.stringify() bc, JavaScript is JavaScript.)
+ *
+ * let one = JSON.stringify([5, 6])
+ * let another = JSON.stringify([5, 6])
+ * console.log(one === another) //true
+ *
+ *
+ * w/o JSON.stringify()
+ *
+ * let one = [3, 6]
+ * let another = [3, 6]
+ * console.log(one === another) //false
+ *
  */
