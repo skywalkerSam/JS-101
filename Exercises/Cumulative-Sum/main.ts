@@ -1,17 +1,17 @@
-// summing algorithm
+// Sum algorithm
 
-const thearrayay: number[] = [3, 6, 9, 33, 66, 99, 36, 69, 96];
+const array: number[] = [3, 6, 9, 33, 66, 99, 36, 69, 96];
 
-// reducer
-export function cumSum(array: number[]): number {
+// w/ reducer
+export function cumulativeSum(array: number[]): number {
   const summed = array.reduce((acc, curr) => {
     return acc + curr;
   }, 0);
   return summed;
 }
 
-// for loop
-export function cumSummed(array: number[]): number {
+// w/ for loop
+export function cumulativeSummed(array: number[]): number {
   let summed = 0;
   for (let i = 0; i < array.length; i++) {
     // console.log(i, summed)
@@ -20,19 +20,18 @@ export function cumSummed(array: number[]): number {
   return summed;
 }
 
-// forEach
-export function cummedSum(array: number[]): number {
+// w/ forEach
+export function cumulatedSum(array: number[]): number {
   let summed = 0;
-  array.forEach((v) => {
-    summed += v;
+  array.forEach((i) => {
+    summed += i;
   });
   // console.log(summed)      // debugging101 lol ;)
   return summed;
 }
 
 if (import.meta.main) {
-  console.log(cumSum(thearrayay));
-  console.log(cumSummed(thearrayay));
-  console.log(cummedSum(thearrayay));
+  console.log(cumulativeSum(array));
+  console.log(cumulativeSummed(array));
+  console.log(cumulatedSum(array));
 }
-// i know how it sounds, please don't...🙏
