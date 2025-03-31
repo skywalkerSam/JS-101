@@ -3,19 +3,19 @@
  */
 
 export function fibonacciSeq(params: number): number {
-  params -= 1;  //matching the sequence requested
+  params -= 1; // matching the sequence requested
   let x: number = 0;
   let y: number = 1;
-  let nextTerm: number = 0;
+  let z: number = 0;
 
   for (let i: number = 0; i <= params; i++) {
     // console.log(`F${i}: x = ${x}, y = ${y}\n`)
     // console.log(`x = ${x}, y = ${y}\n`);
     // console.log(x, y)
     // console.log(x)
-    nextTerm = x + y;
+    z = x + y;
     x = y;
-    y = nextTerm;
+    y = z;
   }
   return x;
 }
