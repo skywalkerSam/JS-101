@@ -1,12 +1,16 @@
 import { assertEquals } from "@std/assert";
-import { cumSum } from "./main.ts";
+import { cumulatedSum, cumulativeSummed, cumulativeSum } from "./main.ts";
 
 const theArray: number[] = [3, 6, 9, 33, 66, 99, 36, 69, 96];
 const theAnotherArray: number[] = [-3, -6, -9];
 
 Deno.test(function cummulativeSum() {
-  assertEquals(cumSum(theArray), 417);
-  assertEquals(cumSum(theAnotherArray), -18);
+  assertEquals(cumulatedSum(theArray), 417);
+  assertEquals(cumulatedSum(theAnotherArray), -18);
+  assertEquals(cumulativeSummed(theArray), 417);
+  assertEquals(cumulativeSummed(theAnotherArray), -18);
+  assertEquals(cumulativeSum(theArray), 417);
+  assertEquals(cumulativeSum(theAnotherArray), -18);
 });
 
 // import { expect, test } from "vitest";

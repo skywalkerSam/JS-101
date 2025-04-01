@@ -1,27 +1,32 @@
-/**  Fibonacci Sequences
- * https://learn.microsoft.com/en-us/training/modules/web-development-101-introduction-programming/3-programming-languages
+/**
+ * The Fibonacci sequence is a series of numbers in which each number is the sum of the
+ * two preceding numbers, usually starting with 0 and 1. This function takes a single
+ * parameter, the number of the sequence to compute, and returns the value of the
+ * sequence at that position.
+ * @param {number} params - The index of the Fibonacci sequence to compute.
+ * @returns {number} The value of the Fibonacci sequence at the given index.
+ * @see https://en.wikipedia.org/wiki/Fibonacci_sequence
  */
-
 export function fibonacciSeq(params: number): number {
-  params -= 1;  //matching the sequence requested
-  let x: number = 0;
-  let y: number = 1;
-  let nextTerm: number = 0;
+  params -= 1;
+
+  let a: number = 0;
+  let b: number = 1;
+  let sum: number = 0;
 
   for (let i: number = 0; i <= params; i++) {
-    // console.log(`F${i}: x = ${x}, y = ${y}\n`)
-    // console.log(`x = ${x}, y = ${y}\n`);
-    // console.log(x, y)
-    // console.log(x)
-    nextTerm = x + y;
-    x = y;
-    y = nextTerm;
+    console.log(`Current: ${a} + ${b}`);
+    // console.log(`${sum}: ${a} + ${b}`);
+
+    sum = a + b;
+    a = b;
+    b = sum;
   }
-  return x;
+  return a;
 }
 
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
+// Learn more at https://docs.deno.com/runtime/manual/eaamples/module_metadata#concepts
 if (import.meta.main) {
   // fibonacciSeq(5);
-  console.log(fibonacciSeq(19));
+  console.log(fibonacciSeq(6));
 }

@@ -1,17 +1,31 @@
-// summing algorithm
+// Sum algorithm
 
-const thearrayay: number[] = [3, 6, 9, 33, 66, 99, 36, 69, 96];
+const array: number[] = [3, 6, 9, 33, 66, 99, 36, 69, 96];
 
-// reducer
-export function cumSum(array: number[]): number {
+/**
+ * w/ reducer
+ *
+ * Takes an array of numbers and returns the sum of all of them.
+ * Example: cumulativeSum([1, 2, 3, 4, 5]) => 15
+ * @param {number[]} array - The array of numbers to sum.
+ * @returns {number} The sum of all numbers in the array.
+ */
+export function cumulativeSum(array: number[]): number {
   const summed = array.reduce((acc, curr) => {
     return acc + curr;
   }, 0);
   return summed;
 }
 
-// for loop
-export function cumSummed(array: number[]): number {
+/**
+ * w/ for loop
+ *
+ * Takes an array of numbers and returns the sum of all of them.
+ * Example: cumulativeSum([1, 2, 3, 4, 5]) => 15
+ * @param {number[]} array - The array of numbers to sum.
+ * @returns {number} The sum of all numbers in the array.
+ */
+export function cumulativeSummed(array: number[]): number {
   let summed = 0;
   for (let i = 0; i < array.length; i++) {
     // console.log(i, summed)
@@ -20,19 +34,25 @@ export function cumSummed(array: number[]): number {
   return summed;
 }
 
-// forEach
-export function cummedSum(array: number[]): number {
+/**
+ * w/ forEach
+ *
+ * Takes an array of numbers and returns the sum of all of them.
+ * Example: cumulativeSum([1, 2, 3, 4, 5]) => 15
+ * @param {number[]} array - The array of numbers to sum.
+ * @returns {number} The sum of all numbers in the array.
+ */
+export function cumulatedSum(array: number[]): number {
   let summed = 0;
-  array.forEach((v) => {
-    summed += v;
+  array.forEach((i) => {
+    summed += i;
   });
   // console.log(summed)      // debugging101 lol ;)
   return summed;
 }
 
 if (import.meta.main) {
-  console.log(cumSum(thearrayay));
-  console.log(cumSummed(thearrayay));
-  console.log(cummedSum(thearrayay));
+  console.log(cumulativeSum(array));
+  console.log(cumulativeSummed(array));
+  console.log(cumulatedSum(array));
 }
-// i know how it sounds, please don't...🙏
