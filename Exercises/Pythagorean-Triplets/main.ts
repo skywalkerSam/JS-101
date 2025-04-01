@@ -5,7 +5,6 @@
  * @param {number} b - The length of the other side of the triangle.
  * @returns {number} The length of the hypotenuse.
  */
-
 export function findHypotenuse(a: number, b: number) {
   const hypotenuse = Math.sqrt(a ** 2 + b ** 2);
   return hypotenuse;
@@ -15,9 +14,10 @@ export function findHypotenuse(a: number, b: number) {
  * Calculates the first ten Pythagorean triplets.
  *
  * @returns {number[]} The first ten Pythagorean triplets.
+ * @see https://en.wikipedia.org/wiki/Pythagorean_triple
  *
  * @todo
- * What exactly do we do here...? brute force??
+ * Will implement the logic later...
  *
  */
 export function pythagoreanTriplets() {
