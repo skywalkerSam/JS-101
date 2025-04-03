@@ -30,4 +30,6 @@ export async function addTwoPromisesDemo(promise1: P, promise2: P): P {
  *   .then(console.log); // 4
  */
 
-addTwoPromises(Promise.resolve(6), Promise.resolve(9));
+if (import.meta.main) {
+  addTwoPromises(Promise.resolve(6), Promise.resolve(9)).then(result => console.log(`\nThe sum is: ${result}\n`));
+}
