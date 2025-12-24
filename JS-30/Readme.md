@@ -1,4 +1,4 @@
-# [JS 30](https://leetcode.com/studyplan/30-days-of-javascript/)
+# [JS30](https://leetcode.com/studyplan/30-days-of-javascript/)
 
 30 Days of JavaScript
 
@@ -12,4 +12,4 @@
 
 <img src='./Resources/memes/theFeeling.jpg' alt='The feeling...' width=900>
 
-untilNexTime.)
+Until next time, that is.)
