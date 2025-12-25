@@ -1,9 +1,11 @@
 /**
- * Write a function expect that helps developers test their code. It should take in any value val and return an object with the following two functions.
+ * Write a function expect that helps developers test their code. It should take in any value `val` and return an `object` with the following two functions.
  *
- * toBe(val) accepts another value and returns true if the two values === each other. If they are not equal, it should throw an error "Not Equal".
+ * `toBe(val)` accepts another value and returns true if the two values `===` each other. If they are not equal, it should throw an error "Not Equal".
  *
- * notToBe(val) accepts another value and returns true if the two values !== each other. If they are equal, it should throw an error "Equal".
+ * `notToBe(val)` accepts another value and returns true if the two values `!==` each other. If they are equal, it should throw an error "Equal".
+ *
+ * @param val
  */
 
 type ToBeOrNotToBe = {
@@ -11,28 +13,27 @@ type ToBeOrNotToBe = {
     notToBe: (val: any) => boolean;
 };
 
-export function expect(val: any): ToBeOrNotToBe {
+function expect(val: any): ToBeOrNotToBe {
     return {
-        toBe: (toBeVal: any) => {
-            if (val === toBeVal) {
+        toBe: (val1) => {
+            if (val1 === val) {
                 return true;
             } else {
-                throw new Error("Not Equal");
+                throw new Error("Not Equal")
             }
         },
-        notToBe: (notToBeVal: any) => {
-            if (val !== notToBeVal) {
+        notToBe: (val2) => {
+            if (val2 !== val) {
                 return true;
             } else {
-                throw new Error("Equal");
+                throw new Error("Equal")
             }
-        },
-    };
+        }
+    }
 }
 
-/**
- * expect(5).toBe(5); // true
- * expect(5).notToBe(5); // throws "Equal"
- */
+console.log(expect(5).toBe(5)); // true
+console.log(expect(5).notToBe(5)); // throws "Equal"
 
-// Just be.)
+
+// Just be...
