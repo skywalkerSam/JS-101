@@ -2,14 +2,9 @@
 
 export function createHelloWorld() {
     return function (...args: unknown[]): string {
-        return "Hello, World!";
+        return "Hello World";
     };
 }
 
-/**
- * const f = createHelloWorld();
- * f(); // "Hello World"
- */
-
-const sayHello = createHelloWorld();
-console.log(sayHello())
+const f = createHelloWorld();
+console.log(f()); // "Hello World"
