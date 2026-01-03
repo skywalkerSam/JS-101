@@ -9,6 +9,7 @@
  *
  * reset() sets the current value to init and then returns it.
  *
+ * @param init
  */
 
 type Counter = {
@@ -17,25 +18,24 @@ type Counter = {
     reset: () => number;
 };
 
-export function createCounter(init: number): Counter {
-    let localInitValue: number = init;
+function createCounter(init: number): Counter {
+    let initLocalVal = init;
     return {
         increment: () => {
-            return ++localInitValue;
+            return ++initLocalVal;
         },
         decrement: () => {
-            return --localInitValue;
+            return --initLocalVal;
         },
         reset: () => {
-            localInitValue = init;
-            return localInitValue;
-        },
-    };
+            initLocalVal = init
+            return initLocalVal;
+        }
+    }
 }
 
-/**
- * const counter = createCounter(5)
- * counter.increment(); // 6
- * counter.reset(); // 5
- * counter.decrement(); // 4
- */
+const counter = createCounter(5)
+console.log(counter.increment()) // 6
+console.log(counter.reset()) // 5
+console.log(counter.decrement()) // 4
+
