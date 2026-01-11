@@ -1,16 +1,12 @@
-# [introduction to JavaScript](https://www.youtube.com/watch?v=DHjqpvDnNGE)
-
-<!-- [JavaScript 101 - Fireship.io](https://fireship.io/courses/js/101-basics/) -->
-
-Everything that can be written in JavaScript will be written in JavaScript.)
+# [JavaScript 101](https://www.youtube.com/watch?v=DHjqpvDnNGE)
 
 <img src="./Resources/memes/if.jpg" alt="" width=600>
 
-`P.S.` You'll get it soon enough...
+Everything that can be written in JavaScript will be written in JavaScript.
 
-<!-- ![JS Devs](./Resources/memes/js-devs.jpg) -->
+&nbsp;
 
-## [JavaScript Data Types & Data Structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+## [Data Types & Structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 
 ### Data Types ( Primitive )
 
@@ -24,7 +20,7 @@ Everything that's not a primitive datatype, is an `Object` in ...JavaScript!
 6. symbol
 7. null
 
-### [Data Structures](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/)
+### [Structures](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/)
 
 `Primitive`
 
@@ -48,6 +44,8 @@ Everything that's not a primitive datatype, is an `Object` in ...JavaScript!
 
 - Roundup
 
+&nbsp;
+
 ## [Comparison Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
 
 - `!==`
@@ -64,6 +62,8 @@ Everything that's not a primitive datatype, is an `Object` in ...JavaScript!
 
 - `<`
 
+&nbsp;
+
 ## Variables
 
 Variables are containers for storing data values
@@ -71,6 +71,8 @@ Variables are containers for storing data values
 - `var`
 - `let` ( ES6 )
 - `const` ( ES6 )
+
+&nbsp;
 
 ## Variable naming conventions
 
@@ -82,6 +84,8 @@ Variables are containers for storing data values
 
 - `PascalCase`: C/C++
 
+&nbsp;
+
 ## Conditionals
 
 - `if`
@@ -90,11 +94,15 @@ Variables are containers for storing data values
 - `switch`-`case`
 - Ternary Operators ( `?`  `:` )
 
+&nbsp;
+
 ## Logical Operators
 
 - `&&`: and
 - `||`: or
 - `!`: not!
+
+&nbsp;
 
 ## Functions
 
@@ -104,12 +112,16 @@ A function() must `return` something
 - `function name() {}`
 - [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ( ES6 ): `() => {}`
 
+&nbsp;
+
 ## Loops
 
 - `for`
 - `forEach` ( ES6 )
 - `do`
 - `while`
+
+&nbsp;
 
 ## Some Common Functions
 
@@ -121,11 +133,15 @@ A function() must `return` something
 
 - `print()`: Print the webpage, not like python...!
 
-## The adventures await...
+&nbsp;
+
+## await theAdventures
 
 <img src="./Resources/memes/theAdventuresAwait.jpg" alt="" width=500>
 
-## Calculations with Numbers & Strings
+&nbsp;
+
+## Calculations Demo
 
 ### 3 + "6"
 
@@ -219,13 +235,9 @@ A function() must `return` something
 
 - `false`
 
-<!-- `NOTE`: Don't stress much about it, It's just how JavaScript works...! -->
+&nbsp;
 
-<!-- ![JavaScript in a nutshell](./Resources/memes/jsInANutshell.png) -->
-
-<!-- Just for meme purposes... lol ;) -->
-
-## Make a String
+## String Concatenation
 
 "Hi There! It's sunny out" by using the + sign.
 
@@ -233,17 +245,39 @@ A function() must `return` something
 
 Or, just use the `'`/`"` interchangeably...
 
-## JavaScript in a nutshell
+&nbsp;
+
+## JS: in A Nutshell
 
 <img src="./Resources/memes/jsInANutshell.png" alt="" width=500>
 
+&nbsp;
+
+Another One!
+
 <img src="./Resources/memes/thatDoesIt.jpg" alt="" width=500>
+
+&nbsp;
+
+Another One!
 
 <img src="./Resources/memes/typicalJS.jpg" alt="" width=500>
 
+&nbsp;
+
+Another One!
+
 <img src="./Resources/memes/thanksForInventingJS.jpg" alt="" width=500>
 
+&nbsp;
+
+Another One!
+
 <img src="./Resources/memes/pov.jpg" alt="" width=500>
+
+Yeah, that was the last one.)
+
+&nbsp;
 
 ## Special Keywords
 
@@ -281,22 +315,28 @@ Or, just use the `'`/`"` interchangeably...
 - with
 - yield
 
-## At last, Please don't confuse JavaScript with Java.)
+&nbsp;
 
 <img src="./Resources/memes/pleaseDon&apos;tConfuseItWithJava.jpg" alt="" width=500>
 
-`P.S` Get it?
+Don't confuse JavaScript with Java.)
 
-## Introduction to Vanilla "JavaScript".)
+&nbsp;
 
 <img src="./Resources/memes/neverWriteVanilla-please_.jpg" alt="" width=500>
 
 `NOTE:` Try to just *NEVER* write Vanilla, or you'll end up creating your own little JS Framework, and the last thing this world needs is another JavaScript Framework.)
 
-## JavaScript starter pack.)
+&nbsp;
 
 <img src="./Resources/memes/jsStarterKit-getIt_.jpg" alt="" width=500>
 
-`P.S.` You'll get this soon enough too.)
+&nbsp;
+&nbsp;
+&nbsp;
 
-Until next time.)
+Until next time...✌️
+
+&nbsp;
+
+❤️
