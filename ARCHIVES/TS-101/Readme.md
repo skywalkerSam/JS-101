@@ -1,4 +1,4 @@
-# [Introduction to TypeScript](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
+# [introduction to TypeScript](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 
 Everything that can be written in JavaScript will be eventually written in TypeScript.)
 
