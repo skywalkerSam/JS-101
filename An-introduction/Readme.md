@@ -8,7 +8,9 @@ w/ freeCodeCamp.org
 
 - A `method` is a *type of function* that is associated with an `object`, meaning it operates on the data contained *within that object*.
 
-&emsp;
+- A **compiler** translates high-level programming language code into **machine-readable** code, which creates an **executable** file.
+
+&nbsp;
 
 ## `undefined` vs `null`
 
@@ -28,7 +30,7 @@ let go = null;
 console.log(go) // null
 ```
 
-&emsp;
+&nbsp;
 
 ## Naming a *variable*
 
@@ -73,7 +75,7 @@ let freeCodeCampStudents;
 - You should also avoid using special characters like exclamation points (`!`) or at (`@`) symbols, in your variable names. It is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
 
 
-&emsp;
+&nbsp;
 
 ### `let`
 
@@ -87,7 +89,7 @@ score = 20;
 console.log(score); // 20
 ```
 
-&emsp;
+&nbsp;
 
 ### `const`
 
@@ -118,15 +120,15 @@ const age; // Error: Missing initializer in const declaration
 
 `Note`: You can also use the `var` keyword, but it's **not as recommended anymore**. The `var` is kind of like `let`, except it has a **wider scope**, which is more likely to cause problems in your program.
 
-&emsp;
+&nbsp;
 
 ## "strings"
 
-- `strings` are immutable. 
+- `strings` are **immutable**. 
 
  So, when you create a string, you **can't change its characters directly**. instead, you would **create a new string** if you want to make changes.
 
-&emsp;
+&nbsp;
 
 ## String Concatenation
 
@@ -171,4 +173,57 @@ let str2 = 'World';
 let result = str1.concat(' ', str2); 
 console.log(result); // Hello World
 ```
+
+&nbsp;
+
+## A Semicolon (`;`)
+
+Semicolons help delineate statements and improve code readability.
+
+- in JavaScript, a semicolon (`;`) is used to indicate the end of a statement.
+
+Just as a period (`.`) marks the **end of a sentence** in *English*, a semicolon (`;`) signifies the **end of an executable line of code** in *JavaScript*.
+
+- This allows the JavaScript engine to distinguish between separate commands.
+
+Without them, the JavaScript engine **might*** have trouble interpreting where one statement ends and another begins.
+
+- Semicolons help prevent *ambiguities* in code execution and ensure that statements are correctly terminated.
+
+`NOTE`: While JavaScript has Automatic Semicolon Insertion (**ASI**) that can add semicolons automatically, explicitly including them improves code clarity and helps prevent errors that may arise from *unexpected* ASI behavior.
+
+&nbsp;
+
+## Comments
+
+Comments in programming are used to provide **additional context** for the code or leave **notes** for yourself and others.
+
+- Comments are powerful tools for **documenting** your code and making it easier to *understand*.
+
+- They are there solely for the benefit of people **reading the code**, whether that's you or someone else.
+
+- Comments are lines or blocks of text that are **ignored** by the JavaScript engine when your code is executed. 
+
+- The comment provides important context for why "this" code *exists*.
+
+### Single line (`//`)
+
+```js
+// I am a single line comment in JavaScript
+```
+
+### Multi-line (`/* */`)
+
+```js
+/*
+ I am a multiline comment.
+ This is helpful for longer explanations.
+*/
+```
+
+While comments are **useful** in programming, it is important to **avoid over-commenting**. You don't need to comment on every single line of code, especially if the code is straightforward and self-explanatory.
+
+`NOTE`: The goal is to **enhance readability**, **do not clutter** the code with *unnecessary* explanations.
+
+&nbsp;
 
