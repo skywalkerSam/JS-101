@@ -220,6 +220,22 @@ MAX_SIZE = 200; // This will result in an error
   let fullName = firstName.concat(" ", lastName);
   console.log(fullName); // John Doe
   ```
+&nbsp;
+
+## Working with "Strings" 
+
+In JavaScript, strings are treated as sequences of characters, and `each character` in a string can be accessed using bracket notation (`[]`). This allows you to retrieve a specific character from a string based on its **position**, which is called its `index`.
+
+- An **index** is the **position of a character within a string**, and it is `zero-based`. This means that the **first character** of a string has an index of `0`, the **second** character has an index of `1`, and so on...
+
+- For example, in the string `hello`, the character `h` is at index `0`, `e` is at index `1`, `l` is at index `2`, and so on...
+
+    ```js
+    let greeting = "hello";
+    console.log(greeting[1]); // "e"
+    ```
+
+
 
 &nbsp;
 
