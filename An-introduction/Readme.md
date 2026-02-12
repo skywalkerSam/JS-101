@@ -330,7 +330,9 @@ While comments are **useful** in programming, it is important to **avoid over-co
       const veryBigNumber = 1234567890123456789012345678901234567890n;
       ```
 
-### Using the `typeof` Operator
+&nbsp;
+
+## Using the `typeof` Operator
 
 The typeof operator is used to **check the data type of a variable**. it returns a *string* indicating the *type* of the variable.
 
@@ -353,4 +355,6 @@ console.log(typeof isLoggedIn); // "boolean"
 
   *Unfortunately*, this has become **a part of the language**, and while it's confusing, it's something **you'll need to be aware of**.(
 
-  
+&nbsp;
+
+## 
