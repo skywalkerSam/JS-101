@@ -12,68 +12,106 @@ w/ freeCodeCamp.org
 
 &nbsp;
 
+## JavaScript as a Dynamically Typed Language
+
+it means that **you don't have to specify the data type of a variable** when you declare it. The JavaScript engine **automatically determines** the data type based on the value assigned to the variable **during execution**.
+
+```js
+let error = 404; // JavaScript treats error as a number
+error = "Not Found"; // JavaScript now treats error as a string
+```
+
+`Note`: The **flexibility** of **dynamic typing** makes JavaScript more **forgiving** and easy to work with for **quick scripting**, but it can also introduce **"bugs"** that may be **harder to catch**, especially as your program grows larger*
+
+### Statically Typed Languages
+
+in **statically typed** languages like `C#` or `C++`, **you must declare the data type of a variable when you create it**, and that type **cannot** be *changed*.
+
+- Other languages, like `C#`, that are **not dynamically typed** would result in an error:
+
+  ```c
+  int error = 404; // value must always be an integer
+  error = "Not Found"; // This would cause an error in C#
+  ```
+
+`Note`: Statically typed languages enforce **stricter rules** that can **prevent certain errors before the program runs**, but they **require more upfront declaration** and offer **less flexibility** in changing *types*.
+
+
+### Dynamic vs. Static
+
+- The difference between dynamic typing and static typing lies in the **flexibility vs. the safety of your code**. 
+
+- Dynamically typed languages offer **flexibility** but at the cost of **potential runtime errors***.
+
+- Statically typed languages **enforce a fixed variable type**.
+
+&nbsp;
+
 ## `undefined` vs `null`
 
 - `undefined` means a variable has been declared but hasn't been given a value yet.
 
-```javascript
+  ```javascript
 
-let thingsBe;
-console.log(thingsBe); // undefined
-```
+  let thingsBe;
+  console.log(thingsBe); // undefined
+  ```
 
 - `null` means the variable has been intentionally set to "nothing" and does not hold any value.
 
-```javascript
+  ```javascript
 
-let go = null;
-console.log(go) // null
-```
+  let go = null;
+  console.log(go) // null
+  ```
 
 &nbsp;
 
-## Naming a *variable*
+## Variable Naming Conventions
 
-- Variables in JavaScript must begin with a `letter`, an underscore (`_`), or a dollar sign (`$`).
+1. Variable names should be **descriptive** and **meaningful**.
 
-```javascript
+    - it is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
 
-let age;
-let _score;
-let $total;
-```
+2. They **cannot** start with a `number`. They must begin with a `letter`, an underscore (`_`), or a dollar sign (`$`).
 
-- They **cannot start** with a _number_.
+    ```javascript
 
-```javascript
+    // invalid variable name
+    let 1stPlace;   // starts with a number
 
-// invalid variable name
-let 1stPlace;   // starts with a number
-```
+    let age;
+    let _score;
+    let $total;
+    ```
 
-- Variable names are **case-sensitive**, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered _different variables_.
+3. Variable names should **not** contain **spaces** or **special characters**, except for `_` and `$`.
 
-```javascript
+    - **Do not** use special characters like, exclamation points (`!`), or at (`@`) symbols in your variable names. 
 
-let age = 25;
-let Age = 30;
-console.log(age); // 25
-console.log(Age); // 30
-```
+4. Variable names should be `camelCase` like `cityName`, `isLoggedIn`, and `veryBigNumber`.
 
-This is why it's important to stick with a consistent naming convention like `camelCase`. camelCase is where the _first word is all lowercase_ and each subsequent word starts with an **uppercase** letter.
+    - in JavaScript, variable names are `case-sensitive`, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered **different** *variables*.
 
-```javascript
+      ```javascript
+      let age = 25;
+      let Age = 30;
+      console.log(age); // 25
+      console.log(Age); // 30
+      ```
 
-let thisIsCamelCase;
-let anotherExampleVariable;
-let freeCodeCampStudents;
-```
+    - This is why it's **important** to stick with a consistent naming convention like `camelCase`. camelCase is where the **first word** is all **lowercase** and each **subsequent** word starts with **an uppercase** letter.
 
-- There are certain keywords in JavaScript that you **cannot** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are reserved for the language itself.
+      ```javascript
 
-- You should also avoid using special characters like exclamation points (`!`) or at (`@`) symbols, in your variable names. It is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
+      let thisIsCamelCase;
+      let anotherExampleVariable;
+      let freeCodeCampStudents;
+      ```
 
+5. Variable names should **not** be **reserved keywords**.
+
+   - There are certain keywords in JavaScript that you **cannot** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are reserved for the language *itself*.
 
 &nbsp;
 
@@ -81,52 +119,63 @@ let freeCodeCampStudents;
 
 - The `let` keyword allows you to declare variables that can be updated or reassigned later.
 
-```javascript
-
-let score = 10;
-console.log(score); // 10
-score = 20;
-console.log(score); // 20
-```
+  ```javascript
+  let score = 10;
+  console.log(score); // 10
+  score = 20;
+  console.log(score); // 20
+  ```
 
 &nbsp;
 
 ### `const`
 
-- `const` is used to declare variables that are constant.
+- const is used to declare variables that are **constant**.
 
-- Once you assign a value to a variable declared with `const`, you **cannot reassign** it.
+- Once you assign a value to a variable declared with const, you **cannot reassign** it.
 
-This makes `const` ideal for values that you **don't want to change** accidentally during the execution of your program.
+This makes const *ideal* for values that **you don't want to change accidentally**, or otherwise, during the execution of the program.
 
 ```javascript
 
-const maxScore = 100;
-console.log(maxScore); // 100
+const MAX_SIZE = 100;
+console.log(MAX_SIZE); // 100
 
-// Once maxScore is assigned the value 100, it cannot be changed.
+// Once MAX_SIZE is assigned the value 100, it cannot be changed.
 
-maxScore = 200; // This will result in an error
+MAX_SIZE = 200; // This will result in an error
 ```
 
 - Variables declared with `const` must be assigned a value at the time of declaration. 
 
-```javascript
+  ```javascript
 
-const age; // Error: Missing initializer in const declaration
-```
+  const PI; // Error: Missing initializer in const declaration
+  ```
 
-- Use `const` when you want to declare variables that should remain **constant**, like `configuration` values or `settings` that shouldn't be changed *accidentally**
+- Use const when you want to declare variables that should **remain constant**, like **configuration values** or **settings** that shouldn't be changed *accidentally**
 
-`Note`: You can also use the `var` keyword, but it's **not as recommended anymore**. The `var` is kind of like `let`, except it has a **wider scope**, which is more likely to cause problems in your program.
+`Note`: You can also use the `var` keyword, but it's **not as recommended anymore**. The `var` is kind of like `let`, except it has a **wider scope**, which is more likely to **cause problems*** in your *program*.
 
 &nbsp;
 
-## "strings"
+## "Strings"
 
-- `strings` are **immutable**. 
+1. Strings are **sequences of characters** enclosed in **quotes**. They can be created using *single quotes* and *double quotes*.
 
- So, when you create a string, you **can't change its characters directly**. instead, you would **create a new string** if you want to make changes.
+    ```js
+    let correctWay = 'This is a string';
+   let alsoCorrect = "This is also a string";
+   ```
+
+2. `Strings` are **immutable**. 
+
+    - This means that once a string is *created*, you **cannot change the characters** in the string. However, you can still **reassign strings** to a *new value*.
+
+      ```js
+      let firstName = "Sam";
+      firstName = "Sammy"; // Reassigning the string to a new value
+      ```
 
 &nbsp;
 
@@ -138,14 +187,14 @@ const age; // Error: Missing initializer in const declaration
 
 - `+` operator is best for *simple concatenation*, especially when you need to combine a few strings or variables.
 
-```javascript
+  ```javascript
 
-let firstName = "John";
-let lastName = "Doe";
+  let firstName = "John";
+  let lastName = "Doe";
 
-let fullName = firstName + lastName; 
-console.log(fullName); // "JohnDoe"
-```
+  let fullName = firstName + lastName; 
+  console.log(fullName); // "JohnDoe"
+  ```
 
 ### w/ `+=`
 
@@ -153,56 +202,55 @@ console.log(fullName); // "JohnDoe"
 
 - `+=` operator is useful when building up a string step by step or *appending* new content to an existing string variable.
 
-```javascript
+  ```javascript
 
-let greeting = 'Hello';
-greeting += ', John!';
+  let greeting = 'Hello';
+  greeting += ', John!';
 
-console.log(greeting); // "Hello, John!"
-```
+  console.log(greeting); // "Hello, John!"
+  ```
 
 ### w/ `concat()`
 
 - `.concat()` method is beneficial when you need to *concatenate multiple strings* together.
 
-```javascript
-
-let str1 = 'Hello';
-let str2 = 'World';
-
-let result = str1.concat(' ', str2); 
-console.log(result); // Hello World
-```
+  ```javascript
+  let firstName = "John";
+  let lastName = "Doe";
+  let fullName = firstName.concat(" ", lastName);
+  console.log(fullName); // John Doe
+  ```
 
 &nbsp;
 
 ## A Semicolon (`;`)
 
-Semicolons help delineate statements and improve code readability.
+Semicolons are primarily used to **mark the end of a statement**. This helps the JavaScript engine understand **the separation of individual instructions**, which is crucial for correct execution and termination.
 
-- in JavaScript, a semicolon (`;`) is used to indicate the end of a statement.
+- Semicolons help **delineate statements**, and improve *code readability* and *reliability**.
+
+  ```js
+  let message = "Hello, World!"; // first statement ends here
+  let number = 42; // second statement starts here
+  ```
 
 Just as a period (`.`) marks the **end of a sentence** in *English*, a semicolon (`;`) signifies the **end of an executable line of code** in *JavaScript*.
 
 - This allows the JavaScript engine to distinguish between separate commands.
 
-Without them, the JavaScript engine **might*** have trouble interpreting where one statement ends and another begins.
+Without the semicolon, the JavaScript engine *might** have trouble interpreting where one statement ends and another begins.
 
-- Semicolons help prevent *ambiguities* in code execution and ensure that statements are correctly terminated.
+- Semicolons help **prevent ambiguities** in code execution and ensure that statements are *correctly terminated*.
 
-`NOTE`: While JavaScript has Automatic Semicolon Insertion (**ASI**) that can add semicolons automatically, explicitly including them improves code clarity and helps prevent errors that may arise from *unexpected* ASI behavior.
+`Note`: While JavaScript has Automatic Semicolon Insertion (**ASI**) that can add semicolons automatically, explicitly including them improves code clarity and helps prevent errors that may arise from *unexpected* ASI behavior.
 
 &nbsp;
 
-## Comments
+## Comments in JavaScript
 
-Comments in programming are used to provide **additional context** for the code or leave **notes** for yourself and others.
-
-- Comments are powerful tools for **documenting** your code and making it easier to *understand*.
+Any line of code that is *commented* out is **ignored** by the JavaScript engine. Comments are used to **explain code**, **make notes**, **documentation**, or **temporarily disable code**.
 
 - They are there solely for the benefit of people **reading the code**, whether that's you or someone else.
-
-- Comments are lines or blocks of text that are **ignored** by the JavaScript engine when your code is executed. 
 
 - The comment provides important context for why "this" code *exists*.
 
@@ -223,7 +271,86 @@ Comments in programming are used to provide **additional context** for the code 
 
 While comments are **useful** in programming, it is important to **avoid over-commenting**. You don't need to comment on every single line of code, especially if the code is straightforward and self-explanatory.
 
-`NOTE`: The goal is to **enhance readability**, **do not clutter** the code with *unnecessary* explanations.
+`Note`: The goal is to **enhance readability**, **do not clutter** the code with *unnecessary* explanations.
 
 &nbsp;
 
+## Data Types in JavaScript
+
+- `Number`: A number represents both **integers** and **floating-point** values. 
+
+  - Examples of integers include 7, 19, and 90.
+
+- **Floating point**: A floating point number is a number with a **decimal** point. 
+
+  - Examples include 3.14, 0.5, and 0.0001.
+
+  - in JavaScript, there isn't a *dedicated* Float data type. instead, all numbers, including both **integers** and **floating-point** numbers, are *represented* by a single `Number` type.
+
+- `String`: A string is a **sequence of characters**, or **text**, enclosed in **quotes**. 
+
+  - `"I like coding"` and `'JavaScript is fun'` are examples of strings.
+
+
+- `Boolean`: A boolean represents one of two possible values: `true` or `false`. 
+
+  - To represent a condition, such as `isLoggedIn = true`.
+
+- `Undefined`: An undefined value is a variable that has been declared but **not assigned** a value. 
+
+- `Null`: A value is an `empty` value, or a variable that has `intentionally` been assigned a value of null.
+
+- `Object`: An object is a collection of **key-value** pairs. The key is the property *name*, and the value is the property *value*.
+
+    - Here, the `pet` object has three properties or **keys**: `name`, `age`, and `type`. The values are `Fluffy`, `3`, and `dog`, respectively.
+
+      ```js
+      let pet = {
+      name: "Fluffy",
+      age: 3,
+      type: "dog"
+      };
+      ```
+
+- `Symbol`: The Symbol data type is a **unique** and **immutable** value that may be used as an **identifier** for object properties.
+
+    - in this example below, two symbols are created with the **same description**, but they are **not equal**.
+
+      ```js
+      const crypticKey1 = Symbol("saltNpepper");
+      const crypticKey2 = Symbol("saltNpepper");
+      console.log(crypticKey1 === crypticKey2); // false
+      ```
+
+- `BigInt`: When the number is **too large** for the `Number` data type, you can use the `BigInt` data type to represent **integers of arbitrary length**.
+
+    - By adding an `n` to the end of the number, you can create a BigInt.
+
+      ```js
+      const veryBigNumber = 1234567890123456789012345678901234567890n;
+      ```
+
+### Using the `typeof` Operator
+
+The typeof operator is used to **check the data type of a variable**. it returns a *string* indicating the *type* of the variable.
+
+```js
+let age = 25;
+console.log(typeof age); // "number"
+
+let isLoggedIn = true;
+console.log(typeof isLoggedIn); // "boolean"
+```
+
+- However, there's a well-known "*quirk*"/*bug* in JavaScript when it comes to `null`. The `typeof` operator returns `"object"` for `null` values.
+
+  ```js
+  let user = null;
+  console.log(typeof user); // "object"
+  ```
+
+  When the language was first implemented, values like `null` were represented as a **"special" type of object**, leading to this *unexpected* result.
+
+  *Unfortunately*, this has become **a part of the language**, and while it's confusing, it's something **you'll need to be aware of**.(
+
+  
