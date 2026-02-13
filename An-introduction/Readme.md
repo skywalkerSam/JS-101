@@ -222,7 +222,7 @@ MAX_SIZE = 200; // This will result in an error
   ```
 &nbsp;
 
-## Working with "Strings" 
+## Working w/ "Strings" 
 
 In JavaScript, strings are treated as sequences of characters, and `each character` in a string can be accessed using bracket notation (`[]`). This allows you to retrieve a specific character from a string based on its **position**, which is called its `index`.
 
@@ -235,7 +235,56 @@ In JavaScript, strings are treated as sequences of characters, and `each charact
     console.log(greeting[1]); // "e"
     ```
 
+- The `length` property of a string tells you **how many characters it contains**, so to access the last character, you would subtract one from the length. 
 
+  - in this case, the `length` of `hello` is `5`, and the last character (`o`) is at index `4` which is `5 - 1`.
+
+    ```js
+    let greeting = "hello";
+    console.log(greeting[greeting.length - 1]); // "o"
+    ```
+
+&nbsp;
+
+## Escape Sequence Characters
+
+### New line (`\n`)
+- in many programming languages, including JavaScript, you can create **a newline in a string** using a special character called an `escape sequence`. The most common escape sequence for *newlines* is `\n`.
+
+  ```js
+  /**
+   "Roses are red,
+  Violets are blue,
+  JavaScript is fun,
+  And so are you." 
+   **/
+  let poem = "Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.";
+  console.log(poem);
+  ```
+
+### inner Quote (`\"`)
+
+```js
+let statement = "She said, "Hello!""; //This will throw an error.(
+
+let statement = "She said, \"Hello!\"";
+console.log(statement); // She said, "Hello!"
+```
+
+### Single Quote (`\'`)
+
+```js
+let quote = 'It\'s a beautiful day!';
+console.log(quote); // It's a beautiful day!
+```
+
+`Note`: The backslash (`\`) tells JavaScript to treat the *quotes* as **literal characters**, so they appear correctly in the output.
+
+&nbsp;
+
+## Template Literals
+
+Unlike regular strings, which use single (`'`) or double (`"`) quotes, &**template literals** are defined with *backticks* **( ` )**.
 
 &nbsp;
 
