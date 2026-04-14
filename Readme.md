@@ -1,4 +1,4 @@
-# [JavaScript](https://www.freecodecamp.org/learn/javascript-v9/) Notes
+# [introduction to JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
 
 w/ freeCodeCamp.org
 
@@ -1275,6 +1275,91 @@ Bitwise operators in JavaScript are special operators that **work on the binary 
 &nbsp;
 
 ## Conditional Statements
+
+Conditional statements let you **make decisions** in your JavaScript code. They allow your program to flow in a particular way **based on certain conditions**. 
+
+- An `if` statement takes a condition and runs a block of code if that condition is **truthy**. Truthy values are any values that result in `true` when evaluated in a Boolean context.
+
+  - non-empty strings
+
+  - **any other number** than `0` and `-0`
+
+  - arrays
+
+  - objects
+
+  - the boolean `true`
+
+- Falsy values are values that evaluate to `false` in a boolean context. 
+
+  - boolean `false`
+
+  - `0` (zero)
+
+  - `""` (empty string)
+
+  - `null`
+
+  - `undefined`
+
+  - `NaN` (Not a Number)
+
+  ```js
+  if (null) {
+    console.log("This will not run.");
+  }
+
+  if ("freeCodeCamp") {
+    console.log("This will run.");
+  }
+  ```
+
+- When a condition is `false`, then you can use an `else` clause:
+
+  ```js
+  const age = 15;
+
+  if (age >= 18) {
+   console.log("You're eligible to vote");
+  } else {
+   console.log("You're not eligible to vote"); // You're not eligible to vote
+  }
+  ```
+
+- When you want to check **multiple conditions**, you can use an `else if` block.
+
+  ```js
+  const score = 87;
+
+  if (score >= 90) {
+   console.log('You got an A'); 
+  } else if (score >= 80) {
+   console.log('You got a B'); // You got a B
+  } else if (score >= 70) {
+   console.log('You got a C');
+  } else {
+   console.log('You failed! You need to study more!');
+  }
+  ```
+
+- The **ternary operator** is a compact way to write **simple if/else statements**. 
+
+  ```js
+  condition ? expressionIfTrue : expressionIfFalse;
+  ```
+
+  ```js
+  const temperature = 30;
+  const weather = temperature > 25 ? 'sunny' : 'cool';
+
+  console.log(`It's a ${weather} day!`);
+  ```
+
+&nbsp;
+
+## Binary Logical Operators
+
+
 
 
 
