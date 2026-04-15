@@ -1476,7 +1476,11 @@ console.log(Math.round(4.8)); // 5
 - if the decimal point is **less than 5**, the number is **rounded down**. 
 - And if the decimal point is **5 or greater**, the number is **rounded up**. 
 
-### Random Number Generation
+### Random Number Generator
+
+```js
+Math.floor(Math.random() * (maximum - minimum) + minimum);
+```
 
 Generating a random number between two whole numbers.
 
