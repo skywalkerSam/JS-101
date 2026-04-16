@@ -1533,7 +1533,88 @@ console.log(Math.pow(8, 2)); // 64
 
 &nbsp;
 
-## 
+## Not a Number (`NaN`)
+
+It's a special value that represents an **unrepresentable** or **undefined** numerical result. `NaN` is a property of the **global object**, and it's also considered a type of **number** in JavaScript, which might seem *counterintuitive* at first.
+
+- `NaN` is typically the result of operations that should return a number but **cannot produce a meaningful numerical value**.
+
+  ```js
+  let result = 0 / 0;
+  console.log(result); // NaN
+  ```
+
+  - Dividing zero by zero is mathematically **undefined**, so JavaScript returns `NaN`.
+
+- One peculiar property of `NaN` is that **it is not equal to anything**, including *itself*.
+
+  ```js
+  console.log(NaN === NaN); // false
+  ```
+
+### `isNaN()`
+
+The `isNaN()` function property is used **to determine whether a value is `NaN` or not**. it perform **type coercion** by default which can lead to *unexpected* results.
+
+```js
+console.log(isNaN(NaN));       // true
+console.log(isNaN(undefined)); // true
+console.log(isNaN({}));        // true
+
+console.log(isNaN(true));      // false
+console.log(isNaN(null));      // false
+console.log(isNaN(37));        // false
+
+console.log(isNaN("37"));      // false: "37" is converted to 37
+console.log(isNaN("37.37"));   // false: "37.37" is converted to 37.37
+console.log(isNaN(""));        // false: empty string is converted to 0
+console.log(isNaN(" "));       // false: string with a space is converted to 0
+
+console.log(isNaN("blabla"));  // true: "blabla" is not a number
+```
+
+### `Number.isNaN()`
+
+it **does not perform type coercion** before testing. it only returns `true` if the value is exactly `NaN`.
+
+- introduced in **ES6**
+
+```js
+console.log(Number.isNaN(NaN));        // true
+console.log(Number.isNaN(Number.NaN)); // true
+console.log(Number.isNaN(0 / 0));      // true
+
+console.log(Number.isNaN("NaN"));      // false
+console.log(Number.isNaN(undefined));  // false
+console.log(Number.isNaN({}));         // false
+console.log(Number.isNaN("blabla"));   // false
+```
+
+  - `Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where **type coercion might lead to unexpected results** with the global `isNaN()` function.
+
+### `NaN` Based Error Handling
+
+when dealing with numerical operations or user inputs that should be numbers, it's often necessary to **check for `NaN`** to handle **errors** or **unexpected inputs** gracefully.
+
+```js
+let a = 0;
+let b = 0;
+let result = a / b;
+
+if (Number.isNaN(result)) {
+  result = "Error: Division resulted in NaN";
+}
+
+console.log(result); // "Error: Division resulted in NaN"
+```
+
+&nbsp;
+
+## `parseFloat()` & `parseInt()` Methods
+
+These are two essential methods in JavaScript for **converting strings to numbers**.
+
+
 
 
 
