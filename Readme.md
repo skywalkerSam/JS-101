@@ -1612,7 +1612,92 @@ console.log(result); // "Error: Division resulted in NaN"
 
 ## `parseFloat()` & `parseInt()` Methods
 
-These are two essential methods in JavaScript for **converting strings to numbers**.
+These are two essential methods in JavaScript for **converting strings to numbers**. These methods are particularly useful when dealing with **user input** or **processing data** that comes in *string* format but needs to be treated as *numerical* values.
+
+### `parseFloat()` 
+
+This method parses a **string** argument and returns a **floating-point** number. it is designed to *extract* a number from the **beginning** of a string.
+
+```js
+console.log(parseFloat("3.14"));     // 3.14
+console.log(parseFloat("3.14 abc")); // 3.14
+console.log(parseFloat("3.14.5"));   // 3.14
+console.log(parseFloat("abc 3.14")); // NaN
+```
+
+### `parseInt()`
+
+This method parses a **string** argument and returns an **integer**. it also starts from the **beginning** of the string, but it **stops at the first non-digit character**.
+
+```js
+console.log(parseInt("42"));       // 42
+console.log(parseInt("42px"));     // 42
+console.log(parseInt("3.14"));     // 3
+console.log(parseInt("abc123"));   // NaN
+```
+
+- They both **ignore leading whitespace**.
+
+  ```js
+  console.log(parseFloat("  3.14"));  // 3.14
+  console.log(parseInt("  42"));      // 42
+  ```
+
+- They both handle **plus and minus signs** at the beginning of the string.
+
+  ```js
+  console.log(parseFloat("+3.14"));  // 3.14
+  console.log(parseInt("-42"));      // -42
+  ```
+
+&nbsp;
+
+`Note`: They don't handle all number formats, such as **scientific notation**, directly. For more complex parsing needs, you might need to use additional techniques or libraries.
+
+&nbsp;
+
+## `toFixed()`
+
+This method is a built-in JavaScript function that **formats a number using fixed-point notation**. It's particularly useful when you need to control **the number of decimal places in a number**, especially for displaying **currency** values or when working with **precise measurements**.
+
+- For precise calculations.
+
+- it takes **one optional argument**, which is **the number of digits** to appear after the decimal point. it **returns** a **"string"** representation of the number with the specified number of decimal places.
+
+  ```js
+  let num = 3.14159;
+  console.log(num.toFixed(2)); // "3.14"
+  ```
+
+- The `.toFixed()` method **rounds the number to the nearest value** that can be represented with the specified number of decimal places.
+
+  ```js
+  console.log((3.14159).toFixed(3));  // "3.142"
+  console.log((3.14449).toFixed(3));  // "3.144"
+  console.log((3.14550).toFixed(3));  // "3.146"
+  ```
+
+- if you call `.toFixed()` **without arguments**, it defaults to `0` decimal places.
+
+  ```js
+  let num = 3.14159;
+  console.log(num.toFixed()); // "3"
+  ```
+
+- The `.toFixed()` method can be particularly useful when working with **financial calculations** or displaying **prices**.
+
+  ```js
+  let price = 19.99;
+  let taxRate = 0.08;
+  let total = price + (price * taxRate);
+
+  console.log("Total: $" + total.toFixed(2)); // "Total: $21.59"
+  ```
+
+&nbsp;
+
+## 
+
 
 
 
@@ -1622,3 +1707,4 @@ These are two essential methods in JavaScript for **converting strings to number
 
 
 &nbsp;
+
