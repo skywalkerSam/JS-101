@@ -1100,6 +1100,61 @@ Comparison operators allow you to **compare two values** and return a `true` or 
 
 &nbsp;
 
+## `null` vs. `undefined`
+
+in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
+
+- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an *argument*.
+
+- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
+
+### w/ Equality Operator (`==`)
+
+When comparing `null` and `undefined` using the **equality operator**, JavaScript performs **type coercion**. This means it tries to convert the operands to the same type before making the comparison. In this case, `null` and `undefined` are **considered equal**.
+
+```js
+console.log(null == undefined); // true
+```
+
+The comparisons below return `false` because `null` and `undefined` are **only equal to each other (and themselves)** when using the **equality operator**.
+
+```js
+console.log(null == 0);  // false
+console.log(null == ''); // false
+console.log(undefined == 0); // false
+console.log(undefined == ''); // false
+```
+
+Tricky AF.
+
+```js
+console.log(null > 0);  // false
+console.log(null == 0); // false
+console.log(null >= 0); // true
+```
+
+`undefined`, on the other hand, **always converts to `NaN`** in numeric contexts, which makes **all numeric comparisons with `undefined` return `false`**.
+
+```js
+console.log(undefined > 0);  // false
+console.log(undefined < 0);  // false
+console.log(undefined == 0); // false
+```
+
+### w/ Strict Equality Operator (`===`)
+
+However, when using the **strict equality operator**, which checks both value and type **without performing type coercion**, `null` and `undefined` are **not equal**.
+
+```js
+console.log(null === undefined); // false
+```
+
+&nbsp;
+
+`Note`: Given these nuances, it is generally recommended to **use the strict equality operator when comparing values**, especially when dealing with `null` and `undefined`. This approach **helps avoid unexpected type coercion** and makes your code's behavior more *predictable*.
+
+&nbsp;
+
 ## Unary Operators
 
 Unary operators act on a **single operand to perform operations** like **type conversion**, **value manipulation**, or checking certain **conditions**.
