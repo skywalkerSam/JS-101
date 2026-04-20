@@ -1844,9 +1844,80 @@ This method is a built-in JavaScript function that **formats a number using fixe
 
 &nbsp;
 
-## 
+## Functions
 
+Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform *actions*, and `return` **outputs**.
 
+```js
+function greet() {
+  console.log("Hello, Jessica!");
+}
+
+greet(); // "Hello, Jessica!"
+```
+
+- **Parameters** act as **placeholders** for the values that will be passed to the function when it is called.
+
+  ```js
+  function greet(name) {
+    console.log("Hello, " + name + "!");
+  }
+
+  greet("Alice"); // Hello, Alice!
+  greet("Nick"); // Hello, Nick!
+  ```
+
+- When a function finishes execution, it will always **return a value**. By default, the return value will be `undefined`. 
+
+  ```js
+  function doSomething() {
+    console.log("Doing something...");
+  }
+
+  let result = doSomething();
+  console.log(result); // undefined
+  ```
+
+- if you need your function to return a specific value, then you will need to use the `return` statement.
+
+  ```js
+  function calculateSum(num1, num2) {
+    return num1 + num2;
+  }
+
+  console.log(calculateSum(3, 4)); // 7
+  ```
+
+### Default Parameters
+
+Functions support default parameters, allowing you to **set default values for parameters**. 
+
+```js
+function greetings(name = "Guest") {
+  console.log("Hello, " + name + "!");
+}
+
+greetings(); // Hello, Guest!
+greetings("Anna"); // Hello, Anna!
+```
+
+&nbsp;
+
+## Anonymous Function
+
+An anonymous function is a function **without a name** that can be **assigned to a variable**.
+
+```js
+const sum = function (num1, num2) {
+  return num1 + num2;
+};
+
+console.log(sum(3, 4)); // 7
+```
+
+&nbsp;
+
+## Arrow Functions
 
 
 
