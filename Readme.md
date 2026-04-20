@@ -1,20 +1,20 @@
-# [JavaScript](https://www.freecodecamp.org/learn/javascript-v9/) Notes
+# [introduction to JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
 
 w/ freeCodeCamp.org
 
-- **immutability** means that once something is *created*, it **cannot be changed**.
+- **immutability** means that once something is _created_, it **cannot be changed**.
 
 - A `function()` is a reusable block of code that performs a specific task and can be called with various inputs.
 
-- A `method` is a *type of function* that is associated with an `object`, meaning it operates on the data contained *within that object*.
+- A `method` is a _type of function_ that is associated with an `object`, meaning it operates on the data contained _within that object_.
 
-- An `argument` is a `value` you give to a `function` or `method` when you call it, **enabling that function or method** to perform its task using the **specific information you provide**.  
+- An `argument` is a `value` you give to a `function` or `method` when you call it, **enabling that function or method** to perform its task using the **specific information you provide**.
 
 - A **compiler** translates high-level programming language code into **machine-readable** code, which creates an **executable** file.
 
 &nbsp;
 
-## JavaScript as a Dynamically Typed Language
+## JavaScript is a Dynamically Typed Language
 
 it means that **you don't have to specify the data type of a variable** when you declare it. The JavaScript engine **automatically determines** the data type based on the value assigned to the variable **during execution**.
 
@@ -23,11 +23,11 @@ let error = 404; // JavaScript treats error as a number
 error = "Not Found"; // JavaScript now treats error as a string
 ```
 
-`Note`: The **flexibility** of **dynamic typing** makes JavaScript more **forgiving** and easy to work with for **quick scripting**, but it can also introduce **"bugs"** that may be **harder to catch**, especially as your program grows larger*
+`Note`: The **flexibility** of **dynamic typing** makes JavaScript more **forgiving** and easy to work with for **quick scripting**, but it can also introduce **"bugs"** that may be **harder to catch**, especially as your program grows larger\*
 
 ### Statically Typed Languages
 
-in **statically typed** languages like `C#` or `C++`, **you must declare the data type of a variable when you create it**, and that type **cannot** be *changed*.
+in **statically typed** languages like `C#` or `C++`, **you must declare the data type of a variable when you create it**, and that type **cannot** be _changed_.
 
 - Other languages, like `C#`, that are **not dynamically typed** would result in an error:
 
@@ -36,14 +36,13 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
   error = "Not Found"; // This would cause an error in C#
   ```
 
-`Note`: Statically typed languages enforce **stricter rules** that can **prevent certain errors before the program runs**, but they **require more upfront declaration** and offer **less flexibility** in changing *types*.
-
+`Note`: Statically typed languages enforce **stricter rules** that can **prevent certain errors before the program runs**, but they **require more upfront declaration** and offer **less flexibility** in changing _types_.
 
 ### Dynamic vs. Static
 
-- The difference between dynamic typing and static typing lies in the **flexibility vs. the safety of your code**. 
+- The difference between dynamic typing and static typing lies in the **flexibility vs. the safety of your code**.
 
-- Dynamically typed languages offer **flexibility** but at the cost of **potential runtime errors***.
+- Dynamically typed languages offer **flexibility** but at the cost of **potential runtime errors\***.
 
 - Statically typed languages **enforce a fixed variable type**.
 
@@ -54,7 +53,6 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
 - `undefined` means a variable has been declared but hasn't been given a value yet.
 
   ```javascript
-
   let thingsBe;
   console.log(thingsBe); // undefined
   ```
@@ -62,9 +60,8 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
 - `null` means the variable has been intentionally set to "nothing" and does not hold any value.
 
   ```javascript
-
   let go = null;
-  console.log(go) // null
+  console.log(go); // null
   ```
 
 &nbsp;
@@ -72,48 +69,43 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
 ## Variable Naming Conventions
 
 1. Variable names should be **descriptive** and **meaningful**.
-
-    - it is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
+   - it is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
 
 2. They **cannot** start with a `number`. They must begin with a `letter`, an underscore (`_`), or a dollar sign (`$`).
 
-    ```javascript
+   ```javascript
 
-    // invalid variable name
-    let 1stPlace;   // starts with a number
+   // invalid variable name
+   let 1stPlace;   // starts with a number
 
-    let age;
-    let _score;
-    let $total;
-    ```
+   let age;
+   let _score;
+   let $total;
+   ```
 
 3. Variable names should **not** contain **spaces** or **special characters**, except for `_` and `$`.
-
-    - **Do not** use special characters like, exclamation points (`!`), or at (`@`) symbols in your variable names. 
+   - **Do not** use special characters like, exclamation points (`!`), or at (`@`) symbols in your variable names.
 
 4. Variable names should be `camelCase` like `cityName`, `isLoggedIn`, and `veryBigNumber`.
+   - in JavaScript, variable names are `case-sensitive`, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered **different** _variables_.
 
-    - in JavaScript, variable names are `case-sensitive`, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered **different** *variables*.
+     ```javascript
+     let age = 25;
+     let Age = 30;
+     console.log(age); // 25
+     console.log(Age); // 30
+     ```
 
-      ```javascript
-      let age = 25;
-      let Age = 30;
-      console.log(age); // 25
-      console.log(Age); // 30
-      ```
+   - This is why it's **important** to stick with a consistent naming convention like `camelCase`. camelCase is where the **first word** is all **lowercase** and each **subsequent** word starts with **an uppercase** letter.
 
-    - This is why it's **important** to stick with a consistent naming convention like `camelCase`. camelCase is where the **first word** is all **lowercase** and each **subsequent** word starts with **an uppercase** letter.
-
-      ```javascript
-
-      let thisIsCamelCase;
-      let anotherExampleVariable;
-      let freeCodeCampStudents;
-      ```
+     ```javascript
+     let thisIsCamelCase;
+     let anotherExampleVariable;
+     let freeCodeCampStudents;
+     ```
 
 5. Variable names should **not** be **reserved keywords**.
-
-   - There are certain keywords in JavaScript that you **cannot** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are reserved for the language *itself*.
+   - There are certain keywords in JavaScript that you **cannot** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are reserved for the language _itself_.
 
 &nbsp;
 
@@ -136,10 +128,9 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
 
 - Once you assign a value to a variable declared with const, you **cannot reassign** it.
 
-This makes const *ideal* for values that **you don't want to change accidentally**, or otherwise, during the execution of the program.
+This makes const _ideal_ for values that **you don't want to change accidentally**, or otherwise, during the execution of the program.
 
 ```javascript
-
 const MAX_SIZE = 100;
 console.log(MAX_SIZE); // 100
 
@@ -148,16 +139,15 @@ console.log(MAX_SIZE); // 100
 MAX_SIZE = 200; // This will result in an error
 ```
 
-- Variables declared with `const` must be assigned a value at the time of declaration. 
+- Variables declared with `const` must be assigned a value at the time of declaration.
 
   ```javascript
-
   const PI; // Error: Missing initializer in const declaration
   ```
 
-- Use const when you want to declare variables that should **remain constant**, like **configuration values** or **settings** that shouldn't be changed *accidentally**
+- Use const when you want to declare variables that should **remain constant**, like **configuration values** or **settings** that shouldn't be changed \*accidentally\*\*
 
-`Note`: You can also use the `var` keyword, but it's **not as recommended anymore**. The `var` is kind of like `let`, except it has a **wider scope**, which is more likely to **cause problems*** in your *program*.
+`Note`: You can also use the `var` keyword, but it's **not as recommended anymore**. The `var` is kind of like `let`, except it has a **wider scope**, which is more likely to **cause problems\*** in your _program_.
 
 &nbsp;
 
@@ -168,16 +158,16 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
 - Strings are **primitive** data types, and they are **immutable**.
 
   ```js
-  let correctWay = 'This is a string';
+  let correctWay = "This is a string";
   let alsoCorrect = "This is also a string";
   ```
 
-- **immutability** means that once a string is **created**, you **cannot change the characters** in the string. However, you can still **reassign strings** to a *new value*.
+- **immutability** means that once a string is **created**, you **cannot change the characters** in the string. However, you can still **reassign strings** to a _new value_.
 
-    ```js
-    let firstName = "Sam";
-    firstName = "Sammy"; // Reassigning the string to a new value
-    ```
+  ```js
+  let firstName = "Sam";
+  firstName = "Sammy"; // Reassigning the string to a new value
+  ```
 
 &nbsp;
 
@@ -187,14 +177,13 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
 
 - One disadvantage of using the `+` operator for string concatenation is that it can lead to **spacing issues** if you don't carefully manage the spacing between the concatenated strings.
 
-- `+` operator is best for *simple concatenation*, especially when you need to combine a few strings or variables.
+- `+` operator is best for _simple concatenation_, especially when you need to combine a few strings or variables.
 
   ```javascript
-
   let firstName = "John";
   let lastName = "Doe";
 
-  let fullName = firstName + lastName; 
+  let fullName = firstName + lastName;
   console.log(fullName); // "JohnDoe"
   ```
 
@@ -202,19 +191,18 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
 
 - if you need to **add or append** to an existing string, then you can use the `+=` operator.
 
-- `+=` operator is useful when building up a string step by step or *appending* new content to an existing string variable.
+- `+=` operator is useful when building up a string step by step or _appending_ new content to an existing string variable.
 
   ```javascript
-
-  let greeting = 'Hello';
-  greeting += ', John!';
+  let greeting = "Hello";
+  greeting += ", John!";
 
   console.log(greeting); // "Hello, John!"
   ```
 
 ### w/ `concat()`
 
-- `.concat()` method is beneficial when you need to *concatenate multiple strings* together.
+- `.concat()` method is beneficial when you need to _concatenate multiple strings_ together.
 
   ```javascript
   let firstName = "John";
@@ -222,9 +210,10 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
   let fullName = firstName.concat(" ", lastName);
   console.log(fullName); // John Doe
   ```
-&nbsp;
 
-## Working w/ "Strings" 
+  &nbsp;
+
+## Working w/ "Strings"
 
 In JavaScript, strings are treated as sequences of characters, and `each character` in a string can be accessed using bracket notation (`[]`). This allows you to retrieve a specific character from a string based on its **position**, which is called its `index`.
 
@@ -232,13 +221,12 @@ In JavaScript, strings are treated as sequences of characters, and `each charact
 
 - For example, in the string `hello`, the character `h` is at index `0`, `e` is at index `1`, `l` is at index `2`, and so on...
 
-    ```js
-    let greeting = "hello";
-    console.log(greeting[1]); // "e"
-    ```
+  ```js
+  let greeting = "hello";
+  console.log(greeting[1]); // "e"
+  ```
 
-- The `length` property of a string tells you **how many characters it contains**, so to access the last character, you would subtract one from the length. 
-
+- The `length` property of a string tells you **how many characters it contains**, so to access the last character, you would subtract one from the length.
   - in this case, the `length` of `hello` is `5`, and the last character (`o`) is at index `4` which is `5 - 1`.
 
     ```js
@@ -251,7 +239,8 @@ In JavaScript, strings are treated as sequences of characters, and `each charact
 ## Escape Sequence Characters
 
 ### `\n` (Newline Character)
-- in many programming languages, including JavaScript, you can create **a newline in a string** using a special character called an `escape sequence`. The most common escape sequence for *newlines* is `\n`.
+
+- in many programming languages, including JavaScript, you can create **a newline in a string** using a special character called an `escape sequence`. The most common escape sequence for _newlines_ is `\n`.
 
   ```js
   /**
@@ -260,10 +249,12 @@ In JavaScript, strings are treated as sequences of characters, and `each charact
   JavaScript is fun,
   And so are you." 
    **/
-  let poem = "Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.";
+  let poem =
+    "Roses are red,\nViolets are blue,\nJavaScript is fun,\nAnd so are you.";
   console.log(poem);
   ```
-&nbsp;
+
+  &nbsp;
 
 ### Escaping String: `\"` (inner Quote)
 
@@ -273,34 +264,34 @@ let statement = "She said, "Hello!""; //This will throw an error.(
 let statement = "She said, \"Hello!\"";
 console.log(statement); // She said, "Hello!"
 ```
+
 &nbsp;
 
 ### Escaping String: `\'` (Single Quote)
 
 ```js
-let quote = 'It\'s a beautiful day!';
+let quote = "It's a beautiful day!";
 console.log(quote); // It's a beautiful day!
 ```
 
-`Note`: The backslash (`\`) tells JavaScript to treat the *quotes* as **literal characters**, so they appear correctly in the output.
+`Note`: The backslash (`\`) tells JavaScript to treat the _quotes_ as **literal characters**, so they appear correctly in the output.
 
 &nbsp;
 
 ## Template Literals (``) & String interpolation (`${}`)
 
-Template Strings are defined with backticks (``). They allow for **easier string manipulation**, including **embedding variables and expressions** directly inside a *string*, a feature known as ***string interpolation***.
+Template Strings are defined with backticks (``). They allow for **easier string manipulation**, including **embedding variables and expressions** directly inside a _string_, a feature known as **_string interpolation_**.
 
 ```js
 const name = "Alice";
 const age = 25;
 const message = `My name is ${name} and I am ${age} years old.`;
 
-console.log(message); 
+console.log(message);
 ```
 
 - Supports **multi-line** strings.
-
-  - With **regular strings**, you would need to use escape characters (`\n`) to create new lines. With **template literals**, you can simply write the string across multiple lines, and the **formatting is preserved**: 
+  - With **regular strings**, you would need to use escape characters (`\n`) to create new lines. With **template literals**, you can simply write the string across multiple lines, and the **formatting is preserved**:
 
   ```js
   let poem = `Roses are red,
@@ -312,7 +303,6 @@ console.log(message);
   ```
 
 - A **powerful** and **flexible** way to work with strings.
-
   - Embed **JavaScript expressions directly within the string**, like in this example:
 
   ```js
@@ -323,20 +313,22 @@ console.log(message);
     (score / highestScore) * 100
   }%.`;
 
-  console.log(output); 
+  console.log(output);
   ```
 
 &nbsp;
 
 ## `indexOf()`
 
-To **locate** the position of a **substring** inside of a *string*. it returns the **initial position** of the string starting with the index of `0`.
+To **locate** the position of a **substring** inside of a _string_. it returns the **initial position** of the string starting with the index of `0`.
+
 ```js
 let sentence = "JavaScript is awesome!";
 let position = sentence.indexOf("awesome!");
 
 console.log(position); // 14
 ```
+
 - if the substring is **not found**, `indexOf()` returns `-1`.
 
   ```js
@@ -358,7 +350,7 @@ console.log(position); // 14
 - The `indexOf()` method is **case sensitive**.
 
   ```js
-  console.log("freeCodeCamp".indexOf("F")) // -1
+  console.log("freeCodeCamp".indexOf("F")); // -1
   ```
 
 &nbsp;
@@ -373,12 +365,12 @@ The `includes()` method is used to check **if a string contains a specific subst
 let phrase = "JavaScript is awesome!";
 let result = phrase.includes("awesome");
 
-console.log(result);  // true
+console.log(result); // true
 
 let phrase = "JavaScript is awesome!";
 let result = phrase.includes("Awesome");
 
-console.log(result);  // false
+console.log(result); // false
 ```
 
 - You can also use the `includes()` method to check for a substring starting at a specific `index` in the string by providing a second parameter:
@@ -387,16 +379,16 @@ console.log(result);  // false
   let text = "Hello, JavaScript world!";
   let result = text.includes("JavaScript", 7);
 
-  console.log(result);  // true
+  console.log(result); // true
   ```
 
 &nbsp;
 
 ## `slice()` method
 
-The `slice()` method allows you to **extract a portion of a string** and **returns a new string**, without modifying the original string. 
+The `slice()` method allows you to **extract a portion of a string** and **returns a new string**, without modifying the original string.
 
-- it takes two parameters: the **starting** index and the *optional* **ending** index.
+- it takes two parameters: the **starting** index and the _optional_ **ending** index.
 
   ```js
   string.slice(startIndex, endIndex);
@@ -406,7 +398,7 @@ The `slice()` method allows you to **extract a portion of a string** and **retur
 let message = "Hello, world!";
 let greeting = message.slice(0, 5);
 
-console.log(greeting);  // Hello
+console.log(greeting); // Hello
 ```
 
 - if you **omit the second parameter**, `slice()` will extract everything **from the start index to the end** of the string:
@@ -415,7 +407,7 @@ console.log(greeting);  // Hello
   let message = "Hello, world!";
   let world = message.slice(7);
 
-  console.log(world);  // world!
+  console.log(world); // world!
   ```
 
 - You can also use **negative numbers as indexes**. When you use a negative number, it **counts backward from the end** of the string:
@@ -424,7 +416,7 @@ console.log(greeting);  // Hello
   let message = "JavaScript is fun!";
   let lastWord = message.slice(-4);
 
-  console.log(lastWord);  // fun!
+  console.log(lastWord); // fun!
   ```
 
 &nbsp;
@@ -437,14 +429,14 @@ The `toUpperCase()` method **converts all the characters to uppercase** letters 
 let greeting = "Hello, World!";
 let uppercaseGreeting = greeting.toUpperCase();
 
-console.log(uppercaseGreeting);  // "HELLO, WORLD!"
+console.log(uppercaseGreeting); // "HELLO, WORLD!"
 ```
 
 &nbsp;
 
 ## `toLowerCase()`
 
-The `toLowerCase()` method **converts all characters in a string to lowercase**. 
+The `toLowerCase()` method **converts all characters in a string to lowercase**.
 
 - Standardize input, such as when comparing **user-provided** text or making **case-insensitive** checks.
 
@@ -452,13 +444,12 @@ The `toLowerCase()` method **converts all characters in a string to lowercase**.
 let shout = "I AM LEARNING JAVASCRIPT!";
 let lowercaseShout = shout.toLowerCase();
 
-console.log(lowercaseShout);  // "i am learning javascript!"
+console.log(lowercaseShout); // "i am learning javascript!"
 ```
 
 &nbsp;
 
 ## Trim Whitespace from a String
-
 
 When working with strings in JavaScript, it's common to encounter **unwanted whitespace** at the beginning or end of a string. Whitespace can **interfere with operations** like **comparison**, **storage**, or **display**,
 
@@ -477,23 +468,23 @@ let message = "   Hello!   ";
 console.log(message); // "   Hello!   "
 
 let trimmedMessage = message.trim();
-console.log(trimmedMessage);  // "Hello!"
+console.log(trimmedMessage); // "Hello!"
 ```
 
-`Note`: Any whitespace **within the string** (*between words*) is left **untouched** by `trim()`.
+`Note`: Any whitespace **within the string** (_between words_) is left **untouched** by `trim()`.
 
 &nbsp;
 
 ### `trimStart()`
 
-`trimStart()` removes whitespace from the **beginning** (*start*) of the string.
+`trimStart()` removes whitespace from the **beginning** (_start_) of the string.
 
 ```js
 let greeting = "   Hello!   ";
-console.log(greeting);  // "   Hello!   "
+console.log(greeting); // "   Hello!   "
 
 let trimmedStart = greeting.trimStart();
-console.log(trimmedStart);  // "Hello!   "
+console.log(trimmedStart); // "Hello!   "
 ```
 
 &nbsp;
@@ -504,17 +495,17 @@ console.log(trimmedStart);  // "Hello!   "
 
 ```js
 let greeting = "   Hello!   ";
-console.log(greeting);  // "   Hello!   "
+console.log(greeting); // "   Hello!   "
 
 let trimmedEnd = greeting.trimEnd();
-console.log(trimmedEnd);  // "   Hello!"
+console.log(trimmedEnd); // "   Hello!"
 ```
 
 &nbsp;
 
 ## `replace()` method
 
-The `replace()` method in JavaScript allows you to **find** a specified value (like a **word** or **character**) in a string and **replace** it with another value. The method **returns** a *new string* with the replacement and leaves the original unchanged.
+The `replace()` method in JavaScript allows you to **find** a specified value (like a **word** or **character**) in a string and **replace** it with another value. The method **returns** a _new string_ with the replacement and leaves the original unchanged.
 
 ```js
 string.replace(searchValue, newValue);
@@ -522,7 +513,7 @@ string.replace(searchValue, newValue);
 
 - Case-sensitive
 
-- `searchValue` is the value you want to *search* for in the string. It can be either a **string** or a regular expression (**regex**), which describes patterns in text.
+- `searchValue` is the value you want to _search_ for in the string. It can be either a **string** or a regular expression (**regex**), which describes patterns in text.
 
 - The `newValue` is the value that will **replace** the `searchValue`.
 
@@ -531,7 +522,7 @@ string.replace(searchValue, newValue);
   console.log(text); // "I love JavaScript!"
 
   let newText = text.replace("JavaScript", "Elixir");
-  console.log(newText);  // "I love Elixir!"
+  console.log(newText); // "I love Elixir!"
   ```
 
 `Note`: By default, the `replace()` method will only **replace the first occurrence** of the `searchValue`.
@@ -552,35 +543,35 @@ The `repeat()` method is a built-in function in JavaScript that allows you to **
 string.repeat(count);
 ```
 
-- `string` is the string that you want to **repeat**, and `count` is the *number of times* you want the string to be repeated.
+- `string` is the string that you want to **repeat**, and `count` is the _number of times_ you want the string to be repeated.
 
   ```js
   let word = "Hello!";
   let repeatedWord = word.repeat(3);
-  console.log(repeatedWord);  // "Hello!Hello!Hello!"
+  console.log(repeatedWord); // "Hello!Hello!Hello!"
   ```
 
 - The `count` parameter must be a **non-negative** number. if you pass a negative number, JavaScript will throw a `RangeError`.
 
   ```js
   let word = "Test";
-  console.log(word.repeat(-1));  // Throws RangeError: Invalid count value
+  console.log(word.repeat(-1)); // Throws RangeError: Invalid count value
   ```
 
-- The `count` must be a **finite** number. if you try to repeat a string an ***infinite*** number of times or use `Infinity` as the count, you will also get a `RangeError`.
+- The `count` must be a **finite** number. if you try to repeat a string an **_infinite_** number of times or use `Infinity` as the count, you will also get a `RangeError`.
 
   ```js
   let word = "Test";
-  console.log(word.repeat(Infinity));  // Throws RangeError: Invalid count value
+  console.log(word.repeat(Infinity)); // Throws RangeError: Invalid count value
   ```
 
-  - in JavaScript, `Infinity` is a special value that represents an **infinite quantity**. it is used to denote numbers that are *larger than any finite number*.
+  - in JavaScript, `Infinity` is a special value that represents an **infinite quantity**. it is used to denote numbers that are _larger than any finite number_.
 
-- if the count is **not an integer** (such as a *decimal* like `2.5`), the `repeat()` method will **round** it down to the nearest integer.
+- if the count is **not an integer** (such as a _decimal_ like `2.5`), the `repeat()` method will **round** it down to the nearest integer.
 
   ```js
   let word = "Test";
-  console.log(word.repeat(2.5));  // "TestTest"
+  console.log(word.repeat(2.5)); // "TestTest"
   ```
 
 - if you pass `0` as the `count`, the `repeat()` method will return an empty string (`""`).
@@ -606,48 +597,48 @@ prompt(message, default);
     output.textContent = "Hello, " + userName + "!";
   });
   ```
+
   - Returns the input as a **string**.
 
-  - `null` signifies that the user **did not** provide any **input**. 
+  - `null` signifies that the user **did not** provide any **input**.
 
-  - `prompt()` method will **halt the execution** of the script **until the user interacts** with the *dialog box*.
+  - `prompt()` method will **halt the execution** of the script **until the user interacts** with the _dialog box_.
 
 &nbsp;
 
-`Note`: While `prompt()` is useful for **quick testing** or **small applications**, it's generally **avoided** in modern, complex web applications due to its **disruptive nature** and **inconsistent behavior** across different *browsers*.
+`Note`: While `prompt()` is useful for **quick testing** or **small applications**, it's generally **avoided** in modern, complex web applications due to its **disruptive nature** and **inconsistent behavior** across different _browsers_.
 
 &nbsp;
 
 ## American Standard Code for Information Interchange (`ASCII`)
 
-ASCII is **a system for encoding characters** such as letters, digits, and symbols into **numerical** values. 
+ASCII is **a system for encoding characters** such as letters, digits, and symbols into **numerical** values.
 
 - Each **character** is mapped to a **specific** number.
 
 - For example, `A` is represented by the number `65`, while `a` is represented by `97`.
 
 - JavaScript strings use Unicode (`UTF-16`) internally, ASCII values match the first `128` Unicode characters.
-
   - Uppercase and lowercase English letters (`A-Z`, `a-z`).
   - Numbers (`0-9`).
-  - Common punctuation marks and symbols (`!`, `@`, `#`, and *so on*).
-  - Control characters (such as **newline** and **tab**). 
+  - Common punctuation marks and symbols (`!`, `@`, `#`, and _so on_).
+  - Control characters (such as **newline** and **tab**).
 
-in JavaScript, you can access the **numeric code of a character** using the `charCodeAt()` method. This method **returns the UTF-16 code** unit of the character at a specified **index**. For the first `128` *characters*, this value matches the ASCII code.
+in JavaScript, you can access the **numeric code of a character** using the `charCodeAt()` method. This method **returns the UTF-16 code** unit of the character at a specified **index**. For the first `128` _characters_, this value matches the ASCII code.
 
 ```js
 let letter = "A";
-console.log(letter.charCodeAt(0));  // 65
+console.log(letter.charCodeAt(0)); // 65
 ```
 
 The `fromCharCode()` method allows you to do the **opposite**: convert a **UTF-16** code unit (which matches ASCII for basic characters) into its **corresponding character**.
 
 ```js
 let char = String.fromCharCode(65);
-console.log(char);  //  A
+console.log(char); //  A
 
 let char = String.fromCharCode(97);
-console.log(char);  // a
+console.log(char); // a
 ```
 
 `Note`: These methods are particularly useful when you need to **manipulate or compare characters based on their numeric code values**.
@@ -658,34 +649,34 @@ console.log(char);  // a
 
 Semicolons are primarily used to **mark the end of a statement**. This helps the JavaScript engine understand **the separation of individual instructions**, which is crucial for correct execution and termination.
 
-- Semicolons help **delineate statements**, and improve *code readability* and *reliability**.
+- Semicolons help **delineate statements**, and improve _code readability_ and \*reliability\*\*.
 
   ```js
   let message = "Hello, World!"; // first statement ends here
   let number = 42; // second statement starts here
   ```
 
-Just as a period (`.`) marks the **end of a sentence** in *English*, a semicolon (`;`) signifies the **end of an executable line of code** in *JavaScript*.
+Just as a period (`.`) marks the **end of a sentence** in _English_, a semicolon (`;`) signifies the **end of an executable line of code** in _JavaScript_.
 
 - This allows the JavaScript engine to distinguish between separate commands.
 
-Without the semicolon, the JavaScript engine *might** have trouble interpreting where one statement ends and another begins.
+Without the semicolon, the JavaScript engine \*might\*\* have trouble interpreting where one statement ends and another begins.
 
-- Semicolons help **prevent ambiguities** in code execution and ensure that statements are *correctly terminated*.
+- Semicolons help **prevent ambiguities** in code execution and ensure that statements are _correctly terminated_.
 
 &nbsp;
 
-`Note`: While JavaScript has Automatic Semicolon Insertion (**ASI**) that can add semicolons automatically, explicitly including them improves code clarity and helps prevent errors that may arise from *unexpected* ASI behavior.
+`Note`: While JavaScript has Automatic Semicolon Insertion (**ASI**) that can add semicolons automatically, explicitly including them improves code clarity and helps prevent errors that may arise from _unexpected_ ASI behavior.
 
 &nbsp;
 
 ## Comments in JavaScript
 
-Any line of code that is *commented* out is **ignored** by the JavaScript engine. Comments are used to **explain code**, **make notes**, **documentation**, or **temporarily disable code**.
+Any line of code that is _commented_ out is **ignored** by the JavaScript engine. Comments are used to **explain code**, **make notes**, **documentation**, or **temporarily disable code**.
 
 - They are there solely for the benefit of people **reading the code**, whether that's you or someone else.
 
-- The comment provides important context for why "this" code *exists*.
+- The comment provides important context for why "this" code _exists_.
 
 ### Single line (`//`)
 
@@ -706,70 +697,62 @@ While comments are **useful** in programming, it is important to **avoid over-co
 
 &nbsp;
 
-`Note`: The goal is to **enhance readability**, **do not clutter** the code with *unnecessary* explanations.
+`Note`: The goal is to **enhance readability**, **do not clutter** the code with _unnecessary_ explanations.
 
 &nbsp;
 
 ## Data Types in JavaScript
 
-- `Number`: A number represents both **integers** and **floating-point** values. 
-
+- `Number`: A number represents both **integers** and **floating-point** values.
   - Examples of integers include 7, 19, and 90.
 
-- **Floating point**: A floating point number is a number with a **decimal** point. 
-
+- **Floating point**: A floating point number is a number with a **decimal** point.
   - Examples include 3.14, 0.5, and 0.0001.
 
-  - in JavaScript, there isn't a *dedicated* Float data type. instead, all numbers, including both **integers** and **floating-point** numbers, are *represented* by a single `Number` type.
+  - in JavaScript, there isn't a _dedicated_ Float data type. instead, all numbers, including both **integers** and **floating-point** numbers, are _represented_ by a single `Number` type.
 
-- `String`: A string is a **sequence of characters**, or **text**, enclosed in **quotes**. 
-
+- `String`: A string is a **sequence of characters**, or **text**, enclosed in **quotes**.
   - `"I like coding"` and `'JavaScript is fun'` are examples of strings.
 
-
-- `Boolean`: A boolean represents one of two possible values: `true` or `false`. 
-
+- `Boolean`: A boolean represents one of two possible values: `true` or `false`.
   - To represent a condition, such as `isLoggedIn = true`.
 
-- `Undefined`: An undefined value is a variable that has been declared but **not assigned** a value. 
+- `Undefined`: An undefined value is a variable that has been declared but **not assigned** a value.
 
 - `Null`: A value is an `empty` value, or a variable that has `intentionally` been assigned a value of null.
 
-- `Object`: An object is a collection of **key-value** pairs. The key is the property *name*, and the value is the property *value*.
+- `Object`: An object is a collection of **key-value** pairs. The key is the property _name_, and the value is the property _value_.
+  - Here, the `pet` object has three properties or **keys**: `name`, `age`, and `type`. The values are `Fluffy`, `3`, and `dog`, respectively.
 
-    - Here, the `pet` object has three properties or **keys**: `name`, `age`, and `type`. The values are `Fluffy`, `3`, and `dog`, respectively.
-
-      ```js
-      let pet = {
+    ```js
+    let pet = {
       name: "Fluffy",
       age: 3,
-      type: "dog"
-      };
-      ```
+      type: "dog",
+    };
+    ```
 
 - `Symbol`: The Symbol data type is a **unique** and **immutable** value that may be used as an **identifier** for object properties.
+  - in this example below, two symbols are created with the **same description**, but they are **not equal**.
 
-    - in this example below, two symbols are created with the **same description**, but they are **not equal**.
-
-      ```js
-      const crypticKey1 = Symbol("saltNpepper");
-      const crypticKey2 = Symbol("saltNpepper");
-      console.log(crypticKey1 === crypticKey2); // false
-      ```
+    ```js
+    const crypticKey1 = Symbol("saltNpepper");
+    const crypticKey2 = Symbol("saltNpepper");
+    console.log(crypticKey1 === crypticKey2); // false
+    ```
 
 - `BigInt`: When the number is **too large** for the `Number` data type, you can use the `BigInt` data type to represent **integers of arbitrary length**.
+  - By adding an `n` to the end of the number, you can create a BigInt.
 
-    - By adding an `n` to the end of the number, you can create a BigInt.
-
-      ```js
-      const veryBigNumber = 1234567890123456789012345678901234567890n;
-      ```
+    ```js
+    const veryBigNumber = 1234567890123456789012345678901234567890n;
+    ```
 
 &nbsp;
 
 ## `typeof` Operator
 
-The typeof operator is used to **check the data type of a variable**. it returns a *string* indicating the *type* of the variable.
+The typeof operator is used to **check the data type of a variable**. it returns a _string_ indicating the _type_ of the variable.
 
 ```js
 let age = 25;
@@ -779,22 +762,22 @@ let isLoggedIn = true;
 console.log(typeof isLoggedIn); // "boolean"
 ```
 
-- However, there's a well-known "*quirk*"/*bug* in JavaScript when it comes to `null`. The `typeof` operator returns `"object"` for `null` values.
+- However, there's a well-known "_quirk_"/_bug_ in JavaScript when it comes to `null`. The `typeof` operator returns `"object"` for `null` values.
 
   ```js
   let user = null;
   console.log(typeof user); // "object"
   ```
 
-  When the language was first implemented, values like `null` were represented as a **"special" type of object**, leading to this *unexpected* result.
+  When the language was first implemented, values like `null` were represented as a **"special" type of object**, leading to this _unexpected_ result.
 
-  *Unfortunately*, this has become **a part of the language**, and while it's confusing, it's something **you'll need to be aware of**.(
+  _Unfortunately_, this has become **a part of the language**, and while it's confusing, it's something **you'll need to be aware of**.(
 
 &nbsp;
 
 ## Number
 
-The `Number` data type represents a **numeric** value. JavaScript uses one unified `Number` type to account for numbers. 
+The `Number` data type represents a **numeric** value. JavaScript uses one unified `Number` type to account for numbers.
 
 ```js
 const wholeNumber = 50;
@@ -807,7 +790,6 @@ console.log(typeof negativeNumber); // number
 ```
 
 - JavaScript's `Number` type includes various kinds of numeric values, ranging from simple **integers** and **floating-point** numbers to special cases like `Infinity` and `NaN`.
-
   - JavaScript can represent numbers that are beyond the maximum limit with `Infinity`. it comes up when **dividing a number by zero** or **exceeding the upper boundary** of the `Number` type.
 
     ```js
@@ -819,22 +801,22 @@ console.log(typeof negativeNumber); // number
   - in JavaScript, some mathematical operations **don't result in a valid number**, i.e., why `NaN`, which stands for "Not a Number".
 
     ```js
-    const notANumber = 'hello world' / 2;
+    const notANumber = "hello world" / 2;
     console.log(notANumber); // NaN
     console.log(typeof notANumber); // number
     ```
 
 &nbsp;
 
-`Note`: Apart from the **standard decimal system** (`base 10`), JavaScript also **supports** numbers in different bases such as *binary*, *octal*, and *hexadecimal*. **Binary** is a `base-2` system that uses only digits `1` and `0`. **Octal** is a `base-8` system that uses only digits `0 to 7`. **Hexadecimal** is a `base-16` system that uses digits `0 to 9` and letters `a to f`, like you see in CSS *hex* colors.
+`Note`: Apart from the **standard decimal system** (`base 10`), JavaScript also **supports** numbers in different bases such as _binary_, _octal_, and _hexadecimal_. **Binary** is a `base-2` system that uses only digits `1` and `0`. **Octal** is a `base-8` system that uses only digits `0 to 7`. **Hexadecimal** is a `base-16` system that uses digits `0 to 9` and letters `a to f`, like you see in CSS _hex_ colors.
 
 &nbsp;
 
 ## Arithmetic Operators
 
-JavaScript provides tools to perform basic *arithmetic operations* on numbers, such as **addition** (`+`), **subtraction** (`-`), **multiplication** (`*`), and **division** (`/`). 
+JavaScript provides tools to perform basic _arithmetic operations_ on numbers, such as **addition** (`+`), **subtraction** (`-`), **multiplication** (`*`), and **division** (`/`).
 
-- JavaScript also includes operators for more *complex* arithmetic operations, such as **remainder** (`%`) and **exponentiation** (`**`).
+- JavaScript also includes operators for more _complex_ arithmetic operations, such as **remainder** (`%`) and **exponentiation** (`**`).
 
 &nbsp;
 
@@ -844,7 +826,7 @@ JavaScript provides tools to perform basic *arithmetic operations* on numbers, s
 
 ## Calculations with `Numbers` and `Strings`
 
-JavaScript is a language where things sometimes work in surprising, or even **weird**, ways. One such surprise occurs when you **mix numbers and strings** in calculations. 
+JavaScript is a language where things sometimes work in surprising, or even **weird**, ways. One such surprise occurs when you **mix numbers and strings** in calculations.
 
 - **Type coercion** is when a value from one data type is converted into another.
 
@@ -855,7 +837,7 @@ JavaScript is a language where things sometimes work in surprising, or even **we
 in JavaScript, the `+` operator does **double duty**. It handles both **addition** and **string concatenation**.
 
 ```js
-const result = 5 + '10';
+const result = 5 + "10";
 
 console.log(result); // 510
 console.log(typeof result); // string
@@ -864,15 +846,15 @@ console.log(typeof result); // string
 - When you try to perform other arithmetic operations like **subtraction**, **multiplication**, or **division** with **a string and number**. In these cases, JavaScript tries to convert the string into a **number** before doing the math – another type coercion!
 
   ```js
-  const subtractionResult = '10' - 5;
+  const subtractionResult = "10" - 5;
   console.log(subtractionResult); // 5
   console.log(typeof subtractionResult); // number
 
-  const multiplicationResult = '10' * 2;
+  const multiplicationResult = "10" * 2;
   console.log(multiplicationResult); // 20
   console.log(typeof multiplicationResult); // number
 
-  const divisionResult = '20' / 2;
+  const divisionResult = "20" / 2;
   console.log(divisionResult); // 10
   console.log(typeof divisionResult); // number
   ```
@@ -880,20 +862,20 @@ console.log(typeof result); // string
 - But what if the **string isn't a number**? (`NaN`)
 
   ```js
-  const subtractionResult = 'abc' - 5;
+  const subtractionResult = "abc" - 5;
   console.log(subtractionResult); // NaN
   console.log(typeof subtractionResult); // number
 
-  const multiplicationResult = 'abc' * 2;
+  const multiplicationResult = "abc" * 2;
   console.log(multiplicationResult); // NaN
   console.log(typeof multiplicationResult); // number
 
-  const divisionResult = 'abc' / 2;
+  const divisionResult = "abc" / 2;
   console.log(divisionResult); // NaN
   console.log(typeof divisionResult); // number
   ```
 
-  - in the examples above, the string `'abc'` does not represent a valid numeric value, so JavaScript cannot convert it into a **meaningful number**. When such **conversion fails**, JavaScript returns `NaN`, which stands for "*Not a Number*".
+  - in the examples above, the string `'abc'` does not represent a valid numeric value, so JavaScript cannot convert it into a **meaningful number**. When such **conversion fails**, JavaScript returns `NaN`, which stands for "_Not a Number_".
 
 - JavaScript treats **booleans as numbers** in mathematical operations: `true` becomes `1`, and `false` becomes `0`.
 
@@ -906,7 +888,7 @@ console.log(typeof result); // string
   console.log(result2); // 1
   console.log(typeof result2); // number
 
-  const result3 = 'Hello' + true;
+  const result3 = "Hello" + true;
   console.log(result3); // "Hellotrue"
   console.log(typeof result3); // string
   ```
@@ -925,7 +907,7 @@ console.log(typeof result); // string
 
 &nbsp;
 
-`Note`: JavaScript often performs **type coercion**, *automatically* converting data types such as numbers, strings, and booleans in sometimes **unexpected ways**. 
+`Note`: JavaScript often performs **type coercion**, _automatically_ converting data types such as numbers, strings, and booleans in sometimes **unexpected ways**.
 
 &nbsp;
 
@@ -943,16 +925,15 @@ Operator precedence determines **the order in which operations are evaluated** i
   console.log(result); // 4
   ```
 
-- Similar to mathematics, you can use parentheses `()` around certain parts of your expression to run *first*, **regardless of precedence** rules.
+- Similar to mathematics, you can use parentheses `()` around certain parts of your expression to run _first_, **regardless of precedence** rules.
 
   ```js
   const result = (2 + 3) * 4;
   console.log(result); // 20
   ```
 
-- **Associativity** is what tells JavaScript whether to evaluate operators from **left to right** or **right to left**. 
-  
-  - For most operators like **addition** and **multiplication**, associativity is ***left to right***.
+- **Associativity** is what tells JavaScript whether to evaluate operators from **left to right** or **right to left**.
+  - For most operators like **addition** and **multiplication**, associativity is **_left to right_**.
 
     ```js
     const result = 10 - 2 + 3;
@@ -973,7 +954,7 @@ Operator precedence determines **the order in which operations are evaluated** i
   - The exponent operator (`**`) is also **right-to-left** associative.
 
     ```js
-    const result = 2 ** 3 ** 2;
+    const result = 2 ** (3 ** 2);
     console.log(result); // 512
     ```
 
@@ -983,12 +964,10 @@ Operator precedence determines **the order in which operations are evaluated** i
 
 The increment and decrement operators are represented by `++` and `--`, respectively. They both allow you to adjust the value of a variable by `1`.
 
-- instead of writing something like `x = x + 1` or `x = x - 1`, you can simply use `x++` to add `1`, or `x--` to subtract `1`. 
-
+- instead of writing something like `x = x + 1` or `x = x - 1`, you can simply use `x++` to add `1`, or `x--` to subtract `1`.
   - it's faster, cleaner, and easier to read.
 
 - **Prefix** & **Postfix**
-
   - Prefix (`++x`) **increases** the value of the variable **first**, then returns a new value.
 
     ```js
@@ -1015,7 +994,7 @@ The increment and decrement operators are represented by `++` and `--`, respecti
 
 ## Compound Assignment Operators
 
-Compound assignment operators provide a concise **shorthand** for an operation on a variable followed by storing the result in that **same variable**. They combine the **operation and assignment** into a shorter form like `x += y`, which is equivalent to writing `x = x + y` but **without repeating the variable name**. 
+Compound assignment operators provide a concise **shorthand** for an operation on a variable followed by storing the result in that **same variable**. They combine the **operation and assignment** into a shorter form like `x += y`, which is equivalent to writing `x = x + y` but **without repeating the variable name**.
 
 - The **addition assignment operator** (`+=`) takes the current value of the variable, adds the specified number to it, and then assigns the result back to the variable.
 
@@ -1033,14 +1012,13 @@ Compound assignment operators provide a concise **shorthand** for an operation o
   - Lastly, there's a **division** assignment operator (`/=`)
 
 - There's a compound assignment operator for every operator in JavaScript. So, apart from the four already mentioned, we also have...
+  - **Remainder assignment** operator (`%=`), which divides a variable by the specified number and assigns the remainder to the variable.
 
-    - **Remainder assignment** operator (`%=`), which divides a variable by the specified number and assigns the remainder to the variable.
+  - **Exponent assignment** operator (`**=`), which raises a variable to the power of the specified number and reassigns the result to the variable.
 
-    - **Exponent assignment** operator (`**=`), which raises a variable to the power of the specified number and reassigns the result to the variable.
+  - **Bitwise AND assignment** operator (`&=`), which performs a bitwise AND operation with the specified number and reassigns the result to the variable.
 
-    - **Bitwise AND assignment** operator (`&=`), which performs a bitwise AND operation with the specified number and reassigns the result to the variable.
-
-    - **Bitwise OR assignment** operator (`|=`), which performs a bitwise OR operation with the specified number and reassigns the result to the variable.
+  - **Bitwise OR assignment** operator (`|=`), which performs a bitwise OR operation with the specified number and reassigns the result to the variable.
 
 &nbsp;
 
@@ -1055,7 +1033,7 @@ Booleans are a data type with only `true` and `false` values. They're useful bec
 console.log(5 == "5"); // true
 
 // strict equality
-console.log(5 === '5'); // false
+console.log(5 === "5"); // false
 
 // inequality
 console.log(5 != "5"); // false
@@ -1064,11 +1042,11 @@ console.log(5 != "5"); // false
 console.log(5 !== "5"); // true
 ```
 
-  - Type coercion converts the **string** value to a **number** and then *compares* the values.
+- Type coercion converts the **string** value to a **number** and then _compares_ the values.
 
 &nbsp;
 
-`Note`: it is considered best practice to **use strict** inequality and equality operators whenever possible, as *they do not perform type coercion*. it checks both **value** and **type**, providing more *predictable* results.
+`Note`: it is considered best practice to **use strict** inequality and equality operators whenever possible, as _they do not perform type coercion_. it checks both **value** and **type**, providing more _predictable_ results.
 
 &nbsp;
 
@@ -1076,7 +1054,7 @@ console.log(5 !== "5"); // true
 
 Comparison operators allow you to **compare two values** and return a `true` or `false` result. You can then use the result to make a decision or control the flow of your program.
 
-- The greater than operator (`>`), checks if the value on the *left* is **greater** than the one on the *right*.
+- The greater than operator (`>`), checks if the value on the _left_ is **greater** than the one on the _right_.
 
   ```js
   let a = 6;
@@ -1086,7 +1064,7 @@ Comparison operators allow you to **compare two values** and return a `true` or 
   console.log(b > a); // true
   ```
 
-- The greater than or equal operator (`>=`), checks if the value on the *left* is **either greater than or equal** to the one on the *right*.
+- The greater than or equal operator (`>=`), checks if the value on the _left_ is **either greater than or equal** to the one on the _right_.
 
   ```js
   let a = 6;
@@ -1098,7 +1076,7 @@ Comparison operators allow you to **compare two values** and return a `true` or 
   console.log(a >= c); // true
   ```
 
-- The lesser than operator (`<`) checks if the value on the *left* is **smaller** than the one on the *right*.
+- The lesser than operator (`<`) checks if the value on the _left_ is **smaller** than the one on the _right_.
 
   ```js
   let a = 6;
@@ -1108,7 +1086,7 @@ Comparison operators allow you to **compare two values** and return a `true` or 
   console.log(b < a); // false
   ```
 
-- The less than or equal operator (`<=`) checks if the value on the *left* is **smaller than or equal** to the one on the *right*.
+- The less than or equal operator (`<=`) checks if the value on the _left_ is **smaller than or equal** to the one on the _right_.
 
   ```js
   let a = 6;
@@ -1122,17 +1100,70 @@ Comparison operators allow you to **compare two values** and return a `true` or 
 
 &nbsp;
 
+## `null` vs. `undefined`
+
+in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
+
+- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an *argument*.
+
+- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
+
+### w/ Equality Operator (`==`)
+
+When comparing `null` and `undefined` using the **equality operator**, JavaScript performs **type coercion**. This means it tries to convert the operands to the same type before making the comparison. In this case, `null` and `undefined` are **considered equal**.
+
+```js
+console.log(null == undefined); // true
+```
+
+The comparisons below return `false` because `null` and `undefined` are **only equal to each other (and themselves)** when using the **equality operator**.
+
+```js
+console.log(null == 0);  // false
+console.log(null == ''); // false
+console.log(undefined == 0); // false
+console.log(undefined == ''); // false
+```
+
+Tricky AF.
+
+```js
+console.log(null > 0);  // false
+console.log(null == 0); // false
+console.log(null >= 0); // true
+```
+
+`undefined`, on the other hand, **always converts to `NaN`** in numeric contexts, which makes **all numeric comparisons with `undefined` return `false`**.
+
+```js
+console.log(undefined > 0);  // false
+console.log(undefined < 0);  // false
+console.log(undefined == 0); // false
+```
+
+### w/ Strict Equality Operator (`===`)
+
+However, when using the **strict equality operator**, which checks both value and type **without performing type coercion**, `null` and `undefined` are **not equal**.
+
+```js
+console.log(null === undefined); // false
+```
+
+&nbsp;
+
+`Note`: Given these nuances, it is generally recommended to **use the strict equality operator when comparing values**, especially when dealing with `null` and `undefined`. This approach **helps avoid unexpected type coercion** and makes your code's behavior more *predictable*.
+
+&nbsp;
+
 ## Unary Operators
 
 Unary operators act on a **single operand to perform operations** like **type conversion**, **value manipulation**, or checking certain **conditions**.
 
-
 - The **unary plus** operator **converts its operand into a number**. If the operand is already a number, it remains unchanged.
-
   - Unary plus is handy when you want to **make sure** you're working with **a numeric value**.
 
   ```js
-  const str = '42';
+  const str = "42";
   const strToNum = +str;
 
   console.log(strToNum); // 42
@@ -1143,7 +1174,7 @@ Unary operators act on a **single operand to perform operations** like **type co
 - The **unary negation operator** works the same as plus, except it **negates the value** of the operand. in other words, it **flips the sign** from `+` to a `-`.
 
   ```js
-  const str = '42';
+  const str = "42";
   const strToNegativeNum = -str;
 
   console.log(strToNegativeNum); // -42
@@ -1151,7 +1182,7 @@ Unary operators act on a **single operand to perform operations** like **type co
   console.log(typeof strToNegativeNum); // number
   ```
 
-- The **logical NOT** operator, represented by an exclamation mark (`!`), is another unary operator. it **flips the boolean value** of its operand. So, if the operand is `true`, it becomes `false`, and if it's `false`, it becomes `true`. 
+- The **logical NOT** operator, represented by an exclamation mark (`!`), is another unary operator. it **flips the boolean value** of its operand. So, if the operand is `true`, it becomes `false`, and if it's `false`, it becomes `true`.
 
   ```js
   let isOnline = true;
@@ -1169,7 +1200,7 @@ Unary operators act on a **single operand to perform operations** like **type co
   console.log(result); // undefined
   ```
 
-  - `void` is also commonly used in *hyperlinks* to **prevent navigation**.
+  - `void` is also commonly used in _hyperlinks_ to **prevent navigation**.
 
     ```js
     <a href="javascript:void(0);">Click Me</a>
@@ -1178,12 +1209,12 @@ Unary operators act on a **single operand to perform operations** like **type co
 - The `typeof` operator **returns the type** of its operand as a **string**.
 
   ```js
-  const value = 'Hello world';
+  const value = "Hello world";
 
   console.log(typeof value); // string
   ```
 
-- The **bitwise NOT** operator (`~`) **inverts the binary representation of a number**. Computers store numbers in binary format (1s and 0s). The `~` operator **flips every bit**, meaning it changes all **1s to 0s** and all **0s to 1s**. 
+- The **bitwise NOT** operator (`~`) **inverts the binary representation of a number**. Computers store numbers in binary format (1s and 0s). The `~` operator **flips every bit**, meaning it changes all **1s to 0s** and all **0s to 1s**.
 
   ```js
   const num = 5; // The binary for 5 is 00000101
@@ -1191,7 +1222,7 @@ Unary operators act on a **single operand to perform operations** like **type co
   console.log(~num); // -6
   ```
 
-  - in this example, `5` became `-6` because by applying the  `~` operator to `5`, you get `- (5 + 1)`, which equals `-6` due to two's complement representation. Two's complement is a way computers represent negative numbers in binary. You probably won't use the bitwise NOT often unless you're working with low-level programming tasks like **manipulating bits directly**.
+  - in this example, `5` became `-6` because by applying the `~` operator to `5`, you get `- (5 + 1)`, which equals `-6` due to two's complement representation. Two's complement is a way computers represent negative numbers in binary. You probably won't use the bitwise NOT often unless you're working with low-level programming tasks like **manipulating bits directly**.
 
 &nbsp;
 
@@ -1200,70 +1231,66 @@ Unary operators act on a **single operand to perform operations** like **type co
 Bitwise operators in JavaScript are special operators that **work on the binary representation of numbers**.
 
 - A **bit** is the most basic unit of information.
-
-  - it can have only two values: `0` or `1`. 
+  - it can have only two values: `0` or `1`.
 
 - **Binary** is a **number system** that uses only `0` and `1` to represent all numbers.
-
-  - in binary, each digit represents a **power of** `2`, *starting* from the **rightmost** digit and *increasing* as we move **left**.
+  - in binary, each digit represents a **power of** `2`, _starting_ from the **rightmost** digit and _increasing_ as we move **left**.
 
     ```
     - 10 in binary is 1010
-    
+
     1              0               1               0
     1*(2**3) = 8   0*(2**2) = 0    1*(2**1) = 2    0*(2**0) = 0   => 8+0+2+0 = 10
     ```
 
 - **Bitwise operators** perform **operations on the binary representation** of numbers.
-
   - The bitwise **AND** (`&`) operator **returns** a `1` in each bit position for which the corresponding bits of both operands are `1`.
 
     ```js
-    let a = 5;  // Binary: 101
-    let b = 3;  // Binary: 011
-    console.log(a & b);  // 1 (Binary: 001)
+    let a = 5; // Binary: 101
+    let b = 3; // Binary: 011
+    console.log(a & b); // 1 (Binary: 001)
     ```
 
   - The bitwise **OR** (`|`) operator **returns** a `1` in each bit position for which the corresponding bits of either or both operands are `1`.
 
     ```js
-    let a = 5;  // Binary: 101
-    let b = 3;  // Binary: 011
-    console.log(a | b);  // 7 (Binary: 111)
+    let a = 5; // Binary: 101
+    let b = 3; // Binary: 011
+    console.log(a | b); // 7 (Binary: 111)
     ```
 
   - The bitwise **XOR** (`^`) operator **returns** a `1` in each bit position for which the corresponding bits of either, but not both, operands are `1`.
 
     ```js
-    let a = 5;  // Binary: 101
-    let b = 3;  // Binary: 011
-    console.log(a ^ b);  // 6 (Binary: 110)
+    let a = 5; // Binary: 101
+    let b = 3; // Binary: 011
+    console.log(a ^ b); // 6 (Binary: 110)
     ```
 
   - The bitwise **NOT** (`~`) operator **inverts** all the **bits** of its operand.
 
     ```js
-    let a = 5;  // Binary: 101
-    console.log(~a);  // -6
+    let a = 5; // Binary: 101
+    console.log(~a); // -6
     ```
 
     - This might seem surprising, but it's because of how negative numbers are represented in binary using two's complement.
-    
+
   - The left shift (`<<`) operator **shifts** all bits to the **left** by a specified number of positions.
 
     ```js
-    let a = 5;  // Binary: 101
-    console.log(a << 1);  // 10 (Binary: 1010)
+    let a = 5; // Binary: 101
+    console.log(a << 1); // 10 (Binary: 1010)
     ```
 
     - Here, all bits are shifted one position to the left, effectively **multiplying** the number by `2`.
-    
 
   - The right shift (`>>`) operator **shifts** all bits to the **right**.
 
     ```js
-    let a = 5;  // Binary: 101
-    console.log(a >> 1);  // 2 (Binary: 10)
+    let a = 5; // Binary: 101
+    console.log(a >> 1); // 2 (Binary: 10)
     ```
 
     - Here, all bits are shifted one position to the right, effectively **dividing** the number by `2` and rounding down.
@@ -1276,6 +1303,621 @@ Bitwise operators in JavaScript are special operators that **work on the binary 
 
 ## Conditional Statements
 
+Conditional statements let you **make decisions** in your JavaScript code. They allow your program to flow in a particular way **based on certain conditions**.
+
+- An `if` statement takes a condition and runs a block of code if that condition is **truthy**. Truthy values are any values that result in `true` when evaluated in a Boolean context.
+  - non-empty strings
+
+  - **any other number** than `0` and `-0`
+
+  - arrays
+
+  - objects
+
+  - the boolean `true`
+
+- Falsy values are values that evaluate to `false` in a boolean context.
+  - boolean `false`
+
+  - `0` (zero)
+
+  - `""` (empty string)
+
+  - `null`
+
+  - `undefined`
+
+  - `NaN` (Not a Number)
+
+  ```js
+  if (null) {
+    console.log("This will not run.");
+  }
+
+  if ("freeCodeCamp") {
+    console.log("This will run.");
+  }
+  ```
+
+- When a condition is `false`, then you can use an `else` clause:
+
+  ```js
+  const age = 15;
+
+  if (age >= 18) {
+    console.log("You're eligible to vote");
+  } else {
+    console.log("You're not eligible to vote"); // You're not eligible to vote
+  }
+  ```
+
+- When you want to check **multiple conditions**, you can use an `else if` block.
+
+  ```js
+  const score = 87;
+
+  if (score >= 90) {
+    console.log("You got an A");
+  } else if (score >= 80) {
+    console.log("You got a B"); // You got a B
+  } else if (score >= 70) {
+    console.log("You got a C");
+  } else {
+    console.log("You failed! You need to study more!");
+  }
+  ```
+
+&nbsp;
+
+## Ternary Operator (`?:`)
+
+The **ternary operator** is a compact way to write **simple if/else statements**.
+
+  ```js
+  condition ? expressionIfTrue : expressionIfFalse;
+  ```
+
+  ```js
+  const temperature = 30;
+  const weather = temperature > 25 ? "sunny" : "cool";
+
+  console.log(`It's a ${weather} day!`);
+  ```
+
+&nbsp;
+
+## Switch Case
+
+A `switch` statement **evaluates an expression** and matches its value against a series of `case` clauses. When a match is found, the code block associated with that `case` is executed. 
+
+```js
+switch (expression) {
+  case value1:
+    // code to be executed if expression === value1
+    break;
+  case value2:
+    // code to be executed if expression === value2
+    break;
+  default:
+    // code to be executed if expression doesn't match any case
+}
+```
+
+- The `break` statement at the end of each case is **crucial**. it tells the program to **exit the switch block once a matching case has been executed**. Without it, the program would continue executing subsequent cases, a behavior known as "**fall-through**".
+
+### When to Use
+
+`switch` statements are typically used when you're **comparing a single variable against multiple possible values**. They're especially useful when you have **many potential conditions** to check against a **single variable**.
+
+```js
+let dayOfWeek = 3; 
+
+switch (dayOfWeek) {
+    case 1:
+        console.log("It's Monday! Time to start the week strong.");
+        break;
+    case 2:
+        console.log("It's Tuesday! Keep the momentum going.");
+        break;
+    case 3:
+        console.log("It's Wednesday! We're halfway there.");
+        break;
+    case 4:
+        console.log("It's Thursday! Almost the weekend.");
+        break;
+    case 5:
+        console.log("It's Friday! The weekend is near.");
+        break;
+    case 6:
+        console.log("It's Saturday! Enjoy your weekend.");
+        break;
+    case 7:
+        console.log("It's Sunday! Rest and recharge.");
+        break;
+    default:
+        console.log("Invalid day! Please enter a number between 1 and 7.");
+}
+```
+
+- `switch` statements can be more **readable** and **concise** when dealing with **many possible values** for a **single variable**.
+
+- `switch` statements in use **strict comparison** (`===`) by default, which means they **don't perform type coercion**. This can be an advantage in terms of *predictability* and avoiding subtle *bugs*.
+
+### When Not to Use
+
+`if/else if` statements are **more flexible**. They can evaluate complex conditions and different variables in each clause. This makes them suitable for a wider range of scenarios. Especially with **multiple variables**.
+
+```js
+let creditScore = 720; 
+let annualIncome = 60000; 
+let loanAmount = 200000; 
+
+let eligibilityStatus;
+
+if (creditScore >= 750 && annualIncome >= 80000) {
+    eligibilityStatus = "Eligible for premium loan rates.";
+} else if (creditScore >= 700 && annualIncome >= 50000) {
+    eligibilityStatus = "Eligible for standard loan rates.";
+} else if (creditScore >= 650 && annualIncome >= 40000) {
+    eligibilityStatus = "Eligible for subprime loan rates.";
+} else if (creditScore < 650) {
+    eligibilityStatus = "Not eligible due to low credit score.";
+} else {
+    eligibilityStatus = "Not eligible due to insufficient income.";
+}
+
+console.log(eligibilityStatus);
+```
+
+&nbsp;
+
+`Note`: `switch` statements **excel at handling multiple possible values for a "single variable"**, while `if/else if` chains offer **more flexibility for complex conditions**.
+
+&nbsp;
+
+## Binary Logical Operators
+
+Binary logical operators help you **evaluate** two expressions and return a result based on their **truthiness**.
+
+### Logical AND (`&&`)
+
+it checks if **both** operands are **true** and returns a result.
+
+- if **both** operands are **truthy**, it _returns_ the **second value**, that is, the one on the **right**:
+
+  ```js
+  const result = true && "hello";
+
+  console.log(result); // hello
+  ```
+
+- if **either** operand is **falsy**, it _returns_ the **falsy value**:
+
+  ```js
+  const result = 0 && 3;
+
+  console.log(result); // 0
+  ```
+
+- if **both** operands are **falsy**, it _returns_ the first **falsy value**:
+
+  ```js
+  const result = false && 0;
+
+  console.log(result); // false
+  ```
+
+- The **logical AND** operator is useful when you want to **check multiple conditions** and ensure that all are **true** before proceeding.
+
+  ```js
+  if (2 < 3 && 3 < 4) {
+    console.log("The if block runs");
+  } else {
+    console.log("The else block runs");
+  }
+  ```
+
+### Logical OR (`||`)
+
+This operator checks if at least **one** of the operands is **truthy**. if the first operand is **truthy**, it **returns** that value:
+
+```js
+const result = "This is truthy" || false;
+
+console.log(result); // This is truthy
+```
+
+- if the **first** operand is **falsy** but the **second** is **truthy**, the **second value will be logged** to the console:
+
+  ```js
+  const result = 0 || "This is truthy";
+
+  console.log(result); // This is truthy
+  ```
+
+- An example:
+
+  ```js
+  let userInput;
+  
+  if (userInput || 'Guest') {
+   console.log('A user is present');
+  } else {
+   console.log('No user detected');
+  }
+  ```
+
+### Nullish Coalescing (`??`)
+
+it helps in scenarios where you want to **return** a value **only if** the **first value** is `null` or `undefined`.
+
+```js
+const result = null ?? 'default';
+
+console.log(result); // default
+```
+
+- The nullish coalescing operator is incredibly useful in situations where **`null` or `undefined` are the only values that should trigger a fallback** or default value.
+
+  ```js
+  const userSettings = {
+   theme: null,
+   volume: 0,
+   notifications: false,
+  };
+
+  let theme = userSettings.theme ?? 'light';
+  console.log(theme); // light
+  ```
+
+&nbsp;
+
+## The Math Object
+
+While basic arithmetic operators can handle simple calculations, JavaScript offers a *built-in* Math object to tackle more **complex math** challenges.
+
+### `Math.random()`
+
+This method **generates a random floating-point number** between `0` (*inclusive*) and `1` (*exclusive*). 
+
+- This means the possible output can be `0`, but it will never actually reach `1`. 
+
+  ```js
+  const randomNum = Math.random();
+
+  console.log(randomNum);
+  // any number between 0 and 1 – 0 inclusive and 1 exclusive
+  ```
+
+### `Math.min()` & `Math.max()`
+
+They both take **a set of numbers** and return the **minimum** and **maximum** value, *respectively*.
+
+```js
+const smallest = Math.min(1, 5, 3, 9);
+console.log(smallest); // 1
+
+const largest = Math.max(1, 5, 3, 9);
+console.log(largest); // 9
+```
+
+### `Math.ceil()` & `Math.floor()`
+
+if you wanted to **round numbers up or down** to the nearest whole integer, you could use the `Math.ceil()` and `Math.floor()` methods.
+
+```js
+console.log(Math.ceil(4.3)); // 5
+
+console.log(Math.floor(4.7)); // 4
+```
+
+### `Math.round()`
+
+Math.round() is the **hybrid** of `Math.ceil()` and `Math.floor()`. it **rounds a number** to its nearest integer, **taking the decimal point into account**:
+
+```js
+console.log(Math.round(2.3)); // 2
+console.log(Math.round(4.5)); // 5
+console.log(Math.round(4.8)); // 5
+```
+
+- if the decimal point is **less than 5**, the number is **rounded down**. 
+- And if the decimal point is **5 or greater**, the number is **rounded up**. 
+
+### Random Number Generator
+
+```js
+Math.floor(Math.random() * (maximum - minimum) + minimum);
+```
+
+Generating a random number between two whole numbers.
+
+```js
+const max = 10;
+const min = 5;
+const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+console.log(randomNum);
+
+// Generating a random number between 20 and 1
+const randomNumBtw1And20 = Math.floor(Math.random() * 20) + 1;
+console.log(randomNumBtw1And20);
+```
+
+### `Math.trunc()`
+
+it **removes the decimal part** of a number, returning only the integer portion, **without rounding**.
+
+```js
+console.log(Math.trunc(2.9)); // 2
+console.log(Math.trunc(9.1)); // 9
+```
+
+### `Math.sqrt()` & `Math.cbrt()`
+
+If you need to get the **square root** or **cube root** of a number, you can use the Math.sqrt() and Math.cbrt() methods, respectively.
+
+```js
+console.log(Math.sqrt(81)); // 9
+console.log(Math.cbrt(27)); // 3
+```
+
+### `Math.abs()`
+
+if you need to get the **absolute value of a number**, you can use the Math.abs() method. it returns the absolute value of a number, **turning negatives into positives**.
+
+```js
+console.log(Math.abs(-5)); // 5
+console.log(Math.abs(5)); // 5
+```
+
+### `Math.pow()`
+
+it takes two numbers and **raises the second as the power to the first**.
+
+```js
+console.log(Math.pow(2, 3)); // 8
+console.log(Math.pow(8, 2)); // 64
+```
+
+&nbsp;
+
+## Not a Number (`NaN`)
+
+It's a special value that represents an **unrepresentable** or **undefined** numerical result. `NaN` is a property of the **global object**, and it's also considered a type of **number** in JavaScript, which might seem *counterintuitive* at first.
+
+- `NaN` is typically the result of operations that should return a number but **cannot produce a meaningful numerical value**.
+
+  ```js
+  let result = 0 / 0;
+  console.log(result); // NaN
+  ```
+
+  - Dividing zero by zero is mathematically **undefined**, so JavaScript returns `NaN`.
+
+- One peculiar property of `NaN` is that **it is not equal to anything**, including *itself*.
+
+  ```js
+  console.log(NaN === NaN); // false
+  ```
+
+### `isNaN()`
+
+The `isNaN()` function property is used **to determine whether a value is `NaN` or not**. it perform **type coercion** by default which can lead to *unexpected* results.
+
+```js
+console.log(isNaN(NaN));       // true
+console.log(isNaN(undefined)); // true
+console.log(isNaN({}));        // true
+
+console.log(isNaN(true));      // false
+console.log(isNaN(null));      // false
+console.log(isNaN(37));        // false
+
+console.log(isNaN("37"));      // false: "37" is converted to 37
+console.log(isNaN("37.37"));   // false: "37.37" is converted to 37.37
+console.log(isNaN(""));        // false: empty string is converted to 0
+console.log(isNaN(" "));       // false: string with a space is converted to 0
+
+console.log(isNaN("blabla"));  // true: "blabla" is not a number
+```
+
+### `Number.isNaN()`
+
+it **does not perform type coercion** before testing. it only returns `true` if the value is exactly `NaN`.
+
+- introduced in **ES6**
+
+```js
+console.log(Number.isNaN(NaN));        // true
+console.log(Number.isNaN(Number.NaN)); // true
+console.log(Number.isNaN(0 / 0));      // true
+
+console.log(Number.isNaN("NaN"));      // false
+console.log(Number.isNaN(undefined));  // false
+console.log(Number.isNaN({}));         // false
+console.log(Number.isNaN("blabla"));   // false
+```
+
+  - `Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where **type coercion might lead to unexpected results** with the global `isNaN()` function.
+
+### `NaN` Based Error Handling
+
+when dealing with numerical operations or user inputs that should be numbers, it's often necessary to **check for `NaN`** to handle **errors** or **unexpected inputs** gracefully.
+
+```js
+let a = 0;
+let b = 0;
+let result = a / b;
+
+if (Number.isNaN(result)) {
+  result = "Error: Division resulted in NaN";
+}
+
+console.log(result); // "Error: Division resulted in NaN"
+```
+
+&nbsp;
+
+## `parseFloat()` & `parseInt()` Methods
+
+These are two essential methods in JavaScript for **converting strings to numbers**. These methods are particularly useful when dealing with **user input** or **processing data** that comes in *string* format but needs to be treated as *numerical* values.
+
+### `parseFloat()` 
+
+This method parses a **string** argument and returns a **floating-point** number. it is designed to *extract* a number from the **beginning** of a string.
+
+```js
+console.log(parseFloat("3.14"));     // 3.14
+console.log(parseFloat("3.14 abc")); // 3.14
+console.log(parseFloat("3.14.5"));   // 3.14
+console.log(parseFloat("abc 3.14")); // NaN
+```
+
+### `parseInt()`
+
+This method parses a **string** argument and returns an **integer**. it also starts from the **beginning** of the string, but it **stops at the first non-digit character**.
+
+```js
+console.log(parseInt("42"));       // 42
+console.log(parseInt("42px"));     // 42
+console.log(parseInt("3.14"));     // 3
+console.log(parseInt("abc123"));   // NaN
+```
+
+- They both **ignore leading whitespace**.
+
+  ```js
+  console.log(parseFloat("  3.14"));  // 3.14
+  console.log(parseInt("  42"));      // 42
+  ```
+
+- They both handle **plus and minus signs** at the beginning of the string.
+
+  ```js
+  console.log(parseFloat("+3.14"));  // 3.14
+  console.log(parseInt("-42"));      // -42
+  ```
+
+&nbsp;
+
+`Note`: They don't handle all number formats, such as **scientific notation**, directly. For more complex parsing needs, you might need to use additional techniques or libraries.
+
+&nbsp;
+
+## `toFixed()`
+
+This method is a built-in JavaScript function that **formats a number using fixed-point notation**. It's particularly useful when you need to control **the number of decimal places in a number**, especially for displaying **currency** values or when working with **precise measurements**.
+
+- For precise calculations.
+
+- it takes **one optional argument**, which is **the number of digits** to appear after the decimal point. it **returns** a **"string"** representation of the number with the specified number of decimal places.
+
+  ```js
+  let num = 3.14159;
+  console.log(num.toFixed(2)); // "3.14"
+  ```
+
+- The `.toFixed()` method **rounds the number to the nearest value** that can be represented with the specified number of decimal places.
+
+  ```js
+  console.log((3.14159).toFixed(3));  // "3.142"
+  console.log((3.14449).toFixed(3));  // "3.144"
+  console.log((3.14550).toFixed(3));  // "3.146"
+  ```
+
+- if you call `.toFixed()` **without arguments**, it defaults to `0` decimal places.
+
+  ```js
+  let num = 3.14159;
+  console.log(num.toFixed()); // "3"
+  ```
+
+- The `.toFixed()` method can be particularly useful when working with **financial calculations** or displaying **prices**.
+
+  ```js
+  let price = 19.99;
+  let taxRate = 0.08;
+  let total = price + (price * taxRate);
+
+  console.log("Total: $" + total.toFixed(2)); // "Total: $21.59"
+  ```
+
+&nbsp;
+
+## Functions
+
+Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform *actions*, and `return` **outputs**.
+
+```js
+function greet() {
+  console.log("Hello, Jessica!");
+}
+
+greet(); // "Hello, Jessica!"
+```
+
+- **Parameters** act as **placeholders** for the values that will be passed to the function when it is called.
+
+  ```js
+  function greet(name) {
+    console.log("Hello, " + name + "!");
+  }
+
+  greet("Alice"); // Hello, Alice!
+  greet("Nick"); // Hello, Nick!
+  ```
+
+- When a function finishes execution, it will always **return a value**. By default, the return value will be `undefined`. 
+
+  ```js
+  function doSomething() {
+    console.log("Doing something...");
+  }
+
+  let result = doSomething();
+  console.log(result); // undefined
+  ```
+
+- if you need your function to return a specific value, then you will need to use the `return` statement.
+
+  ```js
+  function calculateSum(num1, num2) {
+    return num1 + num2;
+  }
+
+  console.log(calculateSum(3, 4)); // 7
+  ```
+
+### Default Parameters
+
+Functions support default parameters, allowing you to **set default values for parameters**. 
+
+```js
+function greetings(name = "Guest") {
+  console.log("Hello, " + name + "!");
+}
+
+greetings(); // Hello, Guest!
+greetings("Anna"); // Hello, Anna!
+```
+
+&nbsp;
+
+## Anonymous Function
+
+An anonymous function is a function **without a name** that can be **assigned to a variable**.
+
+```js
+const sum = function (num1, num2) {
+  return num1 + num2;
+};
+
+console.log(sum(3, 4)); // 7
+```
+
+&nbsp;
+
+## Arrow Functions
 
 
 
@@ -1284,3 +1926,4 @@ Bitwise operators in JavaScript are special operators that **work on the binary 
 
 
 &nbsp;
+
