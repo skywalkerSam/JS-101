@@ -1846,7 +1846,7 @@ This method is a built-in JavaScript function that **formats a number using fixe
 
 ## Functions
 
-Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform *actions*, and `return` **outputs**.
+Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform *actions*, and `return` **outputs**. Functions makes your code more **modular**, **easier to maintain**, and more **efficient**.
 
 ```js
 function greet() {
@@ -1917,7 +1917,66 @@ console.log(sum(3, 4)); // 7
 
 &nbsp;
 
-## Arrow Functions
+## Arrow Function Expression
+
+```js
+const greetings = (name) => {
+  console.log("Hello, " + name + "!");
+};
+```
+
+- if your parameter list only has **one** parameter in it, then you can **remove** the parentheses.
+
+  ```js
+  const greetings = name => {
+    console.log("Hello, " + name + "!");
+  };
+  ```
+
+- But if your arrow function has **no** parameters, then you **must use the parentheses**. 
+
+  ```js
+  const greetings = () => {
+    console.log("Hello");
+  };
+  ```
+
+- And if your function body only contains only a **single line of code**, you can **remove** the curly braces.
+
+  ```js
+  const greetings = name => console.log("Hello, " + name + "!");
+  ```
+
+  - if you're using `return` inside the function, you **must use the curly braces**.
+
+    ```js
+    const calculateArea = (width, height) => {
+      return width * height;
+    }; 
+
+    console.log(calculateArea(5, 3)); // 15
+    ```
+
+  - Even if you **remove** that `return` statement, the function will still **implicitly `return`** the calculation.
+
+    ```js
+    const calculateArea = (width, height) => width * height;
+    ```
+
+&nbsp;
+
+## Scope
+
+Scope in programming refers to the **visibility and accessibility of variables** in different parts of your code. it determines where variables can be accessed or modified.
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1926,4 +1985,3 @@ console.log(sum(3, 4)); // 7
 
 
 &nbsp;
-
