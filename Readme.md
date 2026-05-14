@@ -2019,9 +2019,34 @@ console.log(blockVar); // This will throw an error
 
 &nbsp;
 
-## 
+## Array
 
+An array is an **ordered collection of values**, each identified by a **numeric index**. To create an array in JavaScript, you can use square brackets, `[]`, and separate the values with commas (`,`).
 
+```js
+let fruits = ["apple", "banana", "orange"];
+```
+
+- The **values** in a JavaScript array can be of different data types, including **numbers**, **strings**, **booleans**, **objects**, and even **other arrays**.
+
+- One of the key characteristics of arrays is that they are **zero-indexed**, meaning that the **first** element in an array has an index of `0`, the **second** element has an index of `1`, and so on. 
+
+  ```js
+  let fruits = ["apple", "banana", "orange"];
+  console.log(fruits[0]); // "apple"
+  console.log(fruits[2]); // "orange"
+  ```
+
+- Another key characteristic of arrays in JavaScript is that they are **dynamic**, meaning that their size can change after they are created. You can add or remove elements from an array using various array *methods*, such as `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, and more. 
+
+### `.length` Property
+
+Arrays in JavaScript have a special length property that **returns the number of elements in the array**. 
+
+```js
+let fruits = ["apple", "banana", "orange"];
+console.log(fruits.length); // 3
+```
 
 
 
