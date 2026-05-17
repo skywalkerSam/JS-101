@@ -1104,7 +1104,7 @@ Comparison operators allow you to **compare two values** and return a `true` or 
 
 in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
 
-- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an *argument*.
+- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an _argument_.
 
 - The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
 
@@ -1119,16 +1119,16 @@ console.log(null == undefined); // true
 The comparisons below return `false` because `null` and `undefined` are **only equal to each other (and themselves)** when using the **equality operator**.
 
 ```js
-console.log(null == 0);  // false
-console.log(null == ''); // false
+console.log(null == 0); // false
+console.log(null == ""); // false
 console.log(undefined == 0); // false
-console.log(undefined == ''); // false
+console.log(undefined == ""); // false
 ```
 
 Tricky AF.
 
 ```js
-console.log(null > 0);  // false
+console.log(null > 0); // false
 console.log(null == 0); // false
 console.log(null >= 0); // true
 ```
@@ -1136,8 +1136,8 @@ console.log(null >= 0); // true
 `undefined`, on the other hand, **always converts to `NaN`** in numeric contexts, which makes **all numeric comparisons with `undefined` return `false`**.
 
 ```js
-console.log(undefined > 0);  // false
-console.log(undefined < 0);  // false
+console.log(undefined > 0); // false
+console.log(undefined < 0); // false
 console.log(undefined == 0); // false
 ```
 
@@ -1151,7 +1151,7 @@ console.log(null === undefined); // false
 
 &nbsp;
 
-`Note`: Given these nuances, it is generally recommended to **use the strict equality operator when comparing values**, especially when dealing with `null` and `undefined`. This approach **helps avoid unexpected type coercion** and makes your code's behavior more *predictable*.
+`Note`: Given these nuances, it is generally recommended to **use the strict equality operator when comparing values**, especially when dealing with `null` and `undefined`. This approach **helps avoid unexpected type coercion** and makes your code's behavior more _predictable_.
 
 &nbsp;
 
@@ -1373,22 +1373,22 @@ Conditional statements let you **make decisions** in your JavaScript code. They 
 
 The **ternary operator** is a compact way to write **simple if/else statements**.
 
-  ```js
-  condition ? expressionIfTrue : expressionIfFalse;
-  ```
+```js
+condition ? expressionIfTrue : expressionIfFalse;
+```
 
-  ```js
-  const temperature = 30;
-  const weather = temperature > 25 ? "sunny" : "cool";
+```js
+const temperature = 30;
+const weather = temperature > 25 ? "sunny" : "cool";
 
-  console.log(`It's a ${weather} day!`);
-  ```
+console.log(`It's a ${weather} day!`);
+```
 
 &nbsp;
 
 ## Switch Case
 
-A `switch` statement **evaluates an expression** and matches its value against a series of `case` clauses. When a match is found, the code block associated with that `case` is executed. 
+A `switch` statement **evaluates an expression** and matches its value against a series of `case` clauses. When a match is found, the code block associated with that `case` is executed.
 
 ```js
 switch (expression) {
@@ -1399,7 +1399,7 @@ switch (expression) {
     // code to be executed if expression === value2
     break;
   default:
-    // code to be executed if expression doesn't match any case
+  // code to be executed if expression doesn't match any case
 }
 ```
 
@@ -1410,60 +1410,60 @@ switch (expression) {
 `switch` statements are typically used when you're **comparing a single variable against multiple possible values**. They're especially useful when you have **many potential conditions** to check against a **single variable**.
 
 ```js
-let dayOfWeek = 3; 
+let dayOfWeek = 3;
 
 switch (dayOfWeek) {
-    case 1:
-        console.log("It's Monday! Time to start the week strong.");
-        break;
-    case 2:
-        console.log("It's Tuesday! Keep the momentum going.");
-        break;
-    case 3:
-        console.log("It's Wednesday! We're halfway there.");
-        break;
-    case 4:
-        console.log("It's Thursday! Almost the weekend.");
-        break;
-    case 5:
-        console.log("It's Friday! The weekend is near.");
-        break;
-    case 6:
-        console.log("It's Saturday! Enjoy your weekend.");
-        break;
-    case 7:
-        console.log("It's Sunday! Rest and recharge.");
-        break;
-    default:
-        console.log("Invalid day! Please enter a number between 1 and 7.");
+  case 1:
+    console.log("It's Monday! Time to start the week strong.");
+    break;
+  case 2:
+    console.log("It's Tuesday! Keep the momentum going.");
+    break;
+  case 3:
+    console.log("It's Wednesday! We're halfway there.");
+    break;
+  case 4:
+    console.log("It's Thursday! Almost the weekend.");
+    break;
+  case 5:
+    console.log("It's Friday! The weekend is near.");
+    break;
+  case 6:
+    console.log("It's Saturday! Enjoy your weekend.");
+    break;
+  case 7:
+    console.log("It's Sunday! Rest and recharge.");
+    break;
+  default:
+    console.log("Invalid day! Please enter a number between 1 and 7.");
 }
 ```
 
 - `switch` statements can be more **readable** and **concise** when dealing with **many possible values** for a **single variable**.
 
-- `switch` statements in use **strict comparison** (`===`) by default, which means they **don't perform type coercion**. This can be an advantage in terms of *predictability* and avoiding subtle *bugs*.
+- `switch` statements in use **strict comparison** (`===`) by default, which means they **don't perform type coercion**. This can be an advantage in terms of _predictability_ and avoiding subtle _bugs_.
 
 ### When Not to Use
 
 `if/else if` statements are **more flexible**. They can evaluate complex conditions and different variables in each clause. This makes them suitable for a wider range of scenarios. Especially with **multiple variables**.
 
 ```js
-let creditScore = 720; 
-let annualIncome = 60000; 
-let loanAmount = 200000; 
+let creditScore = 720;
+let annualIncome = 60000;
+let loanAmount = 200000;
 
 let eligibilityStatus;
 
 if (creditScore >= 750 && annualIncome >= 80000) {
-    eligibilityStatus = "Eligible for premium loan rates.";
+  eligibilityStatus = "Eligible for premium loan rates.";
 } else if (creditScore >= 700 && annualIncome >= 50000) {
-    eligibilityStatus = "Eligible for standard loan rates.";
+  eligibilityStatus = "Eligible for standard loan rates.";
 } else if (creditScore >= 650 && annualIncome >= 40000) {
-    eligibilityStatus = "Eligible for subprime loan rates.";
+  eligibilityStatus = "Eligible for subprime loan rates.";
 } else if (creditScore < 650) {
-    eligibilityStatus = "Not eligible due to low credit score.";
+  eligibilityStatus = "Not eligible due to low credit score.";
 } else {
-    eligibilityStatus = "Not eligible due to insufficient income.";
+  eligibilityStatus = "Not eligible due to insufficient income.";
 }
 
 console.log(eligibilityStatus);
@@ -1539,11 +1539,11 @@ console.log(result); // This is truthy
 
   ```js
   let userInput;
-  
-  if (userInput || 'Guest') {
-   console.log('A user is present');
+
+  if (userInput || "Guest") {
+    console.log("A user is present");
   } else {
-   console.log('No user detected');
+    console.log("No user detected");
   }
   ```
 
@@ -1552,7 +1552,7 @@ console.log(result); // This is truthy
 it helps in scenarios where you want to **return** a value **only if** the **first value** is `null` or `undefined`.
 
 ```js
-const result = null ?? 'default';
+const result = null ?? "default";
 
 console.log(result); // default
 ```
@@ -1561,12 +1561,12 @@ console.log(result); // default
 
   ```js
   const userSettings = {
-   theme: null,
-   volume: 0,
-   notifications: false,
+    theme: null,
+    volume: 0,
+    notifications: false,
   };
 
-  let theme = userSettings.theme ?? 'light';
+  let theme = userSettings.theme ?? "light";
   console.log(theme); // light
   ```
 
@@ -1574,13 +1574,13 @@ console.log(result); // default
 
 ## The Math Object
 
-While basic arithmetic operators can handle simple calculations, JavaScript offers a *built-in* Math object to tackle more **complex math** challenges.
+While basic arithmetic operators can handle simple calculations, JavaScript offers a _built-in_ Math object to tackle more **complex math** challenges.
 
 ### `Math.random()`
 
-This method **generates a random floating-point number** between `0` (*inclusive*) and `1` (*exclusive*). 
+This method **generates a random floating-point number** between `0` (_inclusive_) and `1` (_exclusive_).
 
-- This means the possible output can be `0`, but it will never actually reach `1`. 
+- This means the possible output can be `0`, but it will never actually reach `1`.
 
   ```js
   const randomNum = Math.random();
@@ -1591,7 +1591,7 @@ This method **generates a random floating-point number** between `0` (*inclusive
 
 ### `Math.min()` & `Math.max()`
 
-They both take **a set of numbers** and return the **minimum** and **maximum** value, *respectively*.
+They both take **a set of numbers** and return the **minimum** and **maximum** value, _respectively_.
 
 ```js
 const smallest = Math.min(1, 5, 3, 9);
@@ -1621,8 +1621,8 @@ console.log(Math.round(4.5)); // 5
 console.log(Math.round(4.8)); // 5
 ```
 
-- if the decimal point is **less than 5**, the number is **rounded down**. 
-- And if the decimal point is **5 or greater**, the number is **rounded up**. 
+- if the decimal point is **less than 5**, the number is **rounded down**.
+- And if the decimal point is **5 or greater**, the number is **rounded up**.
 
 ### Random Number Generator
 
@@ -1683,7 +1683,7 @@ console.log(Math.pow(8, 2)); // 64
 
 ## Not a Number (`NaN`)
 
-It's a special value that represents an **unrepresentable** or **undefined** numerical result. `NaN` is a property of the **global object**, and it's also considered a type of **number** in JavaScript, which might seem *counterintuitive* at first.
+It's a special value that represents an **unrepresentable** or **undefined** numerical result. `NaN` is a property of the **global object**, and it's also considered a type of **number** in JavaScript, which might seem _counterintuitive_ at first.
 
 - `NaN` is typically the result of operations that should return a number but **cannot produce a meaningful numerical value**.
 
@@ -1694,7 +1694,7 @@ It's a special value that represents an **unrepresentable** or **undefined** num
 
   - Dividing zero by zero is mathematically **undefined**, so JavaScript returns `NaN`.
 
-- One peculiar property of `NaN` is that **it is not equal to anything**, including *itself*.
+- One peculiar property of `NaN` is that **it is not equal to anything**, including _itself_.
 
   ```js
   console.log(NaN === NaN); // false
@@ -1702,23 +1702,23 @@ It's a special value that represents an **unrepresentable** or **undefined** num
 
 ### `isNaN()`
 
-The `isNaN()` function property is used **to determine whether a value is `NaN` or not**. it perform **type coercion** by default which can lead to *unexpected* results.
+The `isNaN()` function property is used **to determine whether a value is `NaN` or not**. it perform **type coercion** by default which can lead to _unexpected_ results.
 
 ```js
-console.log(isNaN(NaN));       // true
+console.log(isNaN(NaN)); // true
 console.log(isNaN(undefined)); // true
-console.log(isNaN({}));        // true
+console.log(isNaN({})); // true
 
-console.log(isNaN(true));      // false
-console.log(isNaN(null));      // false
-console.log(isNaN(37));        // false
+console.log(isNaN(true)); // false
+console.log(isNaN(null)); // false
+console.log(isNaN(37)); // false
 
-console.log(isNaN("37"));      // false: "37" is converted to 37
-console.log(isNaN("37.37"));   // false: "37.37" is converted to 37.37
-console.log(isNaN(""));        // false: empty string is converted to 0
-console.log(isNaN(" "));       // false: string with a space is converted to 0
+console.log(isNaN("37")); // false: "37" is converted to 37
+console.log(isNaN("37.37")); // false: "37.37" is converted to 37.37
+console.log(isNaN("")); // false: empty string is converted to 0
+console.log(isNaN(" ")); // false: string with a space is converted to 0
 
-console.log(isNaN("blabla"));  // true: "blabla" is not a number
+console.log(isNaN("blabla")); // true: "blabla" is not a number
 ```
 
 ### `Number.isNaN()`
@@ -1728,17 +1728,17 @@ it **does not perform type coercion** before testing. it only returns `true` if 
 - introduced in **ES6**
 
 ```js
-console.log(Number.isNaN(NaN));        // true
+console.log(Number.isNaN(NaN)); // true
 console.log(Number.isNaN(Number.NaN)); // true
-console.log(Number.isNaN(0 / 0));      // true
+console.log(Number.isNaN(0 / 0)); // true
 
-console.log(Number.isNaN("NaN"));      // false
-console.log(Number.isNaN(undefined));  // false
-console.log(Number.isNaN({}));         // false
-console.log(Number.isNaN("blabla"));   // false
+console.log(Number.isNaN("NaN")); // false
+console.log(Number.isNaN(undefined)); // false
+console.log(Number.isNaN({})); // false
+console.log(Number.isNaN("blabla")); // false
 ```
 
-  - `Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where **type coercion might lead to unexpected results** with the global `isNaN()` function.
+- `Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where **type coercion might lead to unexpected results** with the global `isNaN()` function.
 
 ### `NaN` Based Error Handling
 
@@ -1760,16 +1760,16 @@ console.log(result); // "Error: Division resulted in NaN"
 
 ## `parseFloat()` & `parseInt()` Methods
 
-These are two essential methods in JavaScript for **converting strings to numbers**. These methods are particularly useful when dealing with **user input** or **processing data** that comes in *string* format but needs to be treated as *numerical* values.
+These are two essential methods in JavaScript for **converting strings to numbers**. These methods are particularly useful when dealing with **user input** or **processing data** that comes in _string_ format but needs to be treated as _numerical_ values.
 
-### `parseFloat()` 
+### `parseFloat()`
 
-This method parses a **string** argument and returns a **floating-point** number. it is designed to *extract* a number from the **beginning** of a string.
+This method parses a **string** argument and returns a **floating-point** number. it is designed to _extract_ a number from the **beginning** of a string.
 
 ```js
-console.log(parseFloat("3.14"));     // 3.14
+console.log(parseFloat("3.14")); // 3.14
 console.log(parseFloat("3.14 abc")); // 3.14
-console.log(parseFloat("3.14.5"));   // 3.14
+console.log(parseFloat("3.14.5")); // 3.14
 console.log(parseFloat("abc 3.14")); // NaN
 ```
 
@@ -1778,24 +1778,24 @@ console.log(parseFloat("abc 3.14")); // NaN
 This method parses a **string** argument and returns an **integer**. it also starts from the **beginning** of the string, but it **stops at the first non-digit character**.
 
 ```js
-console.log(parseInt("42"));       // 42
-console.log(parseInt("42px"));     // 42
-console.log(parseInt("3.14"));     // 3
-console.log(parseInt("abc123"));   // NaN
+console.log(parseInt("42")); // 42
+console.log(parseInt("42px")); // 42
+console.log(parseInt("3.14")); // 3
+console.log(parseInt("abc123")); // NaN
 ```
 
 - They both **ignore leading whitespace**.
 
   ```js
-  console.log(parseFloat("  3.14"));  // 3.14
-  console.log(parseInt("  42"));      // 42
+  console.log(parseFloat("  3.14")); // 3.14
+  console.log(parseInt("  42")); // 42
   ```
 
 - They both handle **plus and minus signs** at the beginning of the string.
 
   ```js
-  console.log(parseFloat("+3.14"));  // 3.14
-  console.log(parseInt("-42"));      // -42
+  console.log(parseFloat("+3.14")); // 3.14
+  console.log(parseInt("-42")); // -42
   ```
 
 &nbsp;
@@ -1820,9 +1820,9 @@ This method is a built-in JavaScript function that **formats a number using fixe
 - The `.toFixed()` method **rounds the number to the nearest value** that can be represented with the specified number of decimal places.
 
   ```js
-  console.log((3.14159).toFixed(3));  // "3.142"
-  console.log((3.14449).toFixed(3));  // "3.144"
-  console.log((3.14550).toFixed(3));  // "3.146"
+  console.log((3.14159).toFixed(3)); // "3.142"
+  console.log((3.14449).toFixed(3)); // "3.144"
+  console.log((3.1455).toFixed(3)); // "3.146"
   ```
 
 - if you call `.toFixed()` **without arguments**, it defaults to `0` decimal places.
@@ -1837,7 +1837,7 @@ This method is a built-in JavaScript function that **formats a number using fixe
   ```js
   let price = 19.99;
   let taxRate = 0.08;
-  let total = price + (price * taxRate);
+  let total = price + price * taxRate;
 
   console.log("Total: $" + total.toFixed(2)); // "Total: $21.59"
   ```
@@ -1846,7 +1846,7 @@ This method is a built-in JavaScript function that **formats a number using fixe
 
 ## Functions
 
-Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform *actions*, and `return` **outputs**. Functions makes your code more **modular**, **easier to maintain**, and more **efficient**.
+Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform _actions_, and `return` **outputs**. Functions makes your code more **modular**, **easier to maintain**, and more **efficient**.
 
 ```js
 function greet() {
@@ -1867,7 +1867,7 @@ greet(); // "Hello, Jessica!"
   greet("Nick"); // Hello, Nick!
   ```
 
-- When a function finishes execution, it will always **return a value**. By default, the return value will be `undefined`. 
+- When a function finishes execution, it will always **return a value**. By default, the return value will be `undefined`.
 
   ```js
   function doSomething() {
@@ -1890,7 +1890,7 @@ greet(); // "Hello, Jessica!"
 
 ### Default Parameters
 
-Functions support default parameters, allowing you to **set default values for parameters**. 
+Functions support default parameters, allowing you to **set default values for parameters**.
 
 ```js
 function greetings(name = "Guest") {
@@ -1928,12 +1928,12 @@ const greetings = (name) => {
 - if your parameter list only has **one** parameter in it, then you can **remove** the parentheses.
 
   ```js
-  const greetings = name => {
+  const greetings = (name) => {
     console.log("Hello, " + name + "!");
   };
   ```
 
-- But if your arrow function has **no** parameters, then you **must use the parentheses**. 
+- But if your arrow function has **no** parameters, then you **must use the parentheses**.
 
   ```js
   const greetings = () => {
@@ -1944,7 +1944,7 @@ const greetings = (name) => {
 - And if your function body only contains only a **single line of code**, you can **remove** the curly braces.
 
   ```js
-  const greetings = name => console.log("Hello, " + name + "!");
+  const greetings = (name) => console.log("Hello, " + name + "!");
   ```
 
   - if you're using `return` inside the function, you **must use the curly braces**.
@@ -1952,7 +1952,7 @@ const greetings = (name) => {
     ```js
     const calculateArea = (width, height) => {
       return width * height;
-    }; 
+    };
 
     console.log(calculateArea(5, 3)); // 15
     ```
@@ -1977,22 +1977,22 @@ it is the **outermost** scope in a JavaScript program. Variables declared in the
 let globalVar = "I'm a global variable";
 
 function printGlobalVar() {
-    console.log(globalVar);
+  console.log(globalVar);
 }
 
 printGlobalVar(); // "I'm a global variable"
 ```
 
-- While global variables should be used **sparingly**, as they can lead to **naming conflicts** and make your code **harder to maintain**. 
+- While global variables should be used **sparingly**, as they can lead to **naming conflicts** and make your code **harder to maintain**.
 
 ### Local Scope
 
-it refers to variables that are **only accessible within a function**. 
+it refers to variables that are **only accessible within a function**.
 
 ```js
 function greet() {
-    let message = "Hello, local scope!";
-    console.log(message);
+  let message = "Hello, local scope!";
+  console.log(message);
 }
 
 greet(); // "Hello, local scope!"
@@ -2003,12 +2003,12 @@ greet(); // "Hello, local scope!"
 
 ### Block Scope
 
-A block is any code section **within** curly braces, `{}`, such as in `if` statements, `for` loops, or `while` loops. 
+A block is any code section **within** curly braces, `{}`, such as in `if` statements, `for` loops, or `while` loops.
 
 ```js
 if (true) {
-    let blockVar = "I'm in a block";
-    console.log(blockVar); // "I'm in a block"
+  let blockVar = "I'm in a block";
+  console.log(blockVar); // "I'm in a block"
 }
 console.log(blockVar); // This will throw an error
 ```
@@ -2019,7 +2019,7 @@ console.log(blockVar); // This will throw an error
 
 &nbsp;
 
-## Array
+## Arrays
 
 An array is an **ordered collection of values**, each identified by a **numeric index**. To create an array in JavaScript, you can use square brackets, `[]`, and separate the values with commas (`,`).
 
@@ -2029,7 +2029,7 @@ let fruits = ["apple", "banana", "orange"];
 
 - The **values** in a JavaScript array can be of different data types, including **numbers**, **strings**, **booleans**, **objects**, and even **other arrays**.
 
-- One of the key characteristics of arrays is that they are **zero-indexed**, meaning that the **first** element in an array has an index of `0`, the **second** element has an index of `1`, and so on. 
+- One of the key characteristics of arrays is that they are **zero-indexed**, meaning that the **first** element in an array has an index of `0`, the **second** element has an index of `1`, and so on.
 
   ```js
   let fruits = ["apple", "banana", "orange"];
@@ -2037,7 +2037,7 @@ let fruits = ["apple", "banana", "orange"];
   console.log(fruits[2]); // "orange"
   ```
 
-- Another key characteristic of arrays in JavaScript is that they are **dynamic**, meaning that their size can change after they are created. You can add or remove elements from an array using various array *methods*, such as `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, and more. 
+- Another key characteristic of arrays in JavaScript is that they are **dynamic**, meaning that their size can change after they are created. You can add or remove elements from an array using various array _methods_, such as `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, and more.
 
 - if you try to access an **index that doesn't exist** in the array, JavaScript will return `undefined`.
 
@@ -2048,7 +2048,7 @@ let fruits = ["apple", "banana", "orange"];
 
 ### `.length` Property
 
-Arrays in JavaScript have a special length property that **returns the number of elements in the array**. 
+Arrays in JavaScript have a special length property that **returns the number of elements in the array**.
 
 ```js
 let fruits = ["apple", "banana", "orange"];
@@ -2065,7 +2065,7 @@ fruits[1] = "blueberry";
 console.log(fruits); // ["apple", "blueberry", "cherry"]
 ```
 
-- You can also add new elements to an array by **assigning a value to an index that doesn't yet exist**. However, **exercise caution** when doing this. If you assign a value to an index that is much larger than the current length of the array, you will create **undefined elements** for the indices in between, which can lead to unexpected behavior. 
+- You can also add new elements to an array by **assigning a value to an index that doesn't yet exist**. However, **exercise caution** when doing this. If you assign a value to an index that is much larger than the current length of the array, you will create **undefined elements** for the indices in between, which can lead to unexpected behavior.
 
   ```js
   let fruits = ["apple", "banana", "cherry"];
@@ -2073,9 +2073,72 @@ console.log(fruits); // ["apple", "blueberry", "cherry"]
   console.log(fruits); // ["apple", "banana", "cherry", "date"]
   ```
 
+&nbsp;
 
+## Basic Array Methods
 
+### `.push()`
 
+The `push()` method is used to add one or more elements to the **end of an array**.
+
+```js
+const fruits = ["apple", "banana"];
+const newLength = fruits.push("orange");
+console.log(newLength); // 3
+console.log(fruits); // ["apple", "banana", "orange"]
+```
+
+- Declaring an array with the `const` keyword creates a **reference to the array**. While the array itself is **mutable** and can be modified, you *cannot* reassign a new value to the fruits constant.
+
+  ```js
+  const fruits = ["apple", "banana"];
+  fruits = ["This", "will", "not", "work"];
+  console.log(fruits); // Uncaught TypeError: Assignment to constant variable.
+  ```
+
+### `.pop()`
+
+The `pop()` method **removes the last element** from an array and *returns* that element. it also **modifies the original** array.
+
+```js
+let fruits = ["apple", "banana", "orange"];
+let lastFruit = fruits.pop();
+console.log(fruits); // ["apple", "banana"]
+console.log(lastFruit); // "orange"
+```
+
+### `.unshift()`
+
+The `unshift()` method adds one or more elements to the **beginning of an array** and *returns* its new length. 
+
+```js
+let numbers = [2, 3];
+let newLength = numbers.unshift(1);
+console.log(numbers); // [1, 2, 3]
+console.log(newLength); // 3
+```
+- it works similarly to `push()`, but **modifies the start** of the array instead of the end. 
+
+### `.shift()`
+
+The `shift()` method **removes the first element** from an array and *returns* that element. 
+
+```js
+let colors = ["red", "green", "blue"];
+let firstColor = colors.shift();
+console.log(colors); // ["green", "blue"]
+console.log(firstColor); // "red"
+```
+
+- it's similar to `pop()`, but it **works at the beginning** of the array instead of the end.
+
+&nbsp;
+
+`Note`: While `push()` and `unshift()` can add multiple elements at once, `pop()` and `shift()` remove only one element at a time.
+
+&nbsp;
+
+## Dimensional Arrays
 
 
 
