@@ -2220,7 +2220,7 @@ Array destructuring is a feature in JavaScript that allows you to **extract valu
   console.log(thirdColor); // "blue"
   ```
 
-- Another powerful feature of array destructuring is the ability to use **default values**. 
+- Another powerful feature of array destructuring is the ability to use **default values**.
 
   ```js
   let numbers = [1, 2];
@@ -2241,16 +2241,64 @@ it allows you to capture the **remaining elements** of an array that haven’t b
 let fruits = ["apple", "banana", "orange", "mango", "kiwi"];
 let [first, second, ...rest] = fruits;
 
-console.log(first);  // "apple"
+console.log(first); // "apple"
 console.log(second); // "banana"
-console.log(rest);   // ["orange", "mango", "kiwi"]
+console.log(rest); // ["orange", "mango", "kiwi"]
 ```
 
 `Note`: The rest syntax **must be the last element** in the destructuring pattern.
 
 &nbsp;
 
-## String and Array Methods to Reverse a String
+## Reversing a String
+
+Can be accomplished in JavaScript using a combination of string and array methods.
+
+```js
+let str = "coding";
+let reversed = str.split("").reverse().join("");
+console.log(reversed);  //gnidoc
+```
+
+- `split()`: Splitting the string into an array of individual characters.
+  - An empty string (`""`), which splits the string into individual characters.
+
+  - A single space (`" "`), which splits the string wherever spaces occur.
+  - A dash (`"-"`), which splits the string at each dash.
+
+  ```js
+  let str = "hello";
+  let charArray = str.split("");
+  console.log(charArray); // ["h", "e", "l", "l", "o"]
+  ```
+
+- `reverse()`: Reversing the elements of the array in place.
+
+  - it modifies the original array rather than creating a new one.
+
+  ```js
+  let charArray = ["h", "e", "l", "l", "o"];
+  charArray.reverse();
+  console.log(charArray); // ["o", "l", "l", "e", "h"]
+  ```
+
+- `join()`: Joining the reversed array of characters back into a string.
+
+  - it creates and returns a new string by concatenating all the elements in an array, separated by a specified separator string.
+
+  - if you want to join the characters without any separator, you can use an empty string (`""`) as the argument.
+
+  ```js
+  let reversedArray = ["o", "l", "l", "e", "h"];
+  let reversedString = reversedArray.join("");
+  console.log(reversedString); // "olleh"
+  ```
+
+`Note`: Strings in JavaScript are immutable, which means you can't directly reverse a string by modifying it.
+
+&nbsp;
+
+## 
 
 
 
