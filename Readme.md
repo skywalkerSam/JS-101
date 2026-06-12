@@ -2334,7 +2334,90 @@ array.indexOf(element, fromIndex);
 
 &nbsp;
 
-##
+## `splice()` Method
+
+it allows you to **add or remove elements from any position** in an array. The return value for the `splice()` method will be an array of the items removed from the array. if nothing was removed, then an _empty array_ will be returned.
+
+```js
+array.splice(startIndex, itemsToRemove, item1, item2);
+```
+
+- it **mutates the original** array.
+
+- `startIndex` specifies the **index at which to begin** modifying the array.
+
+- `itemsToRemove` is an **optional** parameter indicating **how many elements to remove**.
+
+  ```js
+  let fruits = ["apple", "banana", "orange", "mango", "kiwi"];
+  let removed = fruits.splice(2, 2);
+
+  console.log(fruits); // ["apple", "banana", "kiwi"]
+  console.log(removed); // ["orange", "mango"]
+  ```
+
+  - if `itemsToRemove` is **omitted**, it will **remove all elements** from `startIndex` to the end of the array.
+
+- (`item1`, `item2`, and so on) are the **elements to be added** to the array, beginning at the `startIndex`.
+
+  ```js
+  let colors = ["red", "green", "blue"];
+  colors.splice(1, 0, "yellow", "purple");
+
+  console.log(colors); // ["red", "yellow", "purple", "green", "blue"]
+  ```
+
+  - (`0`) means **no elements are removed** before insertion.
+
+- You can also use `splice()` to **simultaneously remove and add** elements.
+
+  ```js
+  let numbers = [1, 2, 3, 4, 5];
+  numbers.splice(1, 2, 6, 7, 8);
+
+  console.log(numbers); // [1, 6, 7, 8, 4, 5]
+  ```
+
+- if you need to keep the original array unchanged, you should **create a copy** before using `splice()`.
+
+  ```js
+  let original = [1, 2, 3, 4, 5];
+  let copy = [...original];
+  copy.splice(2, 1, 6);
+
+  console.log(original); // [1, 2, 3, 4, 5]
+  console.log(copy); // [1, 2, 6, 4, 5]
+  ```
+
+- One common use case for `splice()` is to **remove a single element** from an array when you know its index.
+
+  ```js
+  let fruits = ["apple", "banana", "orange", "mango"];
+  let indexToRemove = fruits.indexOf("orange");
+  if (indexToRemove !== -1) {
+    fruits.splice(indexToRemove, 1);
+  }
+
+  console.log(fruits); // ["apple", "banana", "mango"]
+  ```
+
+- Another common use case for `splice()` is to clear an array by **removing all elements**.
+
+  ```js
+  let array = [1, 2, 3, 4, 5];
+  array.splice(0);
+
+  console.log(array); // []
+  ```
+
+in conclusion, the `splice()` method is a **versatile way for modifying arrays** in JavaScript. it allows for **precise control** over adding and removing elements from any position in an array. 
+
+While `splice()` is powerful, it's worth noting that **for very large arrays, it can be less efficient** than other methods, especially when modifying the beginning of the array. This is because `splice()` may need to shift all *subsequent* elements. in such cases, if you're only adding or removing elements at the end of the array, methods like `push()`, `pop()`, `unshift()`, and `shift(`) might be more appropriate.
+
+&nbsp;
+
+## `includes()` Method
+
 
 
 &nbsp;
