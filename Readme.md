@@ -1,4 +1,4 @@
-# [introduction to JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
+# [introduction To JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
 
 w/ freeCodeCamp.org
 
