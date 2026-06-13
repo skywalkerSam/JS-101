@@ -2434,7 +2434,7 @@ console.log(fruits.includes("grape")); // false
   console.log(fruits.includes("Banana")); // false
   ```
 
-- The `includes()` method can also accept an *optional* **second parameter** that specifies **the position in the array to start the search**.
+- The `includes()` method can also accept an _optional_ **second parameter** that specifies **the position in the array to start the search**.
 
   ```js
   let numbers = [10, 20, 30, 40, 50, 30, 60];
@@ -2446,11 +2446,61 @@ console.log(fruits.includes("grape")); // false
 
   ```js
   let mixedArray = [1, "2", 3, "4", 5];
-  console.log(mixedArray.includes(2));  // false
+  console.log(mixedArray.includes(2)); // false
   console.log(mixedArray.includes("2")); // true
   ```
 
+&nbsp;
 
+## Shallow Copy
+
+A shallow copy of an array is a new array that **has the same items as the original**. Shallow copies are helpful when you need to **modify the top-level structure**, such as **adding**, **removing**, or **reordering** elements, **without modifying the original** array or the inner array.
+
+- if the array only **contains primitive values** like _numbers_ or _strings_, the **new array is completely separate**.
+
+- But **if the array contains other arrays inside**, both the original and the copy have references to the same inner arrays. This means that if you change something inside a **shared inner array**, you will see that **change in both arrays**.
+
+### w/ `concat()` Method
+
+This method **creates a new array by merging two or more** arrays.
+
+- When used with a **single array**, it effectively **creates a shallow copy**.
+
+```js
+const originalArray = [1, 2, 3];
+const copyArray = [].concat(originalArray);
+
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+
+### w/ `slice()` Method
+
+When called **without arguments**, it **returns a shallow copy** of the entire array.
+
+```js
+const originalArray = [1, 2, 3];
+const copyArray = originalArray.slice();
+
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+
+### w/ Spread Operator (`...`)
+
+it provides a **concise way to create shallow copies** of arrays.
+
+```js
+const originalArray = [1, 2, 3];
+const copyArray = [...originalArray];
+
+console.log(copyArray); // [1, 2, 3]
+console.log(copyArray === originalArray); // false
+```
+
+&nbsp;
+
+##
 
 
 &nbsp;
