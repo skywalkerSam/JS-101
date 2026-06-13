@@ -2410,13 +2410,46 @@ array.splice(startIndex, itemsToRemove, item1, item2);
   console.log(array); // []
   ```
 
-in conclusion, the `splice()` method is a **versatile way for modifying arrays** in JavaScript. it allows for **precise control** over adding and removing elements from any position in an array. 
+in conclusion, the `splice()` method is a **versatile way for modifying arrays** in JavaScript. it allows for **precise control** over adding and removing elements from any position in an array.
 
-While `splice()` is powerful, it's worth noting that **for very large arrays, it can be less efficient** than other methods, especially when modifying the beginning of the array. This is because `splice()` may need to shift all *subsequent* elements. in such cases, if you're only adding or removing elements at the end of the array, methods like `push()`, `pop()`, `unshift()`, and `shift(`) might be more appropriate.
+While `splice()` is powerful, it's worth noting that **for very large arrays, it can be less efficient** than other methods, especially when modifying the beginning of the array. This is because `splice()` may need to shift all _subsequent_ elements. in such cases, if you're only adding or removing elements at the end of the array, methods like `push()`, `pop()`, `unshift()`, and `shift(`) might be more appropriate.
 
 &nbsp;
 
 ## `includes()` Method
+
+A simple and efficient way to **check if an array contains a specific value** without needing to know its exact position. it **returns** a _boolean_ value that might be `true` or `false`.
+
+```js
+let fruits = ["apple", "banana", "orange", "mango"];
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("grape")); // false
+```
+
+- The `includes()` method is **case-sensitive** when dealing with strings.
+
+  ```js
+  let fruits = ["apple", "banana", "orange"];
+  console.log(fruits.includes("banana")); // true
+  console.log(fruits.includes("Banana")); // false
+  ```
+
+- The `includes()` method can also accept an *optional* **second parameter** that specifies **the position in the array to start the search**.
+
+  ```js
+  let numbers = [10, 20, 30, 40, 50, 30, 60];
+  console.log(numbers.includes(30, 3)); // true
+  console.log(numbers.includes(30, 6)); // false
+  ```
+
+- The `includes()` method uses the **strict equality comparison** (`===`), which means it can **distinguish between different types**.
+
+  ```js
+  let mixedArray = [1, "2", 3, "4", 5];
+  console.log(mixedArray.includes(2));  // false
+  console.log(mixedArray.includes("2")); // true
+  ```
+
 
 
 
