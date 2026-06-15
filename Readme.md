@@ -2522,7 +2522,13 @@ const person = {
 };
 ```
 
-- Objects can **contain** not just simple values like *strings* and *numbers*, but also **arrays**, or **other objects**.
+- Objects can **contain** not just simple values like _strings_ and _numbers_, but also **arrays**, or **other objects**.
+
+&nbsp;
+
+`Note`: Accessing a **non-existent** property on an object returns `undefined`.
+
+&nbsp;
 
 ### Accessing Object Properties
 
@@ -2555,14 +2561,13 @@ const person = {
   ```
 
   Bracket notation is **more flexible** than dot notation because it allows you to **use property names that aren't valid JavaScript identifiers**.
-
   - Another advantage of bracket notation is that it allows you to **use variables to access properties** dynamically.
 
     ```js
     const person = {
       name: "Alice",
       age: 30,
-      city: "Wonderland"
+      city: "Wonderland",
     };
 
     let propertyName = "city";
@@ -2571,8 +2576,161 @@ const person = {
 
 &nbsp;
 
+### Accessing Properties from Nested Objects and Arrays in Objects
+
+Accessing properties from nested objects involves using the **dot notation** or **bracket notation**, much like accessing properties from simple objects. However, you'll need to **chain** these accessors to **drill down** into the nested structure.
+
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  contact: {
+    email: "alice@example.com",
+    phone: {
+      home: "123-456-7890",
+      work: "098-765-4321",
+    },
+  },
+};
+
+console.log(person.contact.phone.work); // "098-765-4321"
+console.log(person["contact"]["phone"]["work"]); // "098-765-4321"
+```
+
+- Accessing data where **one of the object properties has the value of an array**.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    addresses: [
+      { type: "home", street: "123 Main St", city: "Anytown" },
+      { type: "work", street: "456 Market St", city: "Workville" },
+    ],
+  };
+
+  console.log(person.addresses[1].city); // "Workville"
+  ```
+
+&nbsp;
+
 ### Remove Properties from an Object
 
+- `delete` Operator
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    job: "Engineer",
+  };
+
+  delete person.job;
+
+  console.log(person.job); // undefined
+  ```
+
+- **Destructuring Assignment w/ Rest Parameters**: This approach **doesn't delete** the property, but **it creates a new object without the specified properties**.
+
+  ```js
+  const person = {
+    name: "Bob",
+    age: 25,
+    job: "Designer",
+    city: "New York",
+  };
+
+  const { job, city, ...remainingProperties } = person;
+
+  // { name: "Bob", age: 25 }
+  console.log(remainingProperties);
+  ```
+
+&nbsp;
+
+### Check if an Object Has a Property
+
+- `hasOwnProperty()` method **returns a boolean** indicating whether the object has the specified property as its _own_ property.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+  };
+
+  console.log(person.hasOwnProperty("name")); // true
+  console.log(person.hasOwnProperty("job")); // false
+  ```
+
+  - This method is considered **unsafe**!
+
+- `Object.hasOwn()` method is the modern, **recommended** way to check if an object has a property as its own (_not inherited_).
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+  };
+
+  // Object.hasOwn(object, propertyName)
+  console.log(Object.hasOwn(person, "name")); // true
+  console.log(Object.hasOwn(person, "job")); // false
+  ```
+
+  - `Object.hasOwn()` only checks if the property exists — **it doesn't care about the property's value**. it **returns true** even when the value is `0`, `false`, `null`, or `undefined`.
+
+    ```js
+    const user = {
+      username: "coder123",
+      score: 0,
+      isActive: false,
+      nickname: null,
+    };
+
+    // Object.hasOwn() correctly reports these all exist
+    console.log(Object.hasOwn(user, "score")); // true  (value is 0, but property exists)
+    console.log(Object.hasOwn(user, "isActive")); // true  (value is false, but property exists)
+    console.log(Object.hasOwn(user, "nickname")); // true  (value is null, but property exists)
+    console.log(Object.hasOwn(user, "email")); // false (property was never added)
+
+    // Danger! Using if() directly gives wrong results for falsy values
+    if (user.score) {
+      console.log("Has score"); // This will NOT print even though score exists!
+    }
+
+    // Safe! Object.hasOwn() gives correct result
+    if (Object.hasOwn(user, "score")) {
+      console.log("Has score:", user.score); // Has score: 0
+    }
+    ```
+
+- `in` Operator: Like `hasOwnProperty()`, the `in` operator will return true if the property exists on the object.
+
+  ```js
+  const person = {
+    name: "Bob",
+    age: 25,
+  };
+
+  console.log("name" in person); // true
+  ```
+
+- **Check Against** `undefined`: This approach can be useful, but **it has limitations**. This method can give **false negatives** if a property _explicitly_ has the value `undefined`.
+
+  ```js
+  const car = {
+    brand: "Toyota",
+    model: "Corolla",
+    year: 2020,
+  };
+
+  console.log(car.brand !== undefined); // true
+  console.log(car.color !== undefined); // false
+  ```
+
+&nbsp;
+
+## Primitive & Non-Primitive Data Types
 
 
 
