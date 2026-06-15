@@ -701,7 +701,7 @@ While comments are **useful** in programming, it is important to **avoid over-co
 
 &nbsp;
 
-## Data Types in JavaScript
+## Data Types
 
 - `Number`: A number represents both **integers** and **floating-point** values.
   - Examples of integers include 7, 19, and 90.
@@ -747,6 +747,83 @@ While comments are **useful** in programming, it is important to **avoid over-co
     ```js
     const veryBigNumber = 1234567890123456789012345678901234567890n;
     ```
+
+&nbsp;
+
+## Primitive & Non-Primitive Data Types
+
+The two categories of data types behave differently in terms of **how they are stored in memory** and **how they are being manipulated by programs**.
+
+&nbsp;
+
+### **Primitive** Data Types
+
+Primitive data types are **the simplest form of data** in JavaScript. These types are called "primitive" because they **represent single values** and **are not objects**.
+
+- number
+
+- bigint
+
+- string
+
+- boolean
+
+- null
+
+- undefined
+
+- symbol
+
+When you work with primitive data types, you're **dealing directly with their values**. For example, when you create a variable with a primitive value, that value is stored directly in the variable.
+
+Primitive values are **immutable**, which means once they are created, their value cannot be changed. However, you can **reassign a new value** to the variable.
+
+```js
+let num1 = 5;
+let num2 = num1;
+num1 = 10;
+
+console.log(num2); // 5
+```
+
+&nbsp;
+
+### **Non-Primitive** Data Types
+
+Non-primitive types are **complex** and **can hold multiple values** as _properties_ or _elements_.
+
+- objects
+
+- arrays
+
+- functions
+
+When you create a variable with a non-primitive value, **what's stored in the variable is actually a reference to the location in memory where the object is stored**, not the object itself. This leads to some important differences in behavior.
+
+```js
+const originalPerson = { name: "John", age: 30 };
+const copiedPerson = originalPerson;
+
+originalPerson.age = 31;
+
+console.log(copiedPerson.age); // 31
+```
+
+- This occurs because both `originalPerson` and `copiedPerson` are **referencing the same object in memory**.
+
+in JavaScript, **when you assign an object to another variable, you're copying the reference to the object**, not the object itself. This is known as **shallow copying** by reference.
+
+- As a result, any changes made to the object through one reference are reflected in all references to that object.
+
+&nbsp;
+
+## `null` vs. `undefined`
+
+in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
+
+- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an _argument_.
+
+- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
 
 &nbsp;
 
@@ -824,7 +901,7 @@ JavaScript provides tools to perform basic _arithmetic operations_ on numbers, s
 
 &nbsp;
 
-## Calculations with `Numbers` and `Strings`
+## Calculation with `Numbers` and `Strings`
 
 JavaScript is a language where things sometimes work in surprising, or even **weird**, ways. One such surprise occurs when you **mix numbers and strings** in calculations.
 
@@ -1099,14 +1176,6 @@ Comparison operators allow you to **compare two values** and return a `true` or 
   ```
 
 &nbsp;
-
-## `null` vs. `undefined`
-
-in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
-
-- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an _argument_.
-
-- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
 
 ### w/ Equality Operator (`==`)
 
@@ -1517,6 +1586,8 @@ it checks if **both** operands are **true** and returns a result.
   }
   ```
 
+&nbsp;
+
 ### Logical OR (`||`)
 
 This operator checks if at least **one** of the operands is **truthy**. if the first operand is **truthy**, it **returns** that value:
@@ -1546,6 +1617,8 @@ console.log(result); // This is truthy
     console.log("No user detected");
   }
   ```
+
+&nbsp;
 
 ### Nullish Coalescing (`??`)
 
@@ -1589,6 +1662,8 @@ This method **generates a random floating-point number** between `0` (_inclusive
   // any number between 0 and 1 – 0 inclusive and 1 exclusive
   ```
 
+&nbsp;
+
 ### `Math.min()` & `Math.max()`
 
 They both take **a set of numbers** and return the **minimum** and **maximum** value, _respectively_.
@@ -1601,6 +1676,8 @@ const largest = Math.max(1, 5, 3, 9);
 console.log(largest); // 9
 ```
 
+&nbsp;
+
 ### `Math.ceil()` & `Math.floor()`
 
 if you wanted to **round numbers up or down** to the nearest whole integer, you could use the `Math.ceil()` and `Math.floor()` methods.
@@ -1610,6 +1687,8 @@ console.log(Math.ceil(4.3)); // 5
 
 console.log(Math.floor(4.7)); // 4
 ```
+
+&nbsp;
 
 ### `Math.round()`
 
@@ -1623,6 +1702,8 @@ console.log(Math.round(4.8)); // 5
 
 - if the decimal point is **less than 5**, the number is **rounded down**.
 - And if the decimal point is **5 or greater**, the number is **rounded up**.
+
+&nbsp;
 
 ### Random Number Generator
 
@@ -1643,6 +1724,8 @@ const randomNumBtw1And20 = Math.floor(Math.random() * 20) + 1;
 console.log(randomNumBtw1And20);
 ```
 
+&nbsp;
+
 ### `Math.trunc()`
 
 it **removes the decimal part** of a number, returning only the integer portion, **without rounding**.
@@ -1651,6 +1734,8 @@ it **removes the decimal part** of a number, returning only the integer portion,
 console.log(Math.trunc(2.9)); // 2
 console.log(Math.trunc(9.1)); // 9
 ```
+
+&nbsp;
 
 ### `Math.sqrt()` & `Math.cbrt()`
 
@@ -1661,6 +1746,8 @@ console.log(Math.sqrt(81)); // 9
 console.log(Math.cbrt(27)); // 3
 ```
 
+&nbsp;
+
 ### `Math.abs()`
 
 if you need to get the **absolute value of a number**, you can use the Math.abs() method. it returns the absolute value of a number, **turning negatives into positives**.
@@ -1669,6 +1756,8 @@ if you need to get the **absolute value of a number**, you can use the Math.abs(
 console.log(Math.abs(-5)); // 5
 console.log(Math.abs(5)); // 5
 ```
+
+&nbsp;
 
 ### `Math.pow()`
 
@@ -2730,7 +2819,7 @@ console.log(person["contact"]["phone"]["work"]); // "098-765-4321"
 
 &nbsp;
 
-## Primitive & Non-Primitive Data Types
+## Difference Between Functions and Object Methods
 
 
 
