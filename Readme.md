@@ -2500,7 +2500,80 @@ console.log(copyArray === originalArray); // false
 
 &nbsp;
 
-##
+## Objects
+
+An object is a fundamental data structure that allows you to **store and organize related data and functionality**.
+
+You can think of an object as a container that holds various pieces of information, much like a filing cabinet holds different folders and documents. These pieces of information are called **properties**, and they consist of a name (or **key**) and a **value**.
+
+```js
+const exampleObject = {
+  propertyName: value,
+};
+```
+
+**Objects** are incredibly versatile and form the **backbone of JavaScript**. in fact, **almost everything in JavaScript is an object** or can be treated as one. This includes _arrays_, _functions_, and even primitive data types like _strings_ and _numbers_ when used in certain ways. This **object-centric** nature of JavaScript is one of the reasons it's such a flexible and powerful language.
+
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York",
+};
+```
+
+- Objects can **contain** not just simple values like *strings* and *numbers*, but also **arrays**, or **other objects**.
+
+### Accessing Object Properties
+
+- **Dot Notation** (`.`) is the most common and straightforward way to access object properties.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    city: "New York",
+  };
+
+  // objectName.propertyName
+  console.log(person.name); // Alice
+  console.log(person.age); // 30
+  ```
+
+  - Dot notation is **concise** and **easy to read**, making it the preferred choice when you know the exact name of the property you want to access and that name is a **valid JavaScript identifier** (meaning it **doesn't start** with a _number_ and **doesn't contain** _special characters_ or _spaces_).
+
+- **Bracket notation** (`[]`), on the other hand, allows you to **access object properties using a string inside square brackets**.
+
+  ```js
+  const oddObject = {
+    "1stProperty": "Hello",
+    "property with spaces": "World",
+  };
+
+  console.log(oddObject["1stProperty"]); // Hello
+  console.log(oddObject["property with spaces"]); // World
+  ```
+
+  Bracket notation is **more flexible** than dot notation because it allows you to **use property names that aren't valid JavaScript identifiers**.
+
+  - Another advantage of bracket notation is that it allows you to **use variables to access properties** dynamically.
+
+    ```js
+    const person = {
+      name: "Alice",
+      age: 30,
+      city: "Wonderland"
+    };
+
+    let propertyName = "city";
+    console.log(person[propertyName]); // Wonderland
+    ```
+
+&nbsp;
+
+### Remove Properties from an Object
+
+
 
 
 &nbsp;
