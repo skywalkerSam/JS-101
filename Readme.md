@@ -2862,6 +2862,65 @@ console.log(person.sayHello()); // "Hello, my name is Bob"
 
 ## The `Object()` Constructor
 
+in JavaScript, a constructor is **a special type of function used to create and initialize objects**. it is invoked with the `new` keyword and can initialize properties and methods on the newly created object.
 
+```js
+new Object();
+```
+
+- The `Object()` constructor creates a new empty object.
+
+- The `Object()` constructor can be used with or without the `new` keyword.
+
+When called as a function **without** the `new` keyword, it **behaves differently** depending on the _type_ of value passed to it.
+
+```js
+const num = 42;
+const numObj = Object(num); // Creates an object wrapper for the number
+
+console.log(numObj);
+console.log(typeof numObj); // "object"
+```
+
+- This is called objectifying a number.)
+
+What happens if we try to pass `null` or `undefined` to the `Object()` constructor?
+
+```js
+const newObj = new Object(undefined);
+console.log(newObj); // {}
+```
+
+Another use case for the `Object()` constructor is when you're working with a value of **unknown type** and you need to **ensure it's an object**.
+
+```js
+function toObject(value) {
+  if (value === null || value === undefined) {
+    return {};
+  }
+
+  if (typeof value === "object") {
+    return value;
+  }
+
+  return Object(value);
+}
+
+console.log(toObject(null));
+
+console.log(toObject(true));
+
+console.log(toObject([1, 2, 3]));
+```
+
+- Arrays are special types of objects.
+
+&nbsp;
+
+`Note`: Most of the time you will **not be using the `Object()` constructor to create new objects** because you will be using **object literal syntax** instead (e.g., `const objectLiteral = { name: "Beau" }`). it is generally used to create an **object wrapper for a primitive value**.
+
+&nbsp;
+
+##
 
 &nbsp;
