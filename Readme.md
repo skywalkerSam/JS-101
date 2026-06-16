@@ -2819,7 +2819,48 @@ console.log(person["contact"]["phone"]["work"]); // "098-765-4321"
 
 &nbsp;
 
-## Difference Between Functions and Object Methods
+## Functions vs. Object Methods
+
+in JavaScript, functions and object methods are both **ways to encapsulate reusable code**, but they have some _key_ differences in **how they are defined, invoked, used, and the context in which they operate**.
+
+As you already know: **Functions** are reusable blocks of code that perform a specific task.
+
+```js
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+console.log(greet("Alice")); // "Hello, Alice!"
+```
+
+&nbsp;
+
+### Object Methods
+
+Object methods are **functions that are associated with an object**. They are **defined as properties of an object** and **can access and manipulate the object's data**.
+
+```js
+const person = {
+  name: "Bob",
+  age: 30,
+  sayHello: function () {
+    return "Hello, my name is " + this.name;
+  },
+};
+
+console.log(person.sayHello()); // "Hello, my name is Bob"
+```
+
+- Regular functions have their own scope, but they don't have a _built-in_ reference to any particular object. **Methods are bound to their object** and **can access its properties and other methods** using `this` keyword.
+
+- Methods are **associated with objects**, while functions are **standalone**. in other words, methods are basically functions who got married.)
+
+&nbsp;
+
+`Note`: A key point to note is that, **methods help in organizing code into logical objects**, while **functions are used for more general, reusable code**.
+
+&nbsp;
+
+## The `Object()` Constructor
 
 
 
