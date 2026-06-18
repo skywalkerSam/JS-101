@@ -55,7 +55,7 @@ function validateManifest(manifest) {
   // weight
   if (manifest.weight === undefined) {
     validatedManifest.weight = "Missing";
-  } else if (typeof manifest.weight !== "number") {
+  } else if (typeof manifest.weight !== "number" || manifest.weight <= 0) {
     validatedManifest.weight = "Invalid";
   }
 
@@ -77,7 +77,7 @@ function validateManifest(manifest) {
     validatedManifest.hazmat = "Invalid";
   }
 
-  //TODO: Return the objects individually.
+  // return objects
   if (
     validatedManifest.containerId !== "Missing" &&
     validatedManifest.containerId !== "Invalid" &&
@@ -91,8 +91,69 @@ function validateManifest(manifest) {
     validatedManifest.hazmat !== "Invalid"
   ) {
     return {};
-  } else {
-    return validatedManifest;
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid") &&
+    (validatedManifest.unit === "Missing" ||
+      validatedManifest.unit === "Invalid") &&
+    (validatedManifest.hazmat === "Missing" ||
+      validatedManifest.hazmat === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+      unit: validatedManifest.unit,
+      hazmat: validatedManifest.hazmat,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid") &&
+    (validatedManifest.unit === "Missing" ||
+      validatedManifest.unit === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+      unit: validatedManifest.unit,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+    };
+  } else if (
+    validatedManifest.containerId === "Missing" ||
+    validatedManifest.containerId === "Invalid"
+  ) {
+    return { containerId: validatedManifest.containerId };
   }
 }
 
@@ -174,4 +235,12 @@ console.log(
   }),
 );
 
-// console.log({}.containerID)
+console.log(
+  validateManifest({
+    containerId: 0,
+    destination: 405,
+    weight: -84,
+    unit: "pounds",
+    hazmat: "no",
+  }),
+);
