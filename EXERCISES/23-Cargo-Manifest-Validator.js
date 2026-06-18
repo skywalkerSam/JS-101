@@ -36,90 +36,142 @@ function validateManifest(manifest) {
   let validatedManifest = { ...manifest };
 
   // containerId
-  if (manifest.containerId === null || undefined) {
+  if (manifest.containerId === undefined) {
     validatedManifest.containerId = "Missing";
-  } else if (typeof manifest.containerId !== "number") {
+  } else if (
+    typeof manifest.containerId !== "number" ||
+    manifest.containerId <= 0
+  ) {
     validatedManifest.containerId = "Invalid";
   }
 
   // destination
-  if (manifest.destination === null || undefined) {
-    validatedManifest.destination = "Missing";
-  } else if (manifest.destination === "") {
+  if (manifest.destination === undefined || manifest.destination === "") {
     validatedManifest.destination = "Missing";
   } else if (typeof manifest.destination !== "string") {
     validatedManifest.destination = "Invalid";
   }
 
   // weight
-  if (manifest.weight === null || undefined) {
+  if (manifest.weight === undefined) {
     validatedManifest.weight = "Missing";
   } else if (typeof manifest.weight !== "number") {
     validatedManifest.weight = "Invalid";
   }
 
   // unit
-  if (manifest.unit === null || undefined) {
+  if (manifest.unit === undefined || manifest.unit === "") {
     validatedManifest.unit = "Missing";
-  } else if (manifest.unit === "") {
-    validatedManifest.unit = "Missing";
-  } else if (typeof manifest.unit !== "lb" || "kg") {
+  } else if (typeof manifest.unit !== "string") {
+    validatedManifest.unit = "Invalid";
+  } else if (manifest.unit !== "lb" && manifest.unit !== "kg") {
     validatedManifest.unit = "Invalid";
   }
 
   // hazmat
-  if (manifest.hazmat === null || undefined) {
+  if (manifest.hazmat === undefined) {
     validatedManifest.hazmat = "Missing";
-  } else if (manifest.hazmat !== true || false) {
+  } else if (typeof manifest.hazmat !== "boolean") {
+    validatedManifest.hazmat = "Invalid";
+  } else if (manifest.hazmat !== true && manifest.hazmat !== false) {
     validatedManifest.hazmat = "Invalid";
   }
 
-  return validatedManifest;
+  //TODO: Return the objects individually.
+  if (
+    validatedManifest.containerId !== "Missing" &&
+    validatedManifest.containerId !== "Invalid" &&
+    validatedManifest.destination !== "Missing" &&
+    validatedManifest.destination !== "Invalid" &&
+    validatedManifest.weight !== "Missing" &&
+    validatedManifest.weight !== "Invalid" &&
+    validatedManifest.unit !== "Missing" &&
+    validatedManifest.unit !== "Invalid" &&
+    validatedManifest.hazmat !== "Missing" &&
+    validatedManifest.hazmat !== "Invalid"
+  ) {
+    return {};
+  } else {
+    return validatedManifest;
+  }
 }
 
 function processManifest(manifest) {
-  let validatedContainerId = validateManifest(manifest).containerId;
-  let validatedDestination = validateManifest(manifest).destination;
-  let validatedWeight = validateManifest(manifest).weight;
-  let validatedUnit = validateManifest(manifest).unit;
-  let validatedHazmat = validateManifest(manifest).hazmat;
+  let processedManifest = validateManifest(manifest);
+
+  let validatedContainerId = processedManifest.containerId;
+  let validatedDestination = processedManifest.destination;
+  let validatedWeight = processedManifest.weight;
+  let validatedUnit = processedManifest.unit;
+  let validatedHazmat = processedManifest.hazmat;
 
   // containerId
-  if (validatedContainerId !== "Missing" || "Invalid") {
+  if (
+    validatedContainerId !== "Missing" &&
+    validatedContainerId !== "Invalid"
+  ) {
     console.log(`Validation success: ${validatedContainerId}`);
   } else {
     console.log(`Validation error: ${validatedContainerId}`);
-    return validatedContainerId;
+    return processedManifest;
   }
 
   // destination
-  if (validatedDestination !== "Missing" || "Invalid") {
+  if (
+    validatedDestination !== "Missing" &&
+    validatedDestination !== "Invalid"
+  ) {
     console.log(`Validation success: ${validatedDestination}`);
   } else {
     console.log(`Validation error: ${validatedDestination}`);
-    return validatedDestination;
+    return processedManifest;
   }
 
   // weight
-  if (validatedWeight !== "Missing" || "Invalid") {
+  if (validatedWeight !== "Missing" && validatedWeight !== "Invalid") {
     console.log(`Validation success: ${validatedWeight}`);
   } else {
     console.log(`Validation error: ${validatedWeight}`);
-    return validatedWeight;
+    return processedManifest;
   }
   // unit
-  if (validatedUnit !== "Missing" || "Invalid") {
+  if (validatedUnit !== "Missing" && validatedUnit !== "Invalid") {
     console.log(`Validation success: ${validatedUnit}`);
   } else {
     console.log(`Validation error: ${validatedUnit}`);
-    return validatedUnit;
+    return processedManifest;
   }
 
   // hazmat
-  if (validatedHazmat !== "Missing" || "Invalid") {
+  if (validatedHazmat !== "Missing" && validatedHazmat !== "Invalid") {
     console.log(`Validation success: ${validatedHazmat}`);
   } else {
     console.log(`Validation error: ${validatedHazmat}`);
-    return validatedHazmat;
+    return processedManifest;
   }
 }
+
+// tests
+console.log(
+  validateManifest({
+    containerId: 1,
+    destination: "Santa Cruz",
+    weight: 304,
+    unit: "kg",
+    hazmat: false,
+  }),
+);
+
+console.log(validateManifest({}));
+
+console.log(
+  validateManifest({
+    containerId: null,
+    destination: "Santa Cruz",
+    weight: 304,
+    unit: "kg",
+    hazmat: false,
+  }),
+);
+
+// console.log({}.containerID)
