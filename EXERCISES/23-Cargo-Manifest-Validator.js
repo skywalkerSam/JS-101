@@ -35,12 +35,17 @@ function normalizeUnits(manifest) {
 function validateManifest(manifest) {
   let validatedManifest = { ...manifest };
 
-  // TODO: object validation (Test 15)
+  // basic object validation
+  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
+    return { isValid: false, error: "input must be an object!" };
+  }
+
+  // TODO: if the input manifest object is not valid, your `validateManifest` function should `return` an object describing missing and/or invalid properties. (Test 15)
   let requiredKeys = ["containerId", "destination", "weight", "unit", "hazmat"];
   let keyVerification = requiredKeys.every((key) =>
     Object.hasOwn(manifest, key),
   );
-  
+
   // containerId
   if (manifest.containerId === undefined) {
     validatedManifest.containerId = "Missing";
@@ -227,7 +232,8 @@ function processManifest(manifest) {
   }
 }
 
-// tests
+// test 7
+console.log("\ntest 7\n");
 console.log(
   validateManifest({
     containerId: 1,
@@ -238,8 +244,12 @@ console.log(
   }),
 );
 
+// test 8
+console.log("\ntest 8\n");
 console.log(validateManifest({}));
 
+// test 9
+console.log("\ntest 9\n");
 console.log(
   validateManifest({
     containerId: null,
@@ -250,6 +260,8 @@ console.log(
   }),
 );
 
+// test 10
+console.log("\ntest 10\n");
 console.log(
   validateManifest({
     containerId: 0,
@@ -260,11 +272,14 @@ console.log(
   }),
 );
 
+// test 12, 13, & 14
+console.log("\ntest 12, 13, & 14\n");
 console.log(validateManifest({ containerId: 3.5 }));
 console.log(validateManifest({ destination: "  " }));
 console.log(validateManifest({ weight: NaN }));
 
-// test 15
+// test 15 (failing)
+console.log("\ntest 15 (failing!!)\n");
 let obj = { name: "Sam", title: "Starboy" };
 let manifest = {
   containerId: 3,
@@ -273,6 +288,19 @@ let manifest = {
   unit: "kg",
   hazmat: false,
 };
-// console.log(obj);
+
+console.log(obj);
+console.log(validateManifest([]));
 console.log(validateManifest(obj));
 
+// test 18
+console.log("\ntest 18\n");
+console.log(
+  processManifest({
+    containerId: 55,
+    destination: "Carmel",
+    weight: 400,
+    unit: "lb",
+    hazmat: false,
+  }),
+);
