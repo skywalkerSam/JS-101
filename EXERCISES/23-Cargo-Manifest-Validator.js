@@ -35,34 +35,49 @@ function normalizeUnits(manifest) {
 function validateManifest(manifest) {
   let validatedManifest = { ...manifest };
 
+  // TODO: object validation (Test 15)
+  let requiredKeys = ["containerId", "destination", "weight", "unit", "hazmat"];
+  let keyVerification = requiredKeys.every((key) =>
+    Object.hasOwn(manifest, key),
+  );
+  
   // containerId
   if (manifest.containerId === undefined) {
     validatedManifest.containerId = "Missing";
   } else if (
+    Number.isNaN(manifest.containerId) ||
     typeof manifest.containerId !== "number" ||
-    manifest.containerId <= 0
+    manifest.containerId <= 0 ||
+    Number.isInteger(manifest.containerId) !== true
   ) {
     validatedManifest.containerId = "Invalid";
   }
 
   // destination
-  if (manifest.destination === undefined || manifest.destination === "") {
+  if (manifest.destination === undefined) {
     validatedManifest.destination = "Missing";
-  } else if (typeof manifest.destination !== "string") {
+  } else if (
+    typeof manifest.destination !== "string" ||
+    manifest.destination.trim() === ""
+  ) {
     validatedManifest.destination = "Invalid";
   }
 
   // weight
   if (manifest.weight === undefined) {
     validatedManifest.weight = "Missing";
-  } else if (typeof manifest.weight !== "number" || manifest.weight <= 0) {
+  } else if (
+    Number.isNaN(manifest.weight) ||
+    typeof manifest.weight !== "number" ||
+    manifest.weight <= 0
+  ) {
     validatedManifest.weight = "Invalid";
   }
 
   // unit
-  if (manifest.unit === undefined || manifest.unit === "") {
+  if (manifest.unit === undefined) {
     validatedManifest.unit = "Missing";
-  } else if (typeof manifest.unit !== "string") {
+  } else if (typeof manifest.unit !== "string" || manifest.unit.trim() === "") {
     validatedManifest.unit = "Invalid";
   } else if (manifest.unit !== "lb" && manifest.unit !== "kg") {
     validatedManifest.unit = "Invalid";
@@ -244,3 +259,20 @@ console.log(
     hazmat: "no",
   }),
 );
+
+console.log(validateManifest({ containerId: 3.5 }));
+console.log(validateManifest({ destination: "  " }));
+console.log(validateManifest({ weight: NaN }));
+
+// test 15
+let obj = { name: "Sam", title: "Starboy" };
+let manifest = {
+  containerId: 3,
+  destination: "nowhere",
+  weight: 110,
+  unit: "kg",
+  hazmat: false,
+};
+// console.log(obj);
+console.log(validateManifest(obj));
+
