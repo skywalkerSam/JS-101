@@ -33,12 +33,12 @@ function normalizeUnits(manifest) {
 }
 
 function validateManifest(manifest) {
-  let validatedManifest = { ...manifest };
-
   // basic object validation
   if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
     return { isValid: false, error: "input must be an object!" };
   }
+
+  let validatedManifest = { ...manifest };
 
   // TODO: if the input manifest object is not valid, your `validateManifest` function should `return` an object describing missing and/or invalid properties. (Test 15)
   let requiredKeys = ["containerId", "destination", "weight", "unit", "hazmat"];
@@ -178,59 +178,27 @@ function validateManifest(manifest) {
 }
 
 function processManifest(manifest) {
-  let processedManifest = validateManifest(manifest);
+  // basic object validation
+  if (!manifest || typeof manifest !== "object" || Array.isArray(manifest)) {
+    return { isValid: false, error: "input must be an object!" };
+  }
 
-  let validatedContainerId = processedManifest.containerId;
-  let validatedDestination = processedManifest.destination;
-  let validatedWeight = processedManifest.weight;
-  let validatedUnit = processedManifest.unit;
-  let validatedHazmat = processedManifest.hazmat;
-
-  // containerId
   if (
-    validatedContainerId !== "Missing" &&
-    validatedContainerId !== "Invalid"
+    manifest.containerId !== undefined &&
+    manifest.containerId !== null &&
+    typeof manifest.containerId === "number" &&
+    !Number.isNaN(manifest.containerId) &&
+    Number.isInteger(manifest.containerId) &&
+    manifest.containerId > 0
   ) {
-    console.log(`Validation success: ${validatedContainerId}`);
+    console.log(`Validation success: ${manifest.containerId}`);
+    let metrifiedManifest = normalizeUnits(manifest);
+    console.log(`Total weight: ${metrifiedManifest.weight} kg`);
   } else {
-    console.log(`Validation error: ${validatedContainerId}`);
-    return processedManifest;
+    console.log(`Validation error: ${manifest.containerId}`);
+    console.log(validateManifest(manifest));
   }
-
-  // destination
-  if (
-    validatedDestination !== "Missing" &&
-    validatedDestination !== "Invalid"
-  ) {
-    console.log(`Validation success: ${validatedDestination}`);
-  } else {
-    console.log(`Validation error: ${validatedDestination}`);
-    return processedManifest;
-  }
-
-  // weight
-  if (validatedWeight !== "Missing" && validatedWeight !== "Invalid") {
-    console.log(`Validation success: ${validatedWeight}`);
-  } else {
-    console.log(`Validation error: ${validatedWeight}`);
-    return processedManifest;
-  }
-  // unit
-  if (validatedUnit !== "Missing" && validatedUnit !== "Invalid") {
-    console.log(`Validation success: ${validatedUnit}`);
-  } else {
-    console.log(`Validation error: ${validatedUnit}`);
-    return processedManifest;
-  }
-
-  // hazmat
-  if (validatedHazmat !== "Missing" && validatedHazmat !== "Invalid") {
-    console.log(`Validation success: ${validatedHazmat}`);
-  } else {
-    console.log(`Validation error: ${validatedHazmat}`);
-    return processedManifest;
-  }
-}
+} 
 
 // test 7
 console.log("\ntest 7\n");
@@ -303,4 +271,10 @@ console.log(
     unit: "lb",
     hazmat: false,
   }),
+);
+
+// test 22
+console.log("\ntest 22\n");
+console.log(
+  processManifest({ containerId: -88, destination: "Soledad", weight: NaN }),
 );
