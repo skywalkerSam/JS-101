@@ -2921,6 +2921,34 @@ console.log(toObject([1, 2, 3]));
 
 &nbsp;
 
-##
+## JSON (JavaScript Object Notation)
+
+A lightweight, text-based **data format** that is commonly used to **exchange data between a server and a web application**.
+
+```js
+{
+  "name": "Alice",
+  "age": 30,
+  "isStudent": false,
+  "list of courses": ["Mathematics", "Physics", "Computer Science"]
+}
+```
+
+JSON uses *key-value* pairs to store information and each pair is separated by a comma(`,`). **Each key must be wrapped in double quotes** (`""`), otherwise you will get an **error**!
+
+JSON is a versatile format that can store **many data types**, including arrays and nested objects. By using **dot notation**(`.`) or **bracket notation** (`[]`), you can easily access the values stored within a JSON object.
+
+- Machine-parseable & human-readable
+
+- Language-independent
+
+&nbsp;
+
+### `JSON.parse()`
+
+
+&nbsp;
+
+### `JSON.stringify()`
 
 &nbsp;
