@@ -45,9 +45,15 @@ function validateManifest(manifest) {
   let keyVerification = requiredKeys.every((key) =>
     Object.hasOwn(manifest, key),
   );
+  
+  let isContainerIdNotMissing = Object.hasOwn(manifest, requiredKeys[0])
+  let isDestinationNotMissing = Object.hasOwn(manifest, requiredKeys[1])
+  let isWeightNotMissing = Object.hasOwn(manifest, requiredKeys[2])
+  let isUnitNotMissing = Object.hasOwn(manifest, requiredKeys[3])
+  let isHazmatNotMissing = Object.hasOwn(manifest, requiredKeys[4])
 
   // containerId
-  if (manifest.containerId === undefined) {
+  if (manifest.containerId === undefined || !isContainerIdNotMissing) {
     validatedManifest.containerId = "Missing";
   } else if (
     Number.isNaN(manifest.containerId) ||
@@ -59,7 +65,7 @@ function validateManifest(manifest) {
   }
 
   // destination
-  if (manifest.destination === undefined) {
+  if (manifest.destination === undefined || !isDestinationNotMissing) {
     validatedManifest.destination = "Missing";
   } else if (
     typeof manifest.destination !== "string" ||
@@ -69,7 +75,7 @@ function validateManifest(manifest) {
   }
 
   // weight
-  if (manifest.weight === undefined) {
+  if (manifest.weight === undefined || !isWeightNotMissing) {
     validatedManifest.weight = "Missing";
   } else if (
     Number.isNaN(manifest.weight) ||
@@ -80,7 +86,7 @@ function validateManifest(manifest) {
   }
 
   // unit
-  if (manifest.unit === undefined) {
+  if (manifest.unit === undefined || !isUnitNotMissing) {
     validatedManifest.unit = "Missing";
   } else if (typeof manifest.unit !== "string" || manifest.unit.trim() === "") {
     validatedManifest.unit = "Invalid";
@@ -89,7 +95,7 @@ function validateManifest(manifest) {
   }
 
   // hazmat
-  if (manifest.hazmat === undefined) {
+  if (manifest.hazmat === undefined || !isHazmatNotMissing) {
     validatedManifest.hazmat = "Missing";
   } else if (typeof manifest.hazmat !== "boolean") {
     validatedManifest.hazmat = "Invalid";
@@ -111,6 +117,7 @@ function validateManifest(manifest) {
     validatedManifest.hazmat !== "Invalid"
   ) {
     return {};
+    // TODO: Return only missing/invalid properties.
   } else if (
     (validatedManifest.containerId === "Missing" ||
       validatedManifest.containerId === "Invalid") &&
