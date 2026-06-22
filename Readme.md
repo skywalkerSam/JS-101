@@ -3021,4 +3021,44 @@ console.log(userObject);
 
 ## Optional Chaining Operator (`?.`)
 
+it **safely accesses nested properties** and *returns* `undefined` instead of throwing an **error** if a *value* is *missing*.
+
+it is like a **safety net for working with objects** that might have *missing* parts.
+
+```js
+// w/o `?.`
+const person = {
+  name: "Alice",
+  age: 30
+};
+
+console.log(person.address.street); // This will throw an error!
+
+// w/ `?.`
+const user = {
+  name: "John",
+  profile: {
+    email: "john@example.com",
+    address: {
+      street: "123 Main St",
+      city: "Somewhere"
+    }
+  }
+};
+
+console.log(user?.profile?.address?.street); // "123 Main St"
+console.log(user?.profile?.phone?.number);   // undefined
+```
+
+By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is *not* `null` or `undefined`.
+
+- if the value before the `?.` is `null` or `undefined`, JavaScript *returns* `undefined` rather than attempting to proceed with the operation and throwing an **error**.
+
+&nbsp;
+
+## Object Destructuring
+
+
+
+
 &nbsp;
