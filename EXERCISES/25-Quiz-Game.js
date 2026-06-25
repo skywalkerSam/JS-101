@@ -1,55 +1,42 @@
 let questions = [
   {
-    category: "unknown",
+    category: "General Knowledge",
     question: "Who __ knows?",
-    choices: ["i", "myself", "me"],
+    choices: ["i", "myself", "the fuck"],
     answer: "the fuck",
   },
   {
-    category: "unknown",
+    category: "General Knowledge",
     question: "Whatever __ lies beyond...?",
-    choices: ["duck", "muck", "hell"],
+    choices: ["duck", "muck", "the fuck"],
     answer: "the fuck",
   },
   {
-    category: "unknown",
+    category: "General Knowledge",
     question: "Life is __.?",
-    choices: ["easy", "medium", "normal"],
+    choices: ["easy", "medium", "hard"],
     answer: "hard",
   },
   {
-    category: "unknown",
+    category: "General Knowledge",
     question: "Just keep __.?",
-    choices: ["sleeping", "working", "running"],
+    choices: ["sleeping", "working", "going"],
     answer: "going",
   },
   {
-    category: "unkown",
-    question: "i am just an __ human.?",
-    choices: ["extraordinary", "godlike", "unlikely"],
+    category: "General Knowledge",
+    question: "I am just an __ human.?",
+    choices: ["extraordinary", "godlike", "ordinary"],
     answer: "ordinary",
   },
 ];
 
-function appendChoices(arrOfChoices, answer) {
-  arrOfChoices.push(answer);
-}
-
-// appendChoices(questions[0].choices, questions[0].answer);
-// appendChoices(questions[1].choices, questions[1].answer);
-// appendChoices(questions[2].choices, questions[2].answer);
-// appendChoices(questions[3].choices, questions[3].answer);
-// appendChoices(questions[4].choices, questions[4].answer);
-
 function getRandomQuestion(arrOfQuestions) {
-  let aQuestionBe =
-    arrOfQuestions[Math.floor(Math.random() * arrOfQuestions.length)];
-  return aQuestionBe;
+  return arrOfQuestions[Math.floor(Math.random() * arrOfQuestions.length)];
 }
 
 function getRandomComputerChoice(arrOfChoices) {
-  let aChoiceBe = arrOfChoices[Math.floor(Math.random() * arrOfChoices.length)];
-  return aChoiceBe;
+  return arrOfChoices[Math.floor(Math.random() * arrOfChoices.length)];
 }
 
 function getResults(question, chosenAnswer) {
@@ -61,9 +48,17 @@ function getResults(question, chosenAnswer) {
 }
 
 let theQuestion = getRandomQuestion(questions);
-appendChoices(theQuestion.choices, theQuestion.answer);
 let theChoice = getRandomComputerChoice(theQuestion.choices);
 let theResult = getResults(theQuestion, theChoice);
-// console.log(theQuestion);
-// console.log(theChoice);
+
 console.log(theResult);
+
+/**Takeaway
+ *
+ * Do not assume!
+ * Follow the instructions!
+ *
+ * - You didn't need to append the array with the answer (choices: 4). The answer should already be in one of the choices (choices: 3).
+ *
+ * - Object is a non-primitive data type. Try NOT to assign primitive varibales to the values you don't yet have! (undefined)
+ */
