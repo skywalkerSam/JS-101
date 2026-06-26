@@ -1,4 +1,4 @@
-# [introduction to JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
+# [introduction To JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
 
 w/ freeCodeCamp.org
 
@@ -701,7 +701,7 @@ While comments are **useful** in programming, it is important to **avoid over-co
 
 &nbsp;
 
-## Data Types in JavaScript
+## Data Types
 
 - `Number`: A number represents both **integers** and **floating-point** values.
   - Examples of integers include 7, 19, and 90.
@@ -747,6 +747,83 @@ While comments are **useful** in programming, it is important to **avoid over-co
     ```js
     const veryBigNumber = 1234567890123456789012345678901234567890n;
     ```
+
+&nbsp;
+
+## Primitive & Non-Primitive Data Types
+
+The two categories of data types behave differently in terms of **how they are stored in memory** and **how they are being manipulated by programs**.
+
+&nbsp;
+
+### **Primitive** Data Types
+
+Primitive data types are **the simplest form of data** in JavaScript. These types are called "primitive" because they **represent single values** and **are not objects**.
+
+- number
+
+- bigint
+
+- string
+
+- boolean
+
+- null
+
+- undefined
+
+- symbol
+
+When you work with primitive data types, you're **dealing directly with their values**. For example, when you create a variable with a primitive value, that value is stored directly in the variable.
+
+Primitive values are **immutable**, which means once they are created, their value cannot be changed. However, you can **reassign a new value** to the variable.
+
+```js
+let num1 = 5;
+let num2 = num1;
+num1 = 10;
+
+console.log(num2); // 5
+```
+
+&nbsp;
+
+### **Non-Primitive** Data Types
+
+Non-primitive types are **complex** and **can hold multiple values** as _properties_ or _elements_.
+
+- objects
+
+- arrays
+
+- functions
+
+When you create a variable with a non-primitive value, **what's stored in the variable is actually a reference to the location in memory where the object is stored**, not the object itself. This leads to some important differences in behavior.
+
+```js
+const originalPerson = { name: "John", age: 30 };
+const copiedPerson = originalPerson;
+
+originalPerson.age = 31;
+
+console.log(copiedPerson.age); // 31
+```
+
+- This occurs because both `originalPerson` and `copiedPerson` are **referencing the same object in memory**.
+
+in JavaScript, **when you assign an object to another variable, you're copying the reference to the object**, not the object itself. This is known as **shallow copying** by reference.
+
+- As a result, any changes made to the object through one reference are reflected in all references to that object.
+
+&nbsp;
+
+## `null` vs. `undefined`
+
+in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
+
+- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an _argument_.
+
+- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
 
 &nbsp;
 
@@ -824,7 +901,7 @@ JavaScript provides tools to perform basic _arithmetic operations_ on numbers, s
 
 &nbsp;
 
-## Calculations with `Numbers` and `Strings`
+## Calculation with `Numbers` and `Strings`
 
 JavaScript is a language where things sometimes work in surprising, or even **weird**, ways. One such surprise occurs when you **mix numbers and strings** in calculations.
 
@@ -1099,14 +1176,6 @@ Comparison operators allow you to **compare two values** and return a `true` or 
   ```
 
 &nbsp;
-
-## `null` vs. `undefined`
-
-in JavaScript, `null` and `undefined` are two distinct data types that **represent the absence of a value**, but they **behave differently** in comparisons.
-
-- A variable is `undefined` when it has been **declared but hasn't been assigned a value**. it is the **default value** of **uninitialized variables** and **function parameters** that weren't provided an _argument_.
-
-- The `null` type is an assignment value that **represents a deliberate non-value**. it is often used to indicate that a variable **intentionally has no value**.
 
 ### w/ Equality Operator (`==`)
 
@@ -1517,6 +1586,8 @@ it checks if **both** operands are **true** and returns a result.
   }
   ```
 
+&nbsp;
+
 ### Logical OR (`||`)
 
 This operator checks if at least **one** of the operands is **truthy**. if the first operand is **truthy**, it **returns** that value:
@@ -1546,6 +1617,8 @@ console.log(result); // This is truthy
     console.log("No user detected");
   }
   ```
+
+&nbsp;
 
 ### Nullish Coalescing (`??`)
 
@@ -1589,6 +1662,8 @@ This method **generates a random floating-point number** between `0` (_inclusive
   // any number between 0 and 1 – 0 inclusive and 1 exclusive
   ```
 
+&nbsp;
+
 ### `Math.min()` & `Math.max()`
 
 They both take **a set of numbers** and return the **minimum** and **maximum** value, _respectively_.
@@ -1601,6 +1676,8 @@ const largest = Math.max(1, 5, 3, 9);
 console.log(largest); // 9
 ```
 
+&nbsp;
+
 ### `Math.ceil()` & `Math.floor()`
 
 if you wanted to **round numbers up or down** to the nearest whole integer, you could use the `Math.ceil()` and `Math.floor()` methods.
@@ -1610,6 +1687,8 @@ console.log(Math.ceil(4.3)); // 5
 
 console.log(Math.floor(4.7)); // 4
 ```
+
+&nbsp;
 
 ### `Math.round()`
 
@@ -1623,6 +1702,8 @@ console.log(Math.round(4.8)); // 5
 
 - if the decimal point is **less than 5**, the number is **rounded down**.
 - And if the decimal point is **5 or greater**, the number is **rounded up**.
+
+&nbsp;
 
 ### Random Number Generator
 
@@ -1643,6 +1724,8 @@ const randomNumBtw1And20 = Math.floor(Math.random() * 20) + 1;
 console.log(randomNumBtw1And20);
 ```
 
+&nbsp;
+
 ### `Math.trunc()`
 
 it **removes the decimal part** of a number, returning only the integer portion, **without rounding**.
@@ -1651,6 +1734,8 @@ it **removes the decimal part** of a number, returning only the integer portion,
 console.log(Math.trunc(2.9)); // 2
 console.log(Math.trunc(9.1)); // 9
 ```
+
+&nbsp;
 
 ### `Math.sqrt()` & `Math.cbrt()`
 
@@ -1661,6 +1746,8 @@ console.log(Math.sqrt(81)); // 9
 console.log(Math.cbrt(27)); // 3
 ```
 
+&nbsp;
+
 ### `Math.abs()`
 
 if you need to get the **absolute value of a number**, you can use the Math.abs() method. it returns the absolute value of a number, **turning negatives into positives**.
@@ -1669,6 +1756,8 @@ if you need to get the **absolute value of a number**, you can use the Math.abs(
 console.log(Math.abs(-5)); // 5
 console.log(Math.abs(5)); // 5
 ```
+
+&nbsp;
 
 ### `Math.pow()`
 
@@ -2500,7 +2589,555 @@ console.log(copyArray === originalArray); // false
 
 &nbsp;
 
+## Objects
+
+An object is a fundamental data structure that allows you to **store and organize related data and functionality**.
+
+You can think of an object as a container that holds various pieces of information, much like a filing cabinet holds different folders and documents. These pieces of information are called **properties**, and they consist of a name (or **key**) and a **value**.
+
+```js
+const exampleObject = {
+  propertyName: value,
+};
+```
+
+**Objects** are incredibly versatile and form the **backbone of JavaScript**. in fact, **almost everything in JavaScript is an object** or can be treated as one. This includes _arrays_, _functions_, and even primitive data types like _strings_ and _numbers_ when used in certain ways. This **object-centric** nature of JavaScript is one of the reasons it's such a flexible and powerful language.
+
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York",
+};
+```
+
+- Objects can **contain** not just simple values like _strings_ and _numbers_, but also **arrays**, or **other objects**.
+
+&nbsp;
+
+`Note`: Accessing a **non-existent** property on an object returns `undefined`.
+
+&nbsp;
+
+### Accessing Object Properties
+
+- **Dot Notation** (`.`) is the most common and straightforward way to access object properties.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    city: "New York",
+  };
+
+  // objectName.propertyName
+  console.log(person.name); // Alice
+  console.log(person.age); // 30
+  ```
+
+  - Dot notation is **concise** and **easy to read**, making it the preferred choice when you know the exact name of the property you want to access and that name is a **valid JavaScript identifier** (meaning it **doesn't start** with a _number_ and **doesn't contain** _special characters_ or _spaces_).
+
+- **Bracket notation** (`[]`), on the other hand, allows you to **access object properties using a string inside square brackets**.
+
+  ```js
+  const oddObject = {
+    "1stProperty": "Hello",
+    "property with spaces": "World",
+  };
+
+  console.log(oddObject["1stProperty"]); // Hello
+  console.log(oddObject["property with spaces"]); // World
+  ```
+
+  Bracket notation is **more flexible** than dot notation because it allows you to **use property names that aren't valid JavaScript identifiers**.
+  - Another advantage of bracket notation is that it allows you to **use variables to access properties** dynamically.
+
+    ```js
+    const person = {
+      name: "Alice",
+      age: 30,
+      city: "Wonderland",
+    };
+
+    let propertyName = "city";
+    console.log(person[propertyName]); // Wonderland
+    ```
+
+&nbsp;
+
+### Accessing Properties from Nested Objects and Arrays in Objects
+
+Accessing properties from nested objects involves using the **dot notation** or **bracket notation**, much like accessing properties from simple objects. However, you'll need to **chain** these accessors to **drill down** into the nested structure.
+
+```js
+const person = {
+  name: "Alice",
+  age: 30,
+  contact: {
+    email: "alice@example.com",
+    phone: {
+      home: "123-456-7890",
+      work: "098-765-4321",
+    },
+  },
+};
+
+console.log(person.contact.phone.work); // "098-765-4321"
+console.log(person["contact"]["phone"]["work"]); // "098-765-4321"
+```
+
+- Accessing data where **one of the object properties has the value of an array**.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    addresses: [
+      { type: "home", street: "123 Main St", city: "Anytown" },
+      { type: "work", street: "456 Market St", city: "Workville" },
+    ],
+  };
+
+  console.log(person.addresses[1].city); // "Workville"
+  ```
+
+&nbsp;
+
+### Remove Properties from an Object
+
+- `delete` Operator
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+    job: "Engineer",
+  };
+
+  delete person.job;
+
+  console.log(person.job); // undefined
+  ```
+
+- **Destructuring Assignment w/ Rest Parameters**: This approach **doesn't delete** the property, but **it creates a new object without the specified properties**.
+
+  ```js
+  const person = {
+    name: "Bob",
+    age: 25,
+    job: "Designer",
+    city: "New York",
+  };
+
+  const { job, city, ...remainingProperties } = person;
+
+  // { name: "Bob", age: 25 }
+  console.log(remainingProperties);
+  ```
+
+&nbsp;
+
+### Check if an Object Has a Property
+
+- `hasOwnProperty()` method **returns a boolean** indicating whether the object has the specified property as its _own_ property.
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+  };
+
+  console.log(person.hasOwnProperty("name")); // true
+  console.log(person.hasOwnProperty("job")); // false
+  ```
+
+  - This method is considered **unsafe**!
+
+- `Object.hasOwn()` method is the modern, **recommended** way to check if an object has a property as its own (_not inherited_).
+
+  ```js
+  const person = {
+    name: "Alice",
+    age: 30,
+  };
+
+  // Object.hasOwn(object, propertyName)
+  console.log(Object.hasOwn(person, "name")); // true
+  console.log(Object.hasOwn(person, "job")); // false
+  ```
+
+  - `Object.hasOwn()` only checks if the property exists — **it doesn't care about the property's value**. it **returns true** even when the value is `0`, `false`, `null`, or `undefined`.
+
+    ```js
+    const user = {
+      username: "coder123",
+      score: 0,
+      isActive: false,
+      nickname: null,
+    };
+
+    // Object.hasOwn() correctly reports these all exist
+    console.log(Object.hasOwn(user, "score")); // true  (value is 0, but property exists)
+    console.log(Object.hasOwn(user, "isActive")); // true  (value is false, but property exists)
+    console.log(Object.hasOwn(user, "nickname")); // true  (value is null, but property exists)
+    console.log(Object.hasOwn(user, "email")); // false (property was never added)
+
+    // Danger! Using if() directly gives wrong results for falsy values
+    if (user.score) {
+      console.log("Has score"); // This will NOT print even though score exists!
+    }
+
+    // Safe! Object.hasOwn() gives correct result
+    if (Object.hasOwn(user, "score")) {
+      console.log("Has score:", user.score); // Has score: 0
+    }
+    ```
+
+- `in` Operator: Like `hasOwnProperty()`, the `in` operator will return true if the property exists on the object.
+
+  ```js
+  const person = {
+    name: "Bob",
+    age: 25,
+  };
+
+  console.log("name" in person); // true
+  ```
+
+- **Check Against** `undefined`: This approach can be useful, but **it has limitations**. This method can give **false negatives** if a property _explicitly_ has the value `undefined`.
+
+  ```js
+  const car = {
+    brand: "Toyota",
+    model: "Corolla",
+    year: 2020,
+  };
+
+  console.log(car.brand !== undefined); // true
+  console.log(car.color !== undefined); // false
+  ```
+
+&nbsp;
+
+## Functions vs. Object Methods
+
+in JavaScript, functions and object methods are both **ways to encapsulate reusable code**, but they have some _key_ differences in **how they are defined, invoked, used, and the context in which they operate**.
+
+As you already know: **Functions** are reusable blocks of code that perform a specific task.
+
+```js
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+console.log(greet("Alice")); // "Hello, Alice!"
+```
+
+&nbsp;
+
+### Object Methods
+
+Object methods are **functions that are associated with an object**. They are **defined as properties of an object** and **can access and manipulate the object's data**.
+
+```js
+const person = {
+  name: "Bob",
+  age: 30,
+  sayHello: function () {
+    return "Hello, my name is " + this.name;
+  },
+};
+
+console.log(person.sayHello()); // "Hello, my name is Bob"
+```
+
+- Regular functions have their own scope, but they don't have a _built-in_ reference to any particular object. **Methods are bound to their object** and **can access its properties and other methods** using `this` keyword.
+
+- Methods are **associated with objects**, while functions are **standalone**. in other words, methods are basically functions who got married.)
+
+&nbsp;
+
+`Note`: A key point to note is that, **methods help in organizing code into logical objects**, while **functions are used for more general, reusable code**.
+
+&nbsp;
+
+## The `Object()` Constructor
+
+in JavaScript, a constructor is **a special type of function used to create and initialize objects**. it is invoked with the `new` keyword and can initialize properties and methods on the newly created object.
+
+```js
+new Object();
+```
+
+- The `Object()` constructor creates a new empty object.
+
+- The `Object()` constructor can be used with or without the `new` keyword.
+
+When called as a function **without** the `new` keyword, it **behaves differently** depending on the _type_ of value passed to it.
+
+```js
+const num = 42;
+const numObj = Object(num); // Creates an object wrapper for the number
+
+console.log(numObj);
+console.log(typeof numObj); // "object"
+```
+
+- This is called objectifying a number.)
+
+What happens if we try to pass `null` or `undefined` to the `Object()` constructor?
+
+```js
+const newObj = new Object(undefined);
+console.log(newObj); // {}
+```
+
+Another use case for the `Object()` constructor is when you're working with a value of **unknown type** and you need to **ensure it's an object**.
+
+```js
+function toObject(value) {
+  if (value === null || value === undefined) {
+    return {};
+  }
+
+  if (typeof value === "object") {
+    return value;
+  }
+
+  return Object(value);
+}
+
+console.log(toObject(null));
+
+console.log(toObject(true));
+
+console.log(toObject([1, 2, 3]));
+```
+
+- Arrays are special types of objects.
+
+&nbsp;
+
+`Note`: Most of the time you will **not be using the `Object()` constructor to create new objects** because you will be using **object literal syntax** instead (e.g., `const objectLiteral = { name: "Beau" }`). it is generally used to create an **object wrapper for a primitive value**.
+
+&nbsp;
+
+## JSON (JavaScript Object Notation)
+
+A lightweight, text-based **data format** that is commonly used to **exchange data between a server and a web application**.
+
+```js
+{
+  "name": "Alice",
+  "age": 30,
+  "isStudent": false,
+  "list of courses": ["Mathematics", "Physics", "Computer Science"]
+}
+```
+
+JSON uses _key-value_ pairs to store information and each pair is separated by a comma(`,`). **Each key must be wrapped in double quotes** (`""`), otherwise you will get an **error**!
+
+JSON is a versatile format that can store **many data types**, including arrays and nested objects. By using **dot notation**(`.`) or **bracket notation** (`[]`), you can easily access the values stored within a JSON object.
+
+- Machine-parseable & human-readable
+
+- Language-independent
+
+&nbsp;
+
+### `JSON.stringify()`
+
+it is used to **convert a JavaScript object into a JSON string**.
+
+This is useful when you want to **store or transmit data in a format that can be easily shared** or transferred between systems.
+
+```js
+const user = {
+  name: "John",
+  age: 30,
+  isAdmin: true,
+};
+
+const jsonString = JSON.stringify(user);
+console.log(jsonString); // "{"name":"John","age":30,"isAdmin":true}"
+```
+
+- The `JSON.stringify()` method also accepts an **optional parameter** called a **replacer**, which can be a _function_ or an _array_. This parameter specifies **which properties are to be stringified**.
+  - The result will be **a stringified object containing only the specified properties**.
+
+  ```js
+  const developerObj = {
+    firstName: "Jessica",
+    isAwesome: true,
+    isMusician: true,
+    country: "USA",
+  };
+
+  console.log(JSON.stringify(developerObj, ["firstName", "country"]));
+  // result: {"firstName":"Jessica","country":"USA"}
+  ```
+
+- **Another optional parameter** for the `JSON.stringify()` method would be the **spacer** parameter. This allows you to **control the spacing for the stringified result.**
+
+  ```js
+  const developerObj = {
+    firstName: "Jessica",
+    isAwesome: true,
+    isMusician: true,
+    country: "USA",
+  };
+
+  console.log(JSON.stringify(developerObj, null, 2));
+
+  /* result
+  {
+    "firstName": "Jessica",
+    "isAwesome": true,
+    "isMusician": true,
+    "country": "USA"
+  }
+  */
+  ```
+
+&nbsp;
+
+### `JSON.parse()`
+
+it **converts a JSON string back into a JavaScript object**.
+
+This is _useful_ when you retrieve JSON data from a web server or from localStorage and you need **to manipulate the data in your application**.
+
+```js
+const jsonString = '{"name":"John","age":30,"isAdmin":true}';
+const userObject = JSON.parse(jsonString);
+console.log(userObject);
+
+// Result:
+// { name: 'John', age: 30, isAdmin: true }
+```
+
+- This allows you to work with the data in your program as a normal JavaScript object, making it easier to manipulate and use.
+
+&nbsp;
+
+## Optional Chaining Operator (`?.`)
+
+it **safely accesses nested properties** and *returns* `undefined` instead of throwing an **error** if a *value* is *missing*.
+
+it is like a **safety net for working with objects** that might have *missing* parts.
+
+```js
+// w/o `?.`
+const person = {
+  name: "Alice",
+  age: 30
+};
+
+console.log(person.address.street); // This will throw an error!
+
+// w/ `?.`
+const user = {
+  name: "John",
+  profile: {
+    email: "john@example.com",
+    address: {
+      street: "123 Main St",
+      city: "Somewhere"
+    }
+  }
+};
+
+console.log(user?.profile?.address?.street); // "123 Main St"
+console.log(user?.profile?.phone?.number);   // undefined
+```
+
+By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is *not* `null` or `undefined`.
+
+- if the value before the `?.` is `null` or `undefined`, JavaScript *returns* `undefined` rather than attempting to proceed with the operation and throwing an **error**.
+
+&nbsp;
+
+## Object Destructuring
+
+it allows you to **extract values from objects and assign them to variables** in a more *concise* and *readable* way.
+
+- introduced in ES6 (ECMAScript 2015)
+
+```js
+const person = { name: "Alice", age: 30, city: "New York" };
+
+const { name, age } = person;
+
+console.log(name); // Alice
+console.log(age);  // 30
+```
+
+You can **assign the extracted values to variables with different names**. This is particularly useful when you're working with objects that have **property names that might conflict with existing variables** or when you want to use a different *name*.
+
+```js
+let person = { name: "Alice", age: 30, city: "New York" };
+
+let { name: personName, age: personAge } = person;
+
+console.log(personName); // Alice
+console.log(personAge); //  30
+```
+
+Object destructuring also allows you to set **default values**. If a property doesn't exist in the object you're destructuring, you can specify a **fallback** value.
+
+```js
+let person = { name: "Alice", age: 30, city: "New York" };
+let { name, age, country = "Unknown" } = person;
+
+console.log(country); // Unknown
+```
+
+Another common case is **nested object destructuring**. You can destructure properties nested inside other objects by using another set of braces (`{}`).
+
+```js
+const recipe = {
+  name: "Chocolate Cake",
+  ingredients: {
+    flour: "2 cups",
+    sugar: "1 cup"
+  }
+};
+
+// Extract `flour` from `ingredients`
+const { ingredients: { flour } } = recipe;
+
+console.log(flour); // "2 cups"
+
+// it is same as doing this:
+const flour = recipe.ingredients.flour;
+console.log(flour); // "2 cups"
+```
+
+**Shorthand notation** in object destructuring: When you're creating objects, **especially when the property names match variable names**, you can use a **shorthand syntax**.
+
+```js
+let name = "Bob";
+let age = 25;
+
+let person = { name, age };
+
+console.log(person); // { name: "Bob", age: 25 }
+```
+
+- This shorthand notation is particularly useful when you're **returning objects from functions** or **creating objects with multiple properties**.
+
+  ```js
+  function createPerson(name, age) {
+    return { name, age };
+  }
+
+  let person = createPerson("Charlie", 35);
+  console.log(person); // { name: "Charlie", age: 35 }
+  ```
+
+&nbsp;
+
 ##
+
 
 
 &nbsp;
