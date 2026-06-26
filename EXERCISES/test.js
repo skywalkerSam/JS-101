@@ -1,54 +1,64 @@
-let questions = [
-  {
-    category: "General Knowledge",
-    question: "Who __ knows?",
-    choices: ["i", "myself", "the fuck"],
-    answer: "the fuck",
-  },
-  {
-    category: "General Knowledge",
-    question: "Whatever __ lies beyond...?",
-    choices: ["duck", "muck", "the fuck"],
-    answer: "the fuck",
-  },
-  {
-    category: "General Knowledge",
-    question: "Life is __.?",
-    choices: ["easy", "medium", "hard"],
-    answer: "hard",
-  },
-  {
-    category: "General Knowledge",
-    question: "Just keep __.?",
-    choices: ["sleeping", "working", "going"],
-    answer: "going",
-  },
-  {
-    category: "General Knowledge",
-    question: "I am just an __ human.?",
-    choices: ["extraordinary", "godlike", "ordinary"],
-    answer: "ordinary",
-  },
-];
-
-function getRandomQuestion(arrOfQuestions) {
-  return arrOfQuestions[Math.floor(Math.random() * arrOfQuestions.length)];
-}
-
-function getRandomComputerChoice(arrOfChoices) {
-  return arrOfChoices[Math.floor(Math.random() * arrOfChoices.length)];
-}
-
-function getResults(question, chosenAnswer) {
-  if (question.answer === chosenAnswer) {
-    return "The computer's choice is correct!";
+if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid") &&
+    (validatedManifest.unit === "Missing" ||
+      validatedManifest.unit === "Invalid") &&
+    (validatedManifest.hazmat === "Missing" ||
+      validatedManifest.hazmat === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+      unit: validatedManifest.unit,
+      hazmat: validatedManifest.hazmat,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid") &&
+    (validatedManifest.unit === "Missing" ||
+      validatedManifest.unit === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+      unit: validatedManifest.unit,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid") &&
+    (validatedManifest.weight === "Missing" ||
+      validatedManifest.weight === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+      weight: validatedManifest.weight,
+    };
+  } else if (
+    (validatedManifest.containerId === "Missing" ||
+      validatedManifest.containerId === "Invalid") &&
+    (validatedManifest.destination === "Missing" ||
+      validatedManifest.destination === "Invalid")
+  ) {
+    return {
+      containerId: validatedManifest.containerId,
+      destination: validatedManifest.destination,
+    };
+  } else if (
+    validatedManifest.containerId === "Missing" ||
+    validatedManifest.containerId === "Invalid"
+  ) {
+    return { containerId: validatedManifest.containerId };
   }
-
-  return `The computer's choice is wrong. The correct answer is: ${question.answer}`;
-}
-
-let theQuestion = getRandomQuestion(questions);
-let theChoice = getRandomComputerChoice(theQuestion.choices);
-let theResult = getResults(theQuestion, theChoice);
-
-console.log(theResult);

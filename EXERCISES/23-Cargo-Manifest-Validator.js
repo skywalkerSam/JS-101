@@ -38,150 +38,116 @@ function validateManifest(manifest) {
     return { isValid: false, error: "input must be an object!" };
   }
 
-  let validatedManifest = { ...manifest };
+  let objToValidate = { ...manifest };
 
   // TODO: if the input manifest object is not valid, your `validateManifest` function should `return` an object describing missing and/or invalid properties. (Test 15)
   let requiredKeys = ["containerId", "destination", "weight", "unit", "hazmat"];
   let keyVerification = requiredKeys.every((key) =>
     Object.hasOwn(manifest, key),
   );
-  
-  let isContainerIdNotMissing = Object.hasOwn(manifest, requiredKeys[0])
-  let isDestinationNotMissing = Object.hasOwn(manifest, requiredKeys[1])
-  let isWeightNotMissing = Object.hasOwn(manifest, requiredKeys[2])
-  let isUnitNotMissing = Object.hasOwn(manifest, requiredKeys[3])
-  let isHazmatNotMissing = Object.hasOwn(manifest, requiredKeys[4])
 
-  // containerId
-  if (manifest.containerId === undefined || !isContainerIdNotMissing) {
-    validatedManifest.containerId = "Missing";
+  // containerId validation
+  if (
+    manifest.containerId === undefined ||
+    !Object.hasOwn(manifest, "containerId")
+  ) {
+    objToValidate.containerId = "Missing";
   } else if (
     Number.isNaN(manifest.containerId) ||
     typeof manifest.containerId !== "number" ||
     manifest.containerId <= 0 ||
     Number.isInteger(manifest.containerId) !== true
   ) {
-    validatedManifest.containerId = "Invalid";
+    objToValidate.containerId = "Invalid";
   }
 
-  // destination
-  if (manifest.destination === undefined || !isDestinationNotMissing) {
-    validatedManifest.destination = "Missing";
+  // destination validation
+  if (
+    manifest.destination === undefined ||
+    !Object.hasOwn(manifest, "destination")
+  ) {
+    objToValidate.destination = "Missing";
   } else if (
     typeof manifest.destination !== "string" ||
     manifest.destination.trim() === ""
   ) {
-    validatedManifest.destination = "Invalid";
+    objToValidate.destination = "Invalid";
   }
 
-  // weight
-  if (manifest.weight === undefined || !isWeightNotMissing) {
-    validatedManifest.weight = "Missing";
+  // weight validation
+  if (manifest.weight === undefined || !Object.hasOwn(manifest, "weight")) {
+    objToValidate.weight = "Missing";
   } else if (
     Number.isNaN(manifest.weight) ||
     typeof manifest.weight !== "number" ||
     manifest.weight <= 0
   ) {
-    validatedManifest.weight = "Invalid";
+    objToValidate.weight = "Invalid";
   }
 
-  // unit
-  if (manifest.unit === undefined || !isUnitNotMissing) {
-    validatedManifest.unit = "Missing";
+  // unit validation
+  if (manifest.unit === undefined || !Object.hasOwn(manifest, "unit")) {
+    objToValidate.unit = "Missing";
   } else if (typeof manifest.unit !== "string" || manifest.unit.trim() === "") {
-    validatedManifest.unit = "Invalid";
+    objToValidate.unit = "Invalid";
   } else if (manifest.unit !== "lb" && manifest.unit !== "kg") {
-    validatedManifest.unit = "Invalid";
+    objToValidate.unit = "Invalid";
   }
 
-  // hazmat
-  if (manifest.hazmat === undefined || !isHazmatNotMissing) {
-    validatedManifest.hazmat = "Missing";
+  // hazmat validation
+  if (manifest.hazmat === undefined || !Object.hasOwn(manifest, "hazmat")) {
+    objToValidate.hazmat = "Missing";
   } else if (typeof manifest.hazmat !== "boolean") {
-    validatedManifest.hazmat = "Invalid";
+    objToValidate.hazmat = "Invalid";
   } else if (manifest.hazmat !== true && manifest.hazmat !== false) {
-    validatedManifest.hazmat = "Invalid";
+    objToValidate.hazmat = "Invalid";
   }
 
-  // return objects
   if (
-    validatedManifest.containerId !== "Missing" &&
-    validatedManifest.containerId !== "Invalid" &&
-    validatedManifest.destination !== "Missing" &&
-    validatedManifest.destination !== "Invalid" &&
-    validatedManifest.weight !== "Missing" &&
-    validatedManifest.weight !== "Invalid" &&
-    validatedManifest.unit !== "Missing" &&
-    validatedManifest.unit !== "Invalid" &&
-    validatedManifest.hazmat !== "Missing" &&
-    validatedManifest.hazmat !== "Invalid"
+    objToValidate.containerId !== "Missing" &&
+    objToValidate.containerId !== "Invalid" &&
+    objToValidate.destination !== "Missing" &&
+    objToValidate.destination !== "Invalid" &&
+    objToValidate.weight !== "Missing" &&
+    objToValidate.weight !== "Invalid" &&
+    objToValidate.unit !== "Missing" &&
+    objToValidate.unit !== "Invalid" &&
+    objToValidate.hazmat !== "Missing" &&
+    objToValidate.hazmat !== "Invalid"
   ) {
     return {};
-    // TODO: Return only missing/invalid properties.
-  } else if (
-    (validatedManifest.containerId === "Missing" ||
-      validatedManifest.containerId === "Invalid") &&
-    (validatedManifest.destination === "Missing" ||
-      validatedManifest.destination === "Invalid") &&
-    (validatedManifest.weight === "Missing" ||
-      validatedManifest.weight === "Invalid") &&
-    (validatedManifest.unit === "Missing" ||
-      validatedManifest.unit === "Invalid") &&
-    (validatedManifest.hazmat === "Missing" ||
-      validatedManifest.hazmat === "Invalid")
-  ) {
-    return {
-      containerId: validatedManifest.containerId,
-      destination: validatedManifest.destination,
-      weight: validatedManifest.weight,
-      unit: validatedManifest.unit,
-      hazmat: validatedManifest.hazmat,
-    };
-  } else if (
-    (validatedManifest.containerId === "Missing" ||
-      validatedManifest.containerId === "Invalid") &&
-    (validatedManifest.destination === "Missing" ||
-      validatedManifest.destination === "Invalid") &&
-    (validatedManifest.weight === "Missing" ||
-      validatedManifest.weight === "Invalid") &&
-    (validatedManifest.unit === "Missing" ||
-      validatedManifest.unit === "Invalid")
-  ) {
-    return {
-      containerId: validatedManifest.containerId,
-      destination: validatedManifest.destination,
-      weight: validatedManifest.weight,
-      unit: validatedManifest.unit,
-    };
-  } else if (
-    (validatedManifest.containerId === "Missing" ||
-      validatedManifest.containerId === "Invalid") &&
-    (validatedManifest.destination === "Missing" ||
-      validatedManifest.destination === "Invalid") &&
-    (validatedManifest.weight === "Missing" ||
-      validatedManifest.weight === "Invalid")
-  ) {
-    return {
-      containerId: validatedManifest.containerId,
-      destination: validatedManifest.destination,
-      weight: validatedManifest.weight,
-    };
-  } else if (
-    (validatedManifest.containerId === "Missing" ||
-      validatedManifest.containerId === "Invalid") &&
-    (validatedManifest.destination === "Missing" ||
-      validatedManifest.destination === "Invalid")
-  ) {
-    return {
-      containerId: validatedManifest.containerId,
-      destination: validatedManifest.destination,
-    };
-  } else if (
-    validatedManifest.containerId === "Missing" ||
-    validatedManifest.containerId === "Invalid"
-  ) {
-    return { containerId: validatedManifest.containerId };
   }
+
+  // return only missing/invalid properties.
+  let validatedManifest = {};
+  if (
+    objToValidate.containerId === "Missing" ||
+    objToValidate.containerId === "Invalid"
+  ) {
+    validatedManifest.containerId = objToValidate.containerId;
+  }
+  if (
+    objToValidate.destination === "Missing" ||
+    objToValidate.destination === "Invalid"
+  ) {
+    validatedManifest.destination = objToValidate.destination;
+  }
+  if (
+    objToValidate.weight === "Missing" ||
+    objToValidate.weight === "Invalid"
+  ) {
+    validatedManifest.weight = objToValidate.weight;
+  }
+  if (objToValidate.unit === "Missing" || objToValidate.unit === "Invalid") {
+    validatedManifest.unit = objToValidate.unit;
+  }
+  if (
+    objToValidate.hazmat === "Missing" ||
+    objToValidate.hazmat === "Invalid"
+  ) {
+    validatedManifest.hazmat = objToValidate.hazmat;
+  }
+  return validatedManifest;
 }
 
 function processManifest(manifest) {
@@ -205,7 +171,7 @@ function processManifest(manifest) {
     console.log(`Validation error: ${manifest.containerId}`);
     console.log(validateManifest(manifest));
   }
-} 
+}
 
 // test 7
 console.log("\ntest 7\n");
