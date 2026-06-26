@@ -3136,8 +3136,17 @@ console.log(person); // { name: "Bob", age: 25 }
 
 &nbsp;
 
-##
+## Loops (iteration)
+
+Loops in programming are used to **repeat a block of code multiple times**.
 
 
+
+
+&nbsp;
+
+
+
+&nbsp;
 
 &nbsp;
