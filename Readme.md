@@ -3136,14 +3136,67 @@ console.log(person); // { name: "Bob", age: 25 }
 
 &nbsp;
 
-## Loops (iteration)
+## Loops 
 
 Loops in programming are used to **repeat a block of code multiple times**.
 
+- A **nested loop** is when you place one loop inside of another.
+
+An **iteration** is a single pass through the loop.
+
+### `for` Loop
+
+```js
+for (initialization; condition; increment or decrement) {
+  // code block to be executed
+}
+```
+
+- The `initialization` statement is **executed before** the loop starts. 
+
+  - it is typically used to initialize a **counter** variable. 
+
+    - A counter variable is a variable that is used **to keep track of how many times the loop has run**.
+
+- The `condition` statement is **evaluated before each iteration** of the loop.
+
+  - if the condition is `true`, the code block inside the loop is executed. 
+
+  - if the condition is `false`, the loop stops and you move on to the next block of code.
+
+    - The loop runs until the condition is `false`.
+
+- The last part of the loop is the `increment/decrement` statement which is **executed after each iteration** of the loop. 
+
+  - it is typically used to **increment or decrement the counter** variable.
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+&nbsp;
+
+`Note`: You should be careful **NOT to create a condition that is always `true`**. Because if you do, *the loop will run forever* and your program will *crash*! This is known as an **infinite loop**.
+
+&nbsp;
+
+### `for...of` Loop
+
+A `for...of` loop is used when you need to **loop over values from an iterable**. Examples of iterables would be `arrays`, and `strings`.
+
+```js
+for (variable of iterable) {
+  // code block to be executed
+}
+```
 
 
 
 &nbsp;
+
+
 
 
 
