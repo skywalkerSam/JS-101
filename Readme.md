@@ -3021,15 +3021,15 @@ console.log(userObject);
 
 ## Optional Chaining Operator (`?.`)
 
-it **safely accesses nested properties** and *returns* `undefined` instead of throwing an **error** if a *value* is *missing*.
+it **safely accesses nested properties** and _returns_ `undefined` instead of throwing an **error** if a _value_ is _missing_.
 
-it is like a **safety net for working with objects** that might have *missing* parts.
+it is like a **safety net for working with objects** that might have _missing_ parts.
 
 ```js
 // w/o `?.`
 const person = {
   name: "Alice",
-  age: 30
+  age: 30,
 };
 
 console.log(person.address.street); // This will throw an error!
@@ -3041,24 +3041,24 @@ const user = {
     email: "john@example.com",
     address: {
       street: "123 Main St",
-      city: "Somewhere"
-    }
-  }
+      city: "Somewhere",
+    },
+  },
 };
 
 console.log(user?.profile?.address?.street); // "123 Main St"
-console.log(user?.profile?.phone?.number);   // undefined
+console.log(user?.profile?.phone?.number); // undefined
 ```
 
-By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is *not* `null` or `undefined`.
+By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is _not_ `null` or `undefined`.
 
-- if the value before the `?.` is `null` or `undefined`, JavaScript *returns* `undefined` rather than attempting to proceed with the operation and throwing an **error**.
+- if the value before the `?.` is `null` or `undefined`, JavaScript _returns_ `undefined` rather than attempting to proceed with the operation and throwing an **error**.
 
 &nbsp;
 
 ## Object Destructuring
 
-it allows you to **extract values from objects and assign them to variables** in a more *concise* and *readable* way.
+it allows you to **extract values from objects and assign them to variables** in a more _concise_ and _readable_ way.
 
 - introduced in ES6 (ECMAScript 2015)
 
@@ -3068,10 +3068,10 @@ const person = { name: "Alice", age: 30, city: "New York" };
 const { name, age } = person;
 
 console.log(name); // Alice
-console.log(age);  // 30
+console.log(age); // 30
 ```
 
-You can **assign the extracted values to variables with different names**. This is particularly useful when you're working with objects that have **property names that might conflict with existing variables** or when you want to use a different *name*.
+You can **assign the extracted values to variables with different names**. This is particularly useful when you're working with objects that have **property names that might conflict with existing variables** or when you want to use a different _name_.
 
 ```js
 let person = { name: "Alice", age: 30, city: "New York" };
@@ -3098,12 +3098,14 @@ const recipe = {
   name: "Chocolate Cake",
   ingredients: {
     flour: "2 cups",
-    sugar: "1 cup"
-  }
+    sugar: "1 cup",
+  },
 };
 
 // Extract `flour` from `ingredients`
-const { ingredients: { flour } } = recipe;
+const {
+  ingredients: { flour },
+} = recipe;
 
 console.log(flour); // "2 cups"
 
@@ -3136,7 +3138,7 @@ console.log(person); // { name: "Bob", age: 25 }
 
 &nbsp;
 
-## Loops 
+## Loops
 
 Loops in programming are used to **repeat a block of code multiple times**.
 
@@ -3152,22 +3154,17 @@ for (initialization; condition; increment or decrement) {
 }
 ```
 
-- The `initialization` statement is **executed before** the loop starts. 
-
-  - it is typically used to initialize a **counter** variable. 
-
+- The `initialization` statement is **executed before** the loop starts.
+  - it is typically used to initialize a **counter** variable.
     - A counter variable is a variable that is used **to keep track of how many times the loop has run**.
 
 - The `condition` statement is **evaluated before each iteration** of the loop.
-
-  - if the condition is `true`, the code block inside the loop is executed. 
+  - if the condition is `true`, the code block inside the loop is executed.
 
   - if the condition is `false`, the loop stops and you move on to the next block of code.
-
     - The loop runs until the condition is `false`.
 
-- The last part of the loop is the `increment/decrement` statement which is **executed after each iteration** of the loop. 
-
+- The last part of the loop is the `increment/decrement` statement which is **executed after each iteration** of the loop.
   - it is typically used to **increment or decrement the counter** variable.
 
 ```js
@@ -3178,13 +3175,15 @@ for (let i = 0; i < 5; i++) {
 
 &nbsp;
 
-`Note`: You should be careful **NOT to create a condition that is always `true`**. Because if you do, *the loop will run forever* and your program will *crash*! This is known as an **infinite loop**.
+`Note`: You should be careful **NOT to create a condition that is always `true`**. Because if you do, _the loop will run forever_ and your program will _crash_! This is known as an **infinite loop**.
 
 &nbsp;
 
 ### `for...of` Loop
 
-A `for...of` loop is used when you need to **loop over values from an iterable**. Examples of iterables would be `arrays`, and `strings`.
+A `for...of` loop is used when you need to **loop over values from an iterable**, like _arrays_ or _strings_.
+
+- Easy to read & concise.
 
 ```js
 for (variable of iterable) {
@@ -3192,11 +3191,47 @@ for (variable of iterable) {
 }
 ```
 
+- The `variable` represents the **current value of the iterable** that is being looped over.
+  - if you have **an array of numbers**, the `variable` would be the **current number** in the _array_.
 
+  - if you have a **string**, the `variable` would be the **current character** in the _string_.
+
+```js
+// array
+let arrOfItems = [1, 2, 3, 4, 5, 6, "idk", "wtf", "hi!"];
+
+for (let everyItem of arrOfItems) {
+  console.log(everyItem);
+}
+```
+
+```js
+// string
+let hello = "hello";
+
+for (let everyChar of hello) {
+  console.log(everyChar);
+}
+```
+
+```js
+// array of objects
+let arrayOfObjs = [
+  { name: "Agricultural Humans", age: 12026 },
+  { name: "Modern Humans", age: 300000 },
+  { name: "Earth", age: "~4.54 Billion" },
+  { name: "Aliens", age: null },
+  { name: "Existence", age: "~13.8 Billion" },
+];
+
+for (let object of arrayOfObjs) {
+  console.log(`${object.name}: ${object.age} Years.`);
+}
+```
 
 &nbsp;
 
-
+### `for...in` Loop
 
 
 
