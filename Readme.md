@@ -3296,3 +3296,63 @@ for (let prop in person) {
 it is **NOT recommended** to use a `for...in` loop to loop over the elements of an **array**. instead, use a `for...of` loop or other **array methods** like `forEach`, `map`, `filter`, and `reduce`.
 
 &nbsp;
+
+## `while` Loop
+
+A `while` loop will **run a block of code as long as the condition is `true`**.
+
+- it is useful when you do not know how many times you need to run the block of code.
+
+```js
+while (condition) {
+  // code block to be executed
+}
+```
+
+- The `condition` is **checked before the block of code is executed**.
+  - if the condition is `false`, the block of code will not be _executed_.
+
+```js
+let counter = 0;
+while (counter < 6) {
+  console.log(counter);
+  counter++;
+}
+```
+
+&nbsp;
+
+### `do...while` Loop
+
+The key _difference_ between a `do...while` loop and a `while` loop is that the `do...while` loop will **execute the block of code at least once** before checking the _condition_.
+
+```js
+do {
+  // code block to be executed
+} while (condition);
+```
+
+- if the condition is `true`, the block of code will continue executing.
+
+- if the condition is `false`, the block of code will stop executing.
+
+```js
+let counter = 0;
+do {
+  console.log(counter);
+  counter++;
+} while (counter < 6);
+```
+
+&nbsp;
+
+## `break` & `continue` Statements
+
+
+
+&nbsp;
+
+
+&nbsp;
+
+&nbsp;
