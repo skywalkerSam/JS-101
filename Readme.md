@@ -3348,11 +3348,59 @@ do {
 
 ## `break` & `continue` Statements
 
+A `break` statement is used to **exit a loop early**.
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    break;
+  }
+  console.log(i);
+}
+```
+
+A `continue` statement is used to **skip the current iteration** of a loop and **move to the next one**.
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    continue;
+  }
+  console.log(i);
+}
+```
+
+- The output of this code will print the numbers `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, and `9`.
+  - The number `5` is **skipped because of the `continue` statement**.
+
+&nbsp;
+
+**Use labels to** specify which loop you want to `break` or `continue`.
+
+- This is useful when you have **nested loops** and you want to **control the flow of the outer loop from within the inner loop**.
+
+```js
+outerLoop: for (let i = 0; i < 3; i++) {
+  innerLoop: for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      break outerLoop;
+    }
+    console.log(`i: ${i}, j: ${j}`);
+  }
+}
+```
+
+- This will exit both the inner and outer loops.
+
+&nbsp;
+
+##
+
 
 
 &nbsp;
 
-
 &nbsp;
 
 &nbsp;
+
