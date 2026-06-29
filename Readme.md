@@ -3233,8 +3233,66 @@ for (let object of arrayOfObjs) {
 
 ### `for...in` Loop
 
+A `for...in` loop is best used when you need to **loop over the properties of an _object_**.
 
+- This loop will **iterate over all enumerable properties of an object**, including _inherited_ properties and _non-numeric_ properties.
+  - An _inherited_ property is a property that is **inherited from the object's prototype chain**.
 
-&nbsp;
+  - A _non-numeric_ property is a property that is **not a number** or **a string that can be converted to a number**.
+
+```js
+for (variable in object) {
+  // code block to be executed
+}
+```
+
+- The `variable` represents the **current property of the object** that is being looped over.
+
+```js
+let person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+  },
+};
+
+for (let prop in person) {
+  console.log(person[prop]);
+}
+```
+
+```js
+// accessing nested object properties
+let person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+  },
+};
+
+function isObject(obj) {
+  return typeof obj === "object" && !Array.isArray(obj) && obj !== null;
+}
+
+for (let prop in person) {
+  if (isObject(person[prop])) {
+    for (let nestedProp in person[prop]) {
+      console.log(person[prop][nestedProp]);
+    }
+  } else {
+    console.log(person[prop]);
+  }
+}
+```
+
+- Due to a historical **bug** in JavaScript, `typeof null` returns `'object'`. So we want to also exclude `null` values from the check.
+
+it is **NOT recommended** to use a `for...in` loop to loop over the elements of an **array**. instead, use a `for...of` loop or other **array methods** like `forEach`, `map`, `filter`, and `reduce`.
 
 &nbsp;
