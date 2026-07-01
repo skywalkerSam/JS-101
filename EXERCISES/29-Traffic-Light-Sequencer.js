@@ -33,37 +33,45 @@ const config4 = {
 };
 
 function runSequence(config, cycles) {
-  for (let i = 0; i <= cycles + 1; i++) {
-    if (config.phases.length === 0) {
-      console.log("No phases found");
-      return "No phases found";
-    } else if (config.fault === true) {
-      console.log("Faulted phase!");
-      break;
-    } else if (config.phases[i].duration <= 0) {
-      console.log("Invalid phase detected");
-      continue;
+  for (let i = 0; i < cycles; i++) {
+    for (let j = 0; j < config.phases.length; j++) {
+      if (config.phases.length === 0) {
+        console.log("No phases found");
+        return "No phases found";
+      } else if (config.fault === true) {
+        console.log("Faulted phase!");
+        break;
+      } else if (config.phases[j].duration <= 0) {
+        console.log("Invalid phase detected");
+        continue;
+      }
+      console.log(
+        `Switching to ${config.phases[j].color} for ${config.phases[j].duration} s`,
+      );
+      console.log(`i: ${i}`);
+      console.log(`j: ${j}`);
     }
-    console.log(
-      `Switching to ${config.phases[i].color} for ${config.phases[i].duration} s`,
-    );
   }
 }
 
 function generateTimeline(config, cycles) {
   let elapsedTime = [];
-  for (let i = 0; i <= cycles + 1; i++) {
-    if (elapsedTime.length === 0) {
-      elapsedTime.push(config.phases[i].duration);
-    } else {
-      elapsedTime.push(config.phases[i].duration + elapsedTime[i - 1]);
+  for (let i = 0; i < cycles; i++) {
+    // console.log(`i: ${i}`)
+    for (let j = 0; j < config.phases.length; j++) {
+      // console.log(`j: ${j}`)
+
+      if (elapsedTime.length === 0) {
+        elapsedTime.push(config.phases[j].duration);
+      } else {
+        elapsedTime.push(config.phases[j].duration + elapsedTime[j - 1]);
+      }
     }
   }
   return elapsedTime;
 }
 
 runSequence(config1, 1);
-runSequence(config1, 2)
+runSequence(config1, 2);
 
-
-// console.log(generateTimeline(config1, 1));
+console.log(generateTimeline(config1, 1));
