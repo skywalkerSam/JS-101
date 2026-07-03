@@ -33,24 +33,27 @@ const config4 = {
 };
 
 function runSequence(config, cycles) {
-  for (let i = 0; i < cycles; i++) {
-    for (let j = 0; j < config.phases.length; j++) {
+  cycleLoop: for (let i = 0; i < cycles; i++) {
+    let j = 0;
+    do {
       if (config.phases.length === 0) {
         console.log("No phases found");
         return "No phases found";
       } else if (config.fault === true) {
         console.log("Faulted phase!");
-        break;
+        break cycleLoop;
       } else if (config.phases[j].duration <= 0) {
         console.log("Invalid phase detected");
-        continue;
       }
-      console.log(
-        `Switching to ${config.phases[j].color} for ${config.phases[j].duration} s`,
-      );
-      console.log(`i: ${i}`);
-      console.log(`j: ${j}`);
-    }
+      if (config.phases[j].duration > 0) {
+        console.log(
+          `Switching to ${config.phases[j].color} for ${config.phases[j].duration} s`,
+        );
+      }
+      // console.log(`i: ${i}`);
+      // console.log(`j: ${j}`);
+      j++;
+    } while (j < config.phases.length);
   }
 }
 
@@ -64,14 +67,28 @@ function generateTimeline(config, cycles) {
       if (elapsedTime.length === 0) {
         elapsedTime.push(config.phases[j].duration);
       } else {
-        elapsedTime.push(config.phases[j].duration + elapsedTime[j - 1]);
+        let lastPhaseDur = [...elapsedTime].pop();
+        elapsedTime.push(config.phases[j].duration + lastPhaseDur);
       }
     }
   }
   return elapsedTime;
 }
 
-runSequence(config1, 1);
-runSequence(config1, 2);
+// runSequence(config1, 1);
+// runSequence(config1, 2);
+// runSequence(config3, 2);
+// runSequence(config4, 5);
+// runSequence(config2, 1);
 
-console.log(generateTimeline(config1, 1));
+// console.log(generateTimeline(config1, 1));
+// console.log(generateTimeline(config1, 2));
+console.log(generateTimeline(config1, 2));
+
+// console.log(config4.phases.length)
+
+/** Takeaway
+ *
+ * Pseudocode the conditions before attempting to code.
+ *
+ */
