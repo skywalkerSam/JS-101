@@ -162,5 +162,23 @@ function chunkCrew(crew, size) {
   return chunks;
 }
 
-let partners = chunkCrew(EVAReadySquad, 2);
-console.log(partners);
+let EVAChunks = chunkCrew(EVAReadySquad, 3);
+// console.log(EVAChunks);
+
+// firstIndexLoop: for (let i = 0; i < EVAChunks.length; i++) {
+//   console.log(`Chunk ${i + 1}:`);
+//   secondIndexLoop: for (let y = 0; y < EVAChunks[i].length; y++) {
+//     console.log(EVAChunks[i][y].name);
+//   }
+// }
+
+function printCrewSummary(crew) {
+  let sorted = crew.slice();
+  sortByPriorityDescending(sorted);
+
+  for (let astronaut of sorted) {
+    console.log(astronaut.name);
+  }
+}
+
+printCrewSummary(updatedSquad);
