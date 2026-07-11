@@ -73,4 +73,126 @@ console.log(catalog.length);
 function findByAuthor(catalog, author) {
   let searchTerm = author.toLowerCase();
   let results = [];
+  for (let i = 0; i < catalog.length; i++) {
+    if (catalog[i].author.toLowerCase().includes(searchTerm)) {
+      results.push(catalog[i]);
+    }
+  }
+  return results;
 }
+
+// let kingBooks = findByAuthor(catalog, "king");
+// console.log(kingBooks.length);
+
+// for (let book of kingBooks) {
+//   console.log(`${book.title} (${book.year})`);
+// }
+
+// for (let i = 0; i < kingBooks.length; i++) {
+//   console.log(`${kingBooks[i].title} (${kingBooks[i].year})`);
+// }
+
+function groupByDecade(catalog) {
+  const grouped = {};
+  for (let i = 0; i < catalog.length; i++) {
+    const book = catalog[i];
+    if (book.year === "Unknown") {
+      if (grouped["Unknown"] === undefined) {
+        grouped["Unknown"] = [];
+      }
+      grouped["Unknown"].push(book);
+      continue;
+    }
+
+    const decade = Math.floor(book.year / 10) * 10;
+    const decadeKey = `${decade}s`;
+
+    if (!grouped[decadeKey]) {
+      // if (grouped[decadeKey] === undefined) {
+      grouped[decadeKey] = [];
+    }
+    grouped[decadeKey].push(book);
+  }
+  return grouped;
+}
+
+let byDecade = groupByDecade(catalog);
+// console.log(byDecade);
+
+function renderEntry(entry) {
+  const title = entry.title || "Unknown";
+  const author = entry.author || "Unknown";
+  const year = entry.year || "Unknown";
+  const location = entry.location || "Unknown";
+
+  return `${"-".repeat(25)}
+  Title: ${title}
+  Author: ${author}
+  Year: ${year}
+  Location: ${location}
+  ${"-".repeat(25)}`;
+}
+
+console.log(renderEntry(catalog[0]));
+
+function validateEntry(entry) {
+  let isValid = true;
+  if (
+    !entry.title ||
+    entry.title === "Unknown" ||
+    !entry.author ||
+    entry.author === "Unknown" ||
+    !entry.year ||
+    entry.year === "Unknown" ||
+    !entry.location ||
+    entry.location === "Unknown"
+  ) {
+    isValid = false;
+  }
+  return isValid;
+}
+
+// console.log(validateEntry(catalog[0]));
+// console.log(validateEntry(catalog[16]));
+
+function exportToJSON(catalog) {
+  return JSON.stringify(catalog, null, 2);
+}
+
+// console.log(exportToJSON(catalog.slice(0, 2)));
+
+function exportToCSV(catalog) {
+  const header = "Title,Author,Year,Location";
+  const rows = [];
+  for (let i = 0; i < catalog.length; i++) {
+    const entry = catalog[i];
+    rows.push(
+      `${entry.title}, "${entry.author}", ${entry.year}, ${entry.location}`,
+    );
+  }
+  let csv = header;
+  for (let i = 0; i < catalog.length; i++) {
+    csv = csv + "\n" + rows[i];
+  }
+  return csv;
+}
+
+console.log(exportToCSV(catalog));
+
+console.log(catalog.length);
+console.log(Object.keys(byDecade).length);
+
+let oldestYear = Infinity;
+let newestYear = 0;
+for (let i = 0; i < catalog.length; i++) {
+  let year = catalog[i].year;
+  if (year !== "Unknown") {
+    if (year > newestYear) {
+      newestYear = year;
+    } else if (year < oldestYear) {
+      oldestYear = year;
+    }
+  }
+}
+console.log(oldestYear);
+console.log(newestYear);
