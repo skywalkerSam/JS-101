@@ -113,6 +113,19 @@ function printSummary(summary) {
 
 function simulateFestival(gates, timeBlock) {
   console.log(`\n${timeBlock} Simulation`);
+  let throughputSummary = initializeThroughput(gates);
+  let maxTicks = gates[0].queue.length;
+  let tickIndex = 0;
+
+  while (tickIndex < maxTicks) {
+    console.log(`\nTick ${tickIndex + 1}`);
+    gates.forEach((gate) => {
+      handleGateAtTick(gates, gate, tickIndex, throughputSummary);
+    });
+    tickIndex++;
+  }
+  printSummary(throughputSummary);
 }
 
-simulateFestival(nightGates, 1);
+// simulateFestival(morningGates, "Morning");
+simulateFestival(nightGates, "Night");
