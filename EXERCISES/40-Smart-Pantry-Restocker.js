@@ -54,8 +54,6 @@ function parseShipment(rawData) {
   return parsedArr;
 }
 
-// parseShipment(rawData);
-
 /** implement a planRestock(pantry, shipment) function that compares the current pantry with the incoming shipment and returns an array of actions in the form { type, item }, where type is one of "restock", "discard", or "donate", and item is the parsed shipment object.
  *
  * The pantry parameter is an array of objects with the same shape as a parsed shipment item ({ sku, name, qty, expires, zone }).
@@ -63,6 +61,7 @@ function parseShipment(rawData) {
  */
 function planRestock(pantry, shipment) {
   let restockActions = [];
+
   let pantrySkuList = [];
   pantry.forEach((element) => {
     pantrySkuList.push(element.sku);
@@ -73,23 +72,20 @@ function planRestock(pantry, shipment) {
 
     // If a shipment item has a qty of 0 or less, the action type should be "discard", regardless of whether the item exists in the pantry.
     if (element.qty <= 0) {
-      restockActions.push({ type: "discard", item: element.name });
+      restockActions.push({ type: "discard", item: element });
     }
     // if the shipment item's sku already exists in the pantry, the action type should be "restock".
     else if (pantrySkuList.includes(element.sku)) {
-      restockActions.push({ type: "restock", item: element.name });
+      restockActions.push({ type: "restock", item: element });
     }
 
     // Otherwise (the shipment item's sku does not exist in the pantry), the action type should be "donate".
     else if (!pantrySkuList.includes(element.sku)) {
-      restockActions.push({ type: "donate", item: element.name });
+      restockActions.push({ type: "donate", item: element });
     }
   }
-  console.log(restockActions);
   return restockActions;
 }
-
-// planRestock(pantry, parseShipment(rawData));
 
 /** implement a groupByZone(actions) function that groups the actions into storage zones based on each item's zone property.
  *
@@ -99,7 +95,18 @@ function planRestock(pantry, shipment) {
  *
  */
 function groupByZone(actions) {
-  
+  let zoneGroups = {};
+
+  for (let i = 0; i < actions.length; i++) {
+    let element = actions[i];
+
+    if (!Object.hasOwn(zoneGroups, element.item.zone)) {
+      zoneGroups[element.item.zone] = [];
+    }
+    zoneGroups[element.item.zone].push(element);
+  }
+
+  return zoneGroups;
 }
 
 /** implement a clonePantry(pantry) function that returns a deep copy of the pantry so planning changes do not affect the original list.
@@ -107,6 +114,21 @@ function groupByZone(actions) {
  * A deep copy means creating a new array with new objects, so modifying the copy does not change the original pantry.
  *
  */
-function clonePantry(pantry) {}
+function clonePantry(pantry) {
+  return JSON.parse(JSON.stringify(pantry));
+}
 
 // You should use all of the functions together to process a shipment and log the final grouped result object to the console.
+
+let theShipment = parseShipment(rawData);
+let theClonedShipment = clonePantry(pantry);
+let theProcessedShipment = planRestock(pantry, parseShipment(rawData));
+let theGroupedShipment = groupByZone(
+  planRestock(pantry, parseShipment(rawData)),
+);
+// console.log(theShipment);
+// console.log(theClonedShipment);
+console.log(theProcessedShipment);
+console.log(theGroupedShipment);
+
+// https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/challenges/english/blocks/lab-smart-pantry-restocker/69a5f35669099ed52f8563b1.md
