@@ -1,0 +1,134 @@
+const pantry = [
+  {
+    sku: "A10",
+    name: "Tomatoes",
+    qty: 4,
+    expires: "2027-01-01",
+    zone: "fridge",
+  },
+  {
+    sku: "D43",
+    name: "Pineapples",
+    qty: 2,
+    expires: "2020-01-01",
+    zone: "general",
+  },
+];
+
+// sku|name|qty|expires|zone (zone is optional)
+const rawData = [
+  "A10|Tomatoes|5|2027-01-01",
+  "B21|Bananas|10|2027-01-01",
+  "C32|Eggs|3|2027-01-01|fridge",
+  "C32|Eggs|3|2027-01-01",
+  "D43|Pineapples|0|2027-01-01",
+  "E54|Peppers|-1|2027-01-01|fridge",
+];
+
+/** implement a parseShipment(rawData) function that takes an array of strings and returns an array of objects with { sku, name, qty, expires, zone } properties.
+ *
+ */
+function parseShipment(rawData) {
+  let parsedArr = [];
+  let skuList = [];
+
+  for (let index = 0; index < rawData.length; index++) {
+    const element = rawData[index].split("|");
+
+    let parsedObj = {};
+    // handle duplicate SKUs
+    if (!skuList.includes(element[0])) {
+      parsedObj.sku = element[0];
+      skuList.push(element[0]);
+    } else continue;
+    parsedObj.name = element[1];
+    // qty should be a number
+    parsedObj.qty = parseInt(element[2]);
+    parsedObj.expires = element[3];
+    // zone defaults to "general"
+    parsedObj.zone = element[4] ?? "general";
+    parsedArr.push(parsedObj);
+  }
+
+  // console.log(parsedArr);
+  return parsedArr;
+}
+
+/** implement a planRestock(pantry, shipment) function that compares the current pantry with the incoming shipment and returns an array of actions in the form { type, item }, where type is one of "restock", "discard", or "donate", and item is the parsed shipment object.
+ *
+ * The pantry parameter is an array of objects with the same shape as a parsed shipment item ({ sku, name, qty, expires, zone }).
+ *
+ */
+function planRestock(pantry, shipment) {
+  let restockActions = [];
+
+  let pantrySkuList = [];
+  pantry.forEach((element) => {
+    pantrySkuList.push(element.sku);
+  });
+
+  for (let i = 0; i < shipment.length; i++) {
+    let element = shipment[i];
+
+    // If a shipment item has a qty of 0 or less, the action type should be "discard", regardless of whether the item exists in the pantry.
+    if (element.qty <= 0) {
+      restockActions.push({ type: "discard", item: element });
+    }
+    // if the shipment item's sku already exists in the pantry, the action type should be "restock".
+    else if (pantrySkuList.includes(element.sku)) {
+      restockActions.push({ type: "restock", item: element });
+    }
+
+    // Otherwise (the shipment item's sku does not exist in the pantry), the action type should be "donate".
+    else if (!pantrySkuList.includes(element.sku)) {
+      restockActions.push({ type: "donate", item: element });
+    }
+  }
+  return restockActions;
+}
+
+/** implement a groupByZone(actions) function that groups the actions into storage zones based on each item's zone property.
+ *
+ * return an object where each key is a zone name and the value is an array of actions belonging to that zone.
+ *
+ * For example, if actions contain items with zones "fridge" and "pantry", the result should be { fridge: [...], pantry: [...] }.
+ *
+ */
+function groupByZone(actions) {
+  let zoneGroups = {};
+
+  for (let i = 0; i < actions.length; i++) {
+    let element = actions[i];
+
+    if (!Object.hasOwn(zoneGroups, element.item.zone)) {
+      zoneGroups[element.item.zone] = [];
+    }
+    zoneGroups[element.item.zone].push(element);
+  }
+
+  return zoneGroups;
+}
+
+/** implement a clonePantry(pantry) function that returns a deep copy of the pantry so planning changes do not affect the original list.
+ *
+ * A deep copy means creating a new array with new objects, so modifying the copy does not change the original pantry.
+ *
+ */
+function clonePantry(pantry) {
+  return JSON.parse(JSON.stringify(pantry));
+}
+
+// You should use all of the functions together to process a shipment and log the final grouped result object to the console.
+
+let theShipment = parseShipment(rawData);
+let theClonedShipment = clonePantry(pantry);
+let theProcessedShipment = planRestock(pantry, parseShipment(rawData));
+let theGroupedShipment = groupByZone(
+  planRestock(pantry, parseShipment(rawData)),
+);
+// console.log(theShipment);
+// console.log(theClonedShipment);
+console.log(theProcessedShipment);
+console.log(theGroupedShipment);
+
+// https://github.com/freeCodeCamp/freeCodeCamp/blob/main/curriculum/challenges/english/blocks/lab-smart-pantry-restocker/69a5f35669099ed52f8563b1.md

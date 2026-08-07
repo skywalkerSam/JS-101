@@ -1,0 +1,198 @@
+/**
+ * In this workshop, you will build a heritage library catalog system. You will parse raw book data, search and group entries, validate data quality, and export results to different formats.
+ */
+
+const rawCatalogCards = [
+  "From a Buick 8 | King, Stephen | 2002 | Shelf K7",
+  "The Shining | King, Stephen | 1977 | Shelf K1",
+  "The Stand | King, Stephen | 1978 | Shelf K2",
+  "It | King, Stephen | 1986 | Shelf K3",
+  "Misery | King, Stephen | 1987 | Shelf K4",
+  "Do Androids Dream of Electric Sheep? | Dick, Philip K. | 1968 | Shelf D5",
+  "I, Robot | Asimov, Isaac | 1950 | Shelf A8",
+  "Foundation | Asimov, Isaac | 1951 | Shelf A9",
+  "Dune | Herbert, Frank | 1965 | Shelf H3",
+  "Neuromancer | Gibson, William | 1984 | Shelf G8",
+  "Snow Crash | Stephenson, Neal | 1992 | Shelf S6",
+  "The Martian | Weir, Andy | 2011 | Shelf W5",
+  "Ender's Game | Card, Orson Scott | 1985 | Shelf C2",
+  "The Hitchhiker's Guide to the Galaxy | Adams, Douglas | 1979 | Shelf A1",
+  "Ready Player One | Cline, Ernest | 2011 | Shelf C7",
+  "The Dark Tower: The Gunslinger | King, Stephen | 1982 | Shelf K5",
+  // edge cases: missing data
+  "Unknown Title |  | 1975 | Shelf X1",
+  "Mysterious Manuscript | Unknown Author |  | Shelf Z9",
+  "Ancient Scroll | Anonymous | 850 | ",
+];
+
+/**
+ * This function will take a raw catalog string and return a structured object.
+ * */
+function parseCard(rawString) {
+  let parts = rawString.split("|");
+  let trimmedParts = [];
+  // for (let i = 0; i < parts.length; i++) {
+  //     trimmedParts.push(parts[i].trim())
+  // }
+  for (let string of parts) {
+    trimmedParts.push(string.trim());
+  }
+
+  let title = trimmedParts[0];
+  let author = trimmedParts[1];
+  let year = trimmedParts[2];
+  let location = trimmedParts[3];
+
+  return {
+    title: title || "Unknown",
+    author: author || "Unknown",
+    // year: year ? Number(year) : "Unknown",
+    year: year ? parseInt(year) : "Unknown",
+    location: location || "Unknown",
+  };
+}
+
+// let cardResult = parseCard(rawCatalogCards[2]);
+// console.log(cardResult);
+
+function parseCatalog(rawCards) {
+  let catalog = [];
+  for (let card of rawCards) {
+    catalog.push(parseCard(card));
+  }
+  // for (let i = 0; i < rawCards.length; i++) {
+  //     catalog.push(parseCard(rawCards[i]))
+  // }
+  return catalog;
+}
+
+let catalog = parseCatalog(rawCatalogCards);
+// console.log(catalog)
+console.log(catalog.length);
+
+function findByAuthor(catalog, author) {
+  let searchTerm = author.toLowerCase();
+  let results = [];
+  for (let i = 0; i < catalog.length; i++) {
+    if (catalog[i].author.toLowerCase().includes(searchTerm)) {
+      results.push(catalog[i]);
+    }
+  }
+  return results;
+}
+
+// let kingBooks = findByAuthor(catalog, "king");
+// console.log(kingBooks.length);
+
+// for (let book of kingBooks) {
+//   console.log(`${book.title} (${book.year})`);
+// }
+
+// for (let i = 0; i < kingBooks.length; i++) {
+//   console.log(`${kingBooks[i].title} (${kingBooks[i].year})`);
+// }
+
+function groupByDecade(catalog) {
+  const grouped = {};
+  for (let i = 0; i < catalog.length; i++) {
+    const book = catalog[i];
+    if (book.year === "Unknown") {
+      if (grouped["Unknown"] === undefined) {
+        grouped["Unknown"] = [];
+      }
+      grouped["Unknown"].push(book);
+      continue;
+    }
+
+    const decade = Math.floor(book.year / 10) * 10;
+    const decadeKey = `${decade}s`;
+
+    if (!grouped[decadeKey]) {
+      // if (grouped[decadeKey] === undefined) {
+      grouped[decadeKey] = [];
+    }
+    grouped[decadeKey].push(book);
+  }
+  return grouped;
+}
+
+let byDecade = groupByDecade(catalog);
+// console.log(byDecade);
+
+function renderEntry(entry) {
+  const title = entry.title || "Unknown";
+  const author = entry.author || "Unknown";
+  const year = entry.year || "Unknown";
+  const location = entry.location || "Unknown";
+
+  return `${"-".repeat(25)}
+  Title: ${title}
+  Author: ${author}
+  Year: ${year}
+  Location: ${location}
+  ${"-".repeat(25)}`;
+}
+
+console.log(renderEntry(catalog[0]));
+
+function validateEntry(entry) {
+  let isValid = true;
+  if (
+    !entry.title ||
+    entry.title === "Unknown" ||
+    !entry.author ||
+    entry.author === "Unknown" ||
+    !entry.year ||
+    entry.year === "Unknown" ||
+    !entry.location ||
+    entry.location === "Unknown"
+  ) {
+    isValid = false;
+  }
+  return isValid;
+}
+
+// console.log(validateEntry(catalog[0]));
+// console.log(validateEntry(catalog[16]));
+
+function exportToJSON(catalog) {
+  return JSON.stringify(catalog, null, 2);
+}
+
+// console.log(exportToJSON(catalog.slice(0, 2)));
+
+function exportToCSV(catalog) {
+  const header = "Title,Author,Year,Location";
+  const rows = [];
+  for (let i = 0; i < catalog.length; i++) {
+    const entry = catalog[i];
+    rows.push(
+      `${entry.title}, "${entry.author}", ${entry.year}, ${entry.location}`,
+    );
+  }
+  let csv = header;
+  for (let i = 0; i < catalog.length; i++) {
+    csv = csv + "\n" + rows[i];
+  }
+  return csv;
+}
+
+console.log(exportToCSV(catalog));
+
+console.log(catalog.length);
+console.log(Object.keys(byDecade).length);
+
+let oldestYear = Infinity;
+let newestYear = 0;
+for (let i = 0; i < catalog.length; i++) {
+  let year = catalog[i].year;
+  if (year !== "Unknown") {
+    if (year > newestYear) {
+      newestYear = year;
+    } else if (year < oldestYear) {
+      oldestYear = year;
+    }
+  }
+}
+console.log(oldestYear);
+console.log(newestYear);

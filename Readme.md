@@ -3021,15 +3021,15 @@ console.log(userObject);
 
 ## Optional Chaining Operator (`?.`)
 
-it **safely accesses nested properties** and *returns* `undefined` instead of throwing an **error** if a *value* is *missing*.
+it **safely accesses nested properties** and _returns_ `undefined` instead of throwing an **error** if a _value_ is _missing_.
 
-it is like a **safety net for working with objects** that might have *missing* parts.
+it is like a **safety net for working with objects** that might have _missing_ parts.
 
 ```js
 // w/o `?.`
 const person = {
   name: "Alice",
-  age: 30
+  age: 30,
 };
 
 console.log(person.address.street); // This will throw an error!
@@ -3041,24 +3041,24 @@ const user = {
     email: "john@example.com",
     address: {
       street: "123 Main St",
-      city: "Somewhere"
-    }
-  }
+      city: "Somewhere",
+    },
+  },
 };
 
 console.log(user?.profile?.address?.street); // "123 Main St"
-console.log(user?.profile?.phone?.number);   // undefined
+console.log(user?.profile?.phone?.number); // undefined
 ```
 
-By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is *not* `null` or `undefined`.
+By using the optional chaining operator, we are telling JavaScript to **only continue with the operation if the object** (or the **value** before the `?.`) **exists** and is _not_ `null` or `undefined`.
 
-- if the value before the `?.` is `null` or `undefined`, JavaScript *returns* `undefined` rather than attempting to proceed with the operation and throwing an **error**.
+- if the value before the `?.` is `null` or `undefined`, JavaScript _returns_ `undefined` rather than attempting to proceed with the operation and throwing an **error**.
 
 &nbsp;
 
 ## Object Destructuring
 
-it allows you to **extract values from objects and assign them to variables** in a more *concise* and *readable* way.
+it allows you to **extract values from objects and assign them to variables** in a more _concise_ and _readable_ way.
 
 - introduced in ES6 (ECMAScript 2015)
 
@@ -3068,10 +3068,10 @@ const person = { name: "Alice", age: 30, city: "New York" };
 const { name, age } = person;
 
 console.log(name); // Alice
-console.log(age);  // 30
+console.log(age); // 30
 ```
 
-You can **assign the extracted values to variables with different names**. This is particularly useful when you're working with objects that have **property names that might conflict with existing variables** or when you want to use a different *name*.
+You can **assign the extracted values to variables with different names**. This is particularly useful when you're working with objects that have **property names that might conflict with existing variables** or when you want to use a different _name_.
 
 ```js
 let person = { name: "Alice", age: 30, city: "New York" };
@@ -3098,12 +3098,14 @@ const recipe = {
   name: "Chocolate Cake",
   ingredients: {
     flour: "2 cups",
-    sugar: "1 cup"
-  }
+    sugar: "1 cup",
+  },
 };
 
 // Extract `flour` from `ingredients`
-const { ingredients: { flour } } = recipe;
+const {
+  ingredients: { flour },
+} = recipe;
 
 console.log(flour); // "2 cups"
 
@@ -3136,8 +3138,269 @@ console.log(person); // { name: "Bob", age: 25 }
 
 &nbsp;
 
+## Loops
+
+Loops in programming are used to **repeat a block of code multiple times**.
+
+- A **nested loop** is when you place one loop inside of another.
+
+An **iteration** is a single pass through the loop.
+
+### `for` Loop
+
+```js
+for (initialization; condition; increment or decrement) {
+  // code block to be executed
+}
+```
+
+- The `initialization` statement is **executed before** the loop starts.
+  - it is typically used to initialize a **counter** variable.
+    - A counter variable is a variable that is used **to keep track of how many times the loop has run**.
+
+- The `condition` statement is **evaluated before each iteration** of the loop.
+  - if the condition is `true`, the code block inside the loop is executed.
+
+  - if the condition is `false`, the loop stops and you move on to the next block of code.
+    - The loop runs until the condition is `false`.
+
+- The last part of the loop is the `increment/decrement` statement which is **executed after each iteration** of the loop.
+  - it is typically used to **increment or decrement the counter** variable.
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+&nbsp;
+
+`Note`: You should be careful **NOT to create a condition that is always `true`**. Because if you do, _the loop will run forever_ and your program will _crash_! This is known as an **infinite loop**.
+
+&nbsp;
+
+### `for...of` Loop
+
+A `for...of` loop is used when you need to **loop over values from an iterable**, like _arrays_ or _strings_.
+
+- Easy to read & concise.
+
+```js
+for (variable of iterable) {
+  // code block to be executed
+}
+```
+
+- The `variable` represents the **current value of the iterable** that is being looped over.
+  - if you have **an array of numbers**, the `variable` would be the **current number** in the _array_.
+
+  - if you have a **string**, the `variable` would be the **current character** in the _string_.
+
+```js
+// array
+let arrOfItems = [1, 2, 3, 4, 5, 6, "idk", "wtf", "hi!"];
+
+for (let everyItem of arrOfItems) {
+  console.log(everyItem);
+}
+```
+
+```js
+// string
+let hello = "hello";
+
+for (let everyChar of hello) {
+  console.log(everyChar);
+}
+```
+
+```js
+// array of objects
+let arrayOfObjs = [
+  { name: "Agricultural Humans", age: 12026 },
+  { name: "Modern Humans", age: 300000 },
+  { name: "Earth", age: "~4.54 Billion" },
+  { name: "Aliens", age: null },
+  { name: "Existence", age: "~13.8 Billion" },
+];
+
+for (let object of arrayOfObjs) {
+  console.log(`${object.name}: ${object.age} Years.`);
+}
+```
+
+&nbsp;
+
+### `for...in` Loop
+
+A `for...in` loop is best used when you need to **loop over the properties of an _object_**.
+
+- This loop will **iterate over all enumerable properties of an object**, including _inherited_ properties and _non-numeric_ properties.
+  - An _inherited_ property is a property that is **inherited from the object's prototype chain**.
+
+  - A _non-numeric_ property is a property that is **not a number** or **a string that can be converted to a number**.
+
+```js
+for (variable in object) {
+  // code block to be executed
+}
+```
+
+- The `variable` represents the **current property of the object** that is being looped over.
+
+```js
+let person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+  },
+};
+
+for (let prop in person) {
+  console.log(person[prop]);
+}
+```
+
+```js
+// accessing nested object properties
+let person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+  },
+};
+
+function isObject(obj) {
+  return typeof obj === "object" && !Array.isArray(obj) && obj !== null;
+}
+
+for (let prop in person) {
+  if (isObject(person[prop])) {
+    for (let nestedProp in person[prop]) {
+      console.log(person[prop][nestedProp]);
+    }
+  } else {
+    console.log(person[prop]);
+  }
+}
+```
+
+- Due to a historical **bug** in JavaScript, `typeof null` returns `'object'`. So we want to also exclude `null` values from the check.
+
+it is **NOT recommended** to use a `for...in` loop to loop over the elements of an **array**. instead, use a `for...of` loop or other **array methods** like `forEach`, `map`, `filter`, and `reduce`.
+
+&nbsp;
+
+## `while` Loop
+
+A `while` loop will **run a block of code as long as the condition is `true`**.
+
+- it is useful when you do not know how many times you need to run the block of code.
+
+```js
+while (condition) {
+  // code block to be executed
+}
+```
+
+- The `condition` is **checked before the block of code is executed**.
+  - if the condition is `false`, the block of code will not be _executed_.
+
+```js
+let counter = 0;
+while (counter < 6) {
+  console.log(counter);
+  counter++;
+}
+```
+
+&nbsp;
+
+### `do...while` Loop
+
+The key _difference_ between a `do...while` loop and a `while` loop is that the `do...while` loop will **execute the block of code at least once** before checking the _condition_.
+
+```js
+do {
+  // code block to be executed
+} while (condition);
+```
+
+- if the condition is `true`, the block of code will continue executing.
+
+- if the condition is `false`, the block of code will stop executing.
+
+```js
+let counter = 0;
+do {
+  console.log(counter);
+  counter++;
+} while (counter < 6);
+```
+
+&nbsp;
+
+## `break` & `continue` Statements
+
+A `break` statement is used to **exit a loop early**.
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    break;
+  }
+  console.log(i);
+}
+```
+
+A `continue` statement is used to **skip the current iteration** of a loop and **move to the next one**.
+
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 5) {
+    continue;
+  }
+  console.log(i);
+}
+```
+
+- The output of this code will print the numbers `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, and `9`.
+  - The number `5` is **skipped because of the `continue` statement**.
+
+&nbsp;
+
+**Use labels to** specify which loop you want to `break` or `continue`.
+
+- This is useful when you have **nested loops** and you want to **control the flow of the outer loop from within the inner loop**.
+
+```js
+outerLoop: for (let i = 0; i < 3; i++) {
+  innerLoop: for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      break outerLoop;
+    }
+    console.log(`i: ${i}, j: ${j}`);
+  }
+}
+```
+
+- This will exit both the inner and outer loops.
+
+&nbsp;
+
 ##
 
 
 
 &nbsp;
+
+&nbsp;
+
+&nbsp;
+
