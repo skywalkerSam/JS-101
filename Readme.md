@@ -232,18 +232,19 @@ When you use the `length` property on a string primitive, JavaScript temporarily
 
   &nbsp;
 
-## Working w/ "Strings"
+## Working w/ Strings
 
-In JavaScript, strings are treated as sequences of characters, and `each character` in a string can be accessed using bracket notation (`[]`). This allows you to retrieve a specific character from a string based on its **position**, which is called its `index`.
+in JavaScript, strings are treated as sequences of characters, and _each character_ in a string can be accessed using bracket notation (`[]`).
 
-- An **index** is the **position of a character within a string**, and it is `zero-based`. This means that the **first character** of a string has an index of `0`, the **second** character has an index of `1`, and so on...
+- This allows you to **retrieve a specific character** from a string based on its _position_, which is called its `index`.
+  - An **index** is the **position of a character within a string**, and it is `zero-based`.
+    - This means that the **first character** of a string has an index of `0`, the **second** character has an index of `1`, and so on...
+      - For example, in the string `hello`, the character `h` is at index `0`, `e` is at index `1`, `l` is at index `2`, and so on...
 
-- For example, in the string `hello`, the character `h` is at index `0`, `e` is at index `1`, `l` is at index `2`, and so on...
-
-  ```js
-  let greeting = "hello";
-  console.log(greeting[1]); // "e"
-  ```
+        ```js
+        let greeting = "hello";
+        console.log(greeting[1]); // "e"
+        ```
 
 - The `length` property of a string tells you **how many characters it contains**, so to access the last character, you would subtract one from the length.
   - in this case, the `length` of `hello` is `5`, and the last character (`o`) is at index `4` which is `5 - 1`.
@@ -252,6 +253,51 @@ In JavaScript, strings are treated as sequences of characters, and `each charact
     let greeting = "hello";
     console.log(greeting[greeting.length - 1]); // "o"
     ```
+
+### `toString()`
+
+This is a fundamental feature in JavaScript that **converts a value to its string representation**.
+
+- it can be used for **numbers**, **booleans**, **arrays**, and **objects**.
+
+  ```js
+  const num = 10;
+  console.log(num.toString()); // "10"
+  ```
+
+  ```js
+  const arr = [1, 2, 3];
+  console.log(arr.toString()); // "1,2,3"
+  ```
+
+  - Arrays have a **custom implementation of `toString()`** that converts each element to a string and joins them with commas.
+
+  ```js
+  const person = {
+    name: "John",
+    age: 30,
+    isStudent: true,
+  };
+
+  console.log(person.toString()); // "[object Object]"
+  ```
+
+  - When `toString()` method is used with objects, the **result will not be a stringified version of the object properties**. The result will be the _default string representation_ for the object which is `[object Object]`.
+    - To get a stringified version of the `person` object properties you'll need to use `JSON.stringify()`.
+
+&nbsp;
+
+This method accepts **an optional radix** which is a number from `2` to `36`.
+
+- This radix represents the **base**, such as `base 2` for _binary_ or `base 8` for _octal_.
+  - if the radix is not specified it **defaults to `base 10`**, which is _decimal_.
+
+  ```js
+  const num = 10;
+  console.log(num.toString(2)); // "1010"
+  ```
+
+  - Useful for converting **numbers to binary**.)
 
 &nbsp;
 
