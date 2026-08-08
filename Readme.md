@@ -171,6 +171,25 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
 
 &nbsp;
 
+### String Object
+
+One key difference between a **string object** and a **string primitive** is how it relates to **memory** and **performance**.
+
+- String **primitives** are **lighter** and **more memory efficient**, while string **objects** provide **additional properties** and **methods**.
+
+```js
+const greetingObject = new String("Hello, World!");
+
+console.log(typeof greetingObject); // "object"
+```
+
+When you use the `length` property on a string primitive, JavaScript temporarily **wraps the string primitive in a string object**, to perform the operation.
+
+- This is why you can use the `length` property and the different methods like `repeat()`, `concat()`, and `slice()`.
+  - These types of methods and properties are referred to as **instance methods**, **instance properties**, and **static methods**.
+
+&nbsp;
+
 ## String Concatenation
 
 ### w/ `+`
@@ -3396,11 +3415,8 @@ outerLoop: for (let i = 0; i < 3; i++) {
 
 ##
 
-
-
 &nbsp;
 
 &nbsp;
 
 &nbsp;
-
