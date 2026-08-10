@@ -171,25 +171,6 @@ A string is a **sequence of characters** wrapped in either **single quotes** (`'
 
 &nbsp;
 
-### String Object
-
-One key difference between a **string object** and a **string primitive** is how it relates to **memory** and **performance**.
-
-- String **primitives** are **lighter** and **more memory efficient**, while string **objects** provide **additional properties** and **methods**.
-
-```js
-const greetingObject = new String("Hello, World!");
-
-console.log(typeof greetingObject); // "object"
-```
-
-When you use the `length` property on a string primitive, JavaScript temporarily **wraps the string primitive in a string object**, to perform the operation.
-
-- This is why you can use the `length` property and the different methods like `repeat()`, `concat()`, and `slice()`.
-  - These types of methods and properties are referred to as **instance methods**, **instance properties**, and **static methods**.
-
-&nbsp;
-
 ## String Concatenation
 
 ### w/ `+`
@@ -769,12 +750,8 @@ While comments are **useful** in programming, it is important to **avoid over-co
 ## Data Types
 
 - `Number`: A number represents both **integers** and **floating-point** values.
-  - Examples of integers include 7, 19, and 90.
-
-- **Floating point**: A floating point number is a number with a **decimal** point.
-  - Examples include 3.14, 0.5, and 0.0001.
-
-  - in JavaScript, there isn't a _dedicated_ Float data type. instead, all numbers, including both **integers** and **floating-point** numbers, are _represented_ by a single `Number` type.
+  - **Floating point**: A floating point number is a number with a **decimal** point.
+    - in JavaScript, there is **NOT** a _dedicated_ Float data type. instead, all numbers, including both **integers** and **floating-point** numbers, are _represented_ by a single `Number` type.
 
 - `String`: A string is a **sequence of characters**, or **text**, enclosed in **quotes**.
   - `"I like coding"` and `'JavaScript is fun'` are examples of strings.
@@ -3459,7 +3436,137 @@ outerLoop: for (let i = 0; i < 3; i++) {
 
 &nbsp;
 
+## The String Object (String Constructor)
+
+```js
+const greetingObject = new String("Hello, World!");
+
+console.log(typeof greetingObject); // "object"
+```
+
+One key difference between a **string object** and a **string primitive** is how it relates to **memory** and **performance**.
+
+- String **primitives** are **lighter** and **more memory efficient**, while string **objects** provide **additional properties** and **methods**.
+
+When you use the `length` property on a string _primitive_, JavaScript temporarily **wraps the string primitive in a string object**, to perform the operation.
+
+- This is why you can use the `length` property and the different methods like `repeat()`, `concat()`, and `slice()`.
+  - These types of methods and properties are referred to as **instance methods**, **instance properties**, and **static methods**.
+
+&nbsp;
+
+When the `String()` constructor is called as a _function_, **without** the `new` keyword, then the return value will be the _primitive_ **string** type.
+
+- At times, you will be using the `String()` constructor to **convert other data types to string** data type.
+
+```js
+const myStr = String(69);
+console.log(myStr); // "69"
+
+console.log(typeof myStr); // "string"
+```
+
+&nbsp;
+
+## Number Constructor
+
+The `Number()` constructor is used to create **a number object**.
+
+The number object contains a few helpful **properties** and **methods** like the `isNaN` and the `toFixed` method.
+
+```js
+const myNum = new Number("34");
+console.log(typeof myNum); // "object"
+```
+
+&nbsp;
+
+When the `Number()` constructor is called as a _function_, **without** the `new` keyword, then the return value will be the _primitive_ **number** type.
+
+- Most of the time, you will be using the `Number()` constructor to **convert other data types to a number** data type.
+
+```js
+const myNum = Number("100");
+console.log(myNum); // 100
+
+console.log(typeof myNum); // number
+```
+
+- if you try to call the `Number()` constructor through an **empty string** then the result will be the number `0`.
+
+  ```js
+  const num = Number("");
+  console.log(num); // 0
+  ```
+
+- if you try to pass in a **"string"** with random characters, then the r*esult* will be `NaN`.
+
+  ```js
+  const num = Number("random");
+  console.log(num); // NaN
+  ```
+
+- When working with **booleans**, `true` returns `1`, and `false` returns `0`.
+
+  ```js
+  const boolTrue = Number(true);
+  const boolFalse = Number(false);
+
+  console.log(boolTrue); // 1
+  console.log(boolFalse); // 0
+  ```
+
+- if you pass in `null`, the result will be `0`, and if you pass `undefined`, the result will be `NaN`.
+
+  ```js
+  const undefinedNum = Number(undefined);
+  const nullNum = Number(null);
+
+  console.log(undefinedNum); // NaN
+  console.log(nullNum); // 0
+  ```
+
+- An _empty array_(`[]`) will return `0`. An **array with a single number** will _return_ that **number**. An **array with multiple numbers** returns `NaN`. And an **array with string(s)** will also return `NaN`.
+
+  ```js
+  const emptyArr = Number([]);
+  const arrOneNum = Number([7]);
+  const arrMultiNum = Number([7, 36, 12]);
+  const arrStr = Number(["str1"]);
+  const arrMultiStr = Number(["str1", "str2"]);
+
+  console.log(emptyArr); // 0
+  console.log(arrOneNum); // 7
+  console.log(arrMultiNum); // NaN
+  console.log(arrStr); // NaN
+  console.log(arrMultiStr); // NaN
+  ```
+
+- When working with **objects**, the result is **always** `NaN`.
+
+  ```js
+  const obj1 = Number({});
+  const obj2 = Number({ 2: 2 });
+  const obj3 = Number({ key: "val" });
+  const obj4 = Number({ key: true });
+
+  console.log(obj1); // NaN
+  console.log(obj2); // NaN
+  console.log(obj3); // NaN
+  console.log(obj4); // NaN
+  ```
+
+in conclusion, you'll mostly use the `Number()` constructor for **type coercion**, more than creating a number or _a number object_.
+
+&nbsp;
+
 ##
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 &nbsp;
 
