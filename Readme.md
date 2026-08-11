@@ -66,46 +66,62 @@ in **statically typed** languages like `C#` or `C++`, **you must declare the dat
 
 &nbsp;
 
-## Variable Naming Conventions
+## Naming A Variable
 
-1. Variable names should be **descriptive** and **meaningful**.
-   - it is best to **keep variable names readable** by using letters, numbers, underscores, or dollar signs.
+Good naming practices makes your code **self-documenting** reducing the need for _extensive comments_ and making it easier for other developers including your _future self_ to understand your code.
 
-2. They **cannot** start with a `number`. They must begin with a `letter`, an underscore (`_`), or a dollar sign (`$`).
+Variable naming conventions:
 
-   ```javascript
+- Variable names should be **descriptive** and **meaningful**.
+  - it is best to keep variable names **readable** by using _letters_, _numbers_, _underscores_, or _dollar signs_ (`$`).
 
-   // invalid variable name
-   let 1stPlace;   // starts with a number
+  - They can **NOT** start with a `number`. They must begin with a `letter`, an underscore (`_`), or a dollar sign (`$`).
 
-   let age;
-   let _score;
-   let $total;
-   ```
+    ```javascript
+    // invalid variable name
+    let 1stPlace;   // starts with a number
 
-3. Variable names should **not** contain **spaces** or **special characters**, except for `_` and `$`.
-   - **Do not** use special characters like, exclamation points (`!`), or at (`@`) symbols in your variable names.
+    let age;
+    let _score;
+    let $total;
+    ```
 
-4. Variable names should be `camelCase` like `cityName`, `isLoggedIn`, and `veryBigNumber`.
-   - in JavaScript, variable names are `case-sensitive`, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered **different** _variables_.
+- Variable names should **NOT** contain **spaces**(` `) or **special characters**, _except_ for underscore (`_`) and dollar sign (`$`).
+  - Do **NOT** use _special characters_ like, exclamation points (`!`), or at (`@`) symbols in your variable names.
 
-     ```javascript
-     let age = 25;
-     let Age = 30;
-     console.log(age); // 25
-     console.log(Age); // 30
-     ```
+- Variable names should be **camelCase** like, `cityName`, `isLoggedIn`, and `veryBigNumber`.
+  - in JavaScript, variable names are `case-sensitive`, meaning the word `age` in all _lowercase_ and the word `Age` with a capital `A` are considered **different** _variables_.
 
-   - This is why it's **important** to stick with a consistent naming convention like `camelCase`. camelCase is where the **first word** is all **lowercase** and each **subsequent** word starts with **an uppercase** letter.
+    ```javascript
+    let age = 25;
+    let Age = 30;
+    console.log(age); // 25
+    console.log(Age); // 30
+    ```
 
-     ```javascript
-     let thisIsCamelCase;
-     let anotherExampleVariable;
-     let freeCodeCampStudents;
-     ```
+  - This is why it's _important_ to stick with a _consistent naming convention_ like **camelCase**.
+    - **camelCase** is where the **first word** is all **lowercase** and each **subsequent** word starts with **an uppercase** letter.
 
-5. Variable names should **not** be **reserved keywords**.
-   - There are certain keywords in JavaScript that you **cannot** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are reserved for the language _itself_.
+      ```javascript
+      let thisIsCamelCase;
+      let anotherExampleVariable;
+      let freeCodeCampStudents;
+      ```
+
+- Variable names should **NOT** be **reserved keywords**.
+  - There are certain _keywords_ in JavaScript that you can **NOT** use as _variable_ names, such as `let`, `const`, `function`, or `return`, as they are _reserved_ for the _language itself_.
+
+&nbsp;
+
+For **boolean** variables, it's a common practice to use _prefixes_ such as `is`, `has`, or `can`.
+
+```js
+let isLoading = true;
+let hasPermission = false;
+let canEdit = true;
+```
+
+- This immediately tells the reader that the variable is a _boolean_.
 
 &nbsp;
 
@@ -1975,7 +1991,7 @@ This method is a built-in JavaScript function that **formats a number using fixe
 
 &nbsp;
 
-## Functions
+## Functions (`f()`)
 
 Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform _actions_, and `return` **outputs**. Functions makes your code more **modular**, **easier to maintain**, and more **efficient**.
 
@@ -2019,6 +2035,8 @@ greet(); // "Hello, Jessica!"
   console.log(calculateSum(3, 4)); // 7
   ```
 
+&nbsp;
+
 ### Default Parameters
 
 Functions support default parameters, allowing you to **set default values for parameters**.
@@ -2031,6 +2049,90 @@ function greetings(name = "Guest") {
 greetings(); // Hello, Guest!
 greetings("Anna"); // Hello, Anna!
 ```
+
+&nbsp;
+
+## Naming A Function
+
+The function name **should clearly indicate what the function does**.
+
+it is often helpful to **start with a verb**:
+
+```js
+function getUserData() {
+  /* ... */
+}
+
+function calculateTotal() {
+  /* ... */
+}
+
+function validateInput() {
+  /* ... */
+}
+```
+
+&nbsp;
+
+For **functions that return a `boolean`** often called **predicates**, you can use `is`, `has`, or `can` prefixes:
+
+```js
+function isValidEmail(email) {
+  /* ... */
+}
+
+function hasRequiredFields(form) {
+  /* ... */
+}
+```
+
+&nbsp;
+
+When you have **functions that retrieve data** it's common to start with the word `get`:
+
+```js
+function getProductDetails(productId) {
+  /* ... */
+}
+
+function getUserProfile(userId) {
+  /* ... */
+}
+```
+
+&nbsp;
+
+When you have **functions that set data** it's common to start with the word `set`:
+
+```js
+function setUserPreferences(preferences) {
+  /* ... */
+}
+
+function setPageTitle(title) {
+  /* ... */
+}
+```
+
+&nbsp;
+
+For **event handler functions**, you might _prefix_ with `handle` or _suffix_ with `handler`:
+
+```js
+function handleClick() {
+  /* ... */
+}
+
+function onSubmit() {
+  /* ... */
+}
+
+function keyPressHandler() {
+  /* ... */
+}
+```
+
+- An event handler is **an action that happens after an event has happened** like a _button click_.
 
 &nbsp;
 
@@ -2150,7 +2252,7 @@ console.log(blockVar); // This will throw an error
 
 &nbsp;
 
-## Arrays
+## Arrays (`[]`)
 
 in programming, arrays are fundamental data structures used to store collections of elements. An array is an **ordered collection of values**, each identified by a **numeric index**.
 
@@ -2178,6 +2280,19 @@ in programming, arrays are fundamental data structures used to store collections
   let fruits = ["apple", "banana", "cherry"];
   console.log(fruits[3]); // undefined
   ```
+
+&nbsp;
+
+### Naming An Array
+
+For array names consider using **plural nouns** to indicate that the variable contains _multiple items_:
+
+```js
+const colors = ["red", "green", "blue"];
+const userNames = ["Alice", "Bob", "Charlie"];
+```
+
+&nbsp;
 
 ### `.length` Property
 
@@ -3186,7 +3301,25 @@ Loops in programming are used to **repeat a block of code multiple times**.
 
 - A **nested loop** is when you place one loop inside of another.
 
-An **iteration** is a single pass through the loop.
+- An **iteration** is a single pass through the loop.
+
+&nbsp;
+
+### Naming iterator variables & loops
+
+When naming iterator variables and loops, it is common to _use single letters_ like `i`, `j`, or `k`, but for **nested loops** or more _complex iterations_ more **descriptive names can be helpful**:
+
+```js
+for (let i = 0; i < array.length; i++) {
+  /* ... */
+}
+
+for (let studentIndex = 0; studentIndex < students.length; studentIndex++) {
+  /* ... */
+}
+```
+
+&nbsp;
 
 ### `for` Loop
 
