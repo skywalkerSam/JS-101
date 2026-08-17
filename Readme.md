@@ -3833,8 +3833,85 @@ By automating these aspects of _code review_ they allow developers to focus more
 
 ## Memory Management
 
+When you run a **program**, it **needs memory** to store all the _information_ it is working with. 
+
+- This includes _variables_, _functions_, _objects_, basically everything your code _creates_ and _uses_. 
+
+_Memory management_ is **the process of controlling memory**, **allocating** it when _needed_, and **freeing** it up when it is _no longer needed_. 
+
+in some programming languages, developers have to **manually manage memory**. They need to _explicitly_ tell the computer **when to allocate** memory for _new things_ and **when to free up** memory that is _no longer needed_. 
+
+- This can be **powerful, but tricky** as _forgetting to free_ memory can lead to **memory leaks**.
+
+&nbsp;
+
+### Garbage Collection
+
+However, that is not the case in _JavaScript_, for it uses **automatic memory management**.
+
+This means that JavaScript (more specifically **the JavaScript engine** in your _web browser_) **takes care of memory allocation and deallocation** for you. This _automatic process_ is often called **garbage collection**.
+
+_First_, **allocation** happens when you **create** a _variable_, _objects_ or _functions_ in your JavaScript code, **memory is automatically allocated to store them**. 
+
+- Then you use this _allocated memory_ when you work with these _variables_, _objects_ or _functions_ in your code.
+
+&nbsp;
+
+The JavaScript engine has clever ways to _figure out_ when something in _memory_ is _no longer needed_. 
+
+_Generally_, if there is **no way for your program to access or use a piece of data** anymore, it is considered "_no longer needed_". 
+
+- _Periodically_, the **garbage collector runs**, it **finds a memory that is no longer needed** and **frees it up**, making it _available_ for future use. 
+
+  - This process _happens automatically_ which is great, for it means that one does not have to worry about managing memory themselves.
+
+&nbsp;
+
+### Closures
+
+_Nevertheless_, it is still *important to understand* how _memory management_ works, for you can sometimes *_accidentally_ **keep references to things you don't need** anymore, **preventing the garbage collector from freeing that memory**. 
+
+For example:
+
+```js
+function createLargeArray() {
+  let largeArray = new Array(1000000);
+  return function() {
+    console.log(largeArray.length);
+  };
+}
+
+let printArrayLength = createLargeArray();
+printArrayLength();
+```
+
+in this code, even after `createLargeArray` finishes running, `largeArray` **cannot be garbage collected**, for the _returned function_ still has _access_ to it. This is a **closure**.
+
+And while closures are _useful_, they can *_sometimes_ lead to **more memory usage** than one might expect.
+
+&nbsp;
+
+Good coding practices: 
+
+- **Avoid global variables** whenever possible. 
+
+- **Be mindful of what your functions are closing over**, it can help the JavaScript engine manage memory more efficiently.
+
+&nbsp;
+
 &nbsp;
 
 &nbsp;
 
 &nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
