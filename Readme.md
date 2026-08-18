@@ -3833,13 +3833,13 @@ By automating these aspects of _code review_ they allow developers to focus more
 
 ## Memory Management
 
-When you run a **program**, it **needs memory** to store all the _information_ it is working with. 
+When you run a **program**, it **needs memory** to store all the _information_ it is working with.
 
-- This includes _variables_, _functions_, _objects_, basically everything your code _creates_ and _uses_. 
+- This includes _variables_, _functions_, _objects_, basically everything your code _creates_ and _uses_.
 
-_Memory management_ is **the process of controlling memory**, **allocating** it when _needed_, and **freeing** it up when it is _no longer needed_. 
+_Memory management_ is **the process of controlling memory**, **allocating** it when _needed_, and **freeing** it up when it is _no longer needed_.
 
-in some programming languages, developers have to **manually manage memory**. They need to _explicitly_ tell the computer **when to allocate** memory for _new things_ and **when to free up** memory that is _no longer needed_. 
+in some programming languages, developers have to **manually manage memory**. They need to _explicitly_ tell the computer **when to allocate** memory for _new things_ and **when to free up** memory that is _no longer needed_.
 
 - This can be **powerful, but tricky** as _forgetting to free_ memory can lead to **memory leaks**.
 
@@ -3851,32 +3851,29 @@ However, that is not the case in _JavaScript_, for it uses **automatic memory ma
 
 This means that JavaScript (more specifically **the JavaScript engine** in your _web browser_) **takes care of memory allocation and deallocation** for you. This _automatic process_ is often called **garbage collection**.
 
-_First_, **allocation** happens when you **create** a _variable_, _objects_ or _functions_ in your JavaScript code, **memory is automatically allocated to store them**. 
+_First_, **allocation** happens when you **create** a _variable_, _objects_ or _functions_ in your JavaScript code, **memory is automatically allocated to store them**.
 
 - Then you use this _allocated memory_ when you work with these _variables_, _objects_ or _functions_ in your code.
 
 &nbsp;
 
-The JavaScript engine has clever ways to _figure out_ when something in _memory_ is _no longer needed_. 
+The JavaScript engine has clever ways to _figure out_ when something in _memory_ is _no longer needed_.
 
-_Generally_, if there is **no way for your program to access or use a piece of data** anymore, it is considered "_no longer needed_". 
+_Generally_, if there is **no way for your program to access or use a piece of data** anymore, it is considered "_no longer needed_".
 
-- _Periodically_, the **garbage collector runs**, it **finds a memory that is no longer needed** and **frees it up**, making it _available_ for future use. 
-
+- _Periodically_, the **garbage collector runs**, it **finds a memory that is no longer needed** and **frees it up**, making it _available_ for future use.
   - This process _happens automatically_ which is great, for it means that one does not have to worry about managing memory themselves.
 
 &nbsp;
 
-### Closures
-
-_Nevertheless_, it is still *important to understand* how _memory management_ works, for you can sometimes *_accidentally_ **keep references to things you don't need** anymore, **preventing the garbage collector from freeing that memory**. 
+_Nevertheless_, it is still _important to understand_ how _memory management_ works, for you can sometimes \*_accidentally_ **keep references to things you don't need** anymore, **preventing the garbage collector from freeing that memory**.
 
 For example:
 
 ```js
 function createLargeArray() {
   let largeArray = new Array(1000000);
-  return function() {
+  return function () {
     console.log(largeArray.length);
   };
 }
@@ -3887,15 +3884,116 @@ printArrayLength();
 
 in this code, even after `createLargeArray` finishes running, `largeArray` **cannot be garbage collected**, for the _returned function_ still has _access_ to it. This is a **closure**.
 
-And while closures are _useful_, they can *_sometimes_ lead to **more memory usage** than one might expect.
+And while closures are _useful_, they can \*_sometimes_ lead to **more memory usage** than one might expect.
 
 &nbsp;
 
-Good coding practices: 
+Good coding practices:
 
-- **Avoid global variables** whenever possible. 
+- **Avoid global variables** whenever possible.
 
-- **Be mindful of what your functions are closing over**, it can help the JavaScript engine manage memory more efficiently.
+- **Be mindful of what your functions are closing over**, it can help the JavaScript engine manage _memory_ more _efficiently_.
+
+&nbsp;
+
+## Closures
+
+A closure is **a function that has access to variables in its outer enclosing lexical scope**, **even after the outer function has returned**.
+
+```js
+function outerFunction(x) {
+  let y = 10;
+  function innerFunction() {
+    console.log(x + y);
+  }
+  return innerFunction;
+}
+
+let closure = outerFunction(5);
+console.log(closure()); // 15
+```
+
+- `outerFunction` takes a parameter `x` and defines a _local variable_ `y`. it then _defines_ an `innerFunction` that uses _both_ `x` and `y`. Finally, it _returns_ `innerFunction`.
+
+- When we call `outerFunction(5)`, it _returns_ `innerFunction` which we _assign_ to the variable `closure`.
+
+- When we later call `closure()`, **it still has access to `x` and `y` from `outerFunction`**, even though `outerFunction` has already _finished executing_.
+
+This is the _essence_ of a closure.
+
+The inner function **maintains a reference** to its _outer lexical environment_, **preserving access to the variables** in that _environment_, even after the outer function has completed.
+
+&nbsp;
+
+Closures are particularly useful for creating **private variables and functions**.
+
+```js
+function createCounter() {
+  let count = 0;
+  return function () {
+    count++;
+    return count;
+  };
+}
+
+let counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+```
+
+- `createCounter` _returns_ a _function_ that **increments** and _returns_ a `count` variable.
+
+- The `count` variable is **NOT** _directly accessible from outside_ `createCounter`, but the returned `function` (our "_closure_") has _access_ to it.
+
+- Each time we call `counter()`, it _increments_ and _returns_ the `count`.
+
+&nbsp;
+
+Closures can also **capture multiple variables** from their _outer scope_.
+
+```js
+function multiply(x) {
+  return function (y) {
+    return x * y;
+  };
+}
+
+let double = multiply(2);
+console.log(double(5)); // 10
+
+let triple = multiply(3);
+console.log(triple(10)); // 30
+```
+
+- The inner function captures the `x` parameter from `multiply`.
+
+- When we create `double` by calling `multiply(2)`, it _returns_ a _function_ that always multiplies its argument by `2`.
+
+&nbsp;
+
+Closures **capture variables by reference**, and **NOT by value**.
+
+- This means **if the value of a captured variable changes**, **the closure will see the new value**.
+
+```js
+function createIncrementer() {
+  let count = 0;
+  return function () {
+    count++;
+    console.log(count);
+  };
+}
+
+let increment = createIncrementer();
+increment(); // 1
+increment(); // 2
+```
+
+- Each time we call `increment`, it is working with the _same_ `count` variable, **NOT a copy of its initial value**.
+
+&nbsp;
+
+##
 
 &nbsp;
 
@@ -3912,6 +4010,3 @@ Good coding practices:
 &nbsp;
 
 &nbsp;
-
-&nbsp;
-
