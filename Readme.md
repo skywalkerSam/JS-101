@@ -167,6 +167,40 @@ MAX_SIZE = 200; // This will result in an error
 
 &nbsp;
 
+## `var`: NOT Recommended!
+
+The `var` keyword in JavaScript is one of the _original_ ways to declare variables.
+
+However, over time certain drawbacks of using `var` became apparent leading to the introduction of `let` and `const` in 2015.
+
+- A problem with `var` is that it **allows you to redeclare the same variable multiple times** without throwing an _error_.
+  - This can lead to **accidental overwrites** and make _debugging_ more difficult.
+
+  ```js
+  var num = 5;
+  console.log(num); // 5
+
+  // This is allowed and doesn't throw an error
+  var num = 10;
+  console.log(num); // 10
+  ```
+
+- The most significant issue with `var` is the **lack of block scoping**.
+  - Variables declared with `var` inside a _block_ like an `if` statement or a `for` loop are still **accessible outside the block**.
+
+  ```js
+  if (true) {
+    var num = 5;
+  }
+  console.log(num); // 5
+  ```
+
+  - This behavior can lead to unintended **variable leaks** and make your code more prone to _bugs_.
+
+`Note`: While `var` is still part of JavaScript and works in all browsers, it's generally recommended to use `let` and `const` in modern JavaScript development. They provide **clear scoping rules**, help **prevent common pitfalls**, and make your code's behavior more _predictable_.
+
+&nbsp;
+
 ## "Strings"
 
 A string is a **sequence of characters** wrapped in either **single quotes** (`''`), **double quotes** (`""`) or **backticks** (``).
@@ -3993,7 +4027,9 @@ increment(); // 2
 
 &nbsp;
 
-##
+## Hoisting
+
+
 
 &nbsp;
 
