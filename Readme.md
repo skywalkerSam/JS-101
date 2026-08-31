@@ -4029,11 +4029,89 @@ increment(); // 2
 
 ## Hoisting
 
+Hoisting is JavaScript's default behavior of **moving declarations to the top of their respective scopes** during the _compilation phase_ before the code is executed.
 
+JavaScript runs in two phases:
+
+- **Compilation Phase**: The JavaScript engine goes through your code and **sets up memory space for variables and functions**.
+  - This is where _hoisting_ comes into play.
+
+- **Execution Phase**: The JavaScript engine _executes_ the code.
 
 &nbsp;
 
+### Variable Hoisting: `var`
+
+When you declare a variable using the `var` keyword, JavaScript _hoists_ the declaration to the **top of its scope**.
+
+However it's crucial to note that **only the declaration is hoisted**, and **NOT the initialization**.
+
+This means you can _use a variable in your code before you have declared it_, but its value will be `undefined` until you actually _assign a value_ to it.
+
+```js
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+```
+
+- in this code even though we use `x` before declaring it, we do NOT get an _error_, instead we get `undefined`. This is because JavaScript _hoists_ the declaration `var x` to the top of its scope but **NOT the initialization** `x = 5`. it is as if the code were rewritten like this:
+
+  ```js
+  var x;
+  console.log(x); // undefined
+  x = 5;
+  console.log(x); // 5
+  ```
+
 &nbsp;
+
+### Variable Hoisting: `let` & `const`
+
+Hoisting works _differently_ with `let` and `const` declarations introduced in ES6.
+
+```js
+console.log(y); // Throws a ReferenceError
+let y = 10;
+```
+
+- These declarations are _hoisted_ but they are NOT _initialized_, and you can **NOT access them before the actual declaration** in your code.
+  - This is often referred to as the **temporal dead zone**.
+
+&nbsp;
+
+### Function Hoisting
+
+When you declare a _function_ using the function declaration syntax, both **the _function_ name and the _function_ body are hoisted**.
+
+This means that you can **call a _function_ before you've declared it** in your code.
+
+```js
+sayHello(); // "Hello, World!"
+
+function sayHello() {
+  console.log("Hello, World!");
+}
+```
+
+- In this case, we can call `sayHello()` before its declaration because **the entire _function_ is hoisted to the top of its scope**.
+
+&nbsp;
+
+Understanding _hoisting_ can help you write **cleaner**, **more predictable code**.
+
+However, **relying on hoisting** can make your code **harder to read** and maintain.
+
+Best Practices (Regardless of hoisting):
+
+- **Declare your _variables_ at the top of their scope**
+
+- **Declare your _functions_ before you call them**
+
+This makes your code's behavior _more explicit_ and _easier to understand_ for others and for _your future self_.
+
+&nbsp;
+
+##
 
 &nbsp;
 
