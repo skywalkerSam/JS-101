@@ -2,35 +2,73 @@
 // Falsy values in JavaScript are `false`, `null`, `0`, `""`, `undefined`, and `NaN`.
 
 function bouncer(arr) {
-  let trueArr = [...arr];
+  // let trueArr = [...arr];
 
   if (arr.length === 0) {
     return [];
   }
 
-  for (let i = 0; i < trueArr.length; i++) {
-    const element = trueArr[i];
-    if (!element) {
-      trueArr.splice(i, 1);
-    }
-    if (element === null) {
-      trueArr.splice(i, 1);
-    }
-    if (element === 0) {
-      trueArr.splice(i, 1);
-    }
-    if (element === "") {
-      trueArr.splice(i, 1);
-    }
-    if (element === undefined) {
-      trueArr.splice(i, 1);
-    }
-    if (typeof element === "number" && isNaN(element)) {
-      trueArr.splice(i, 1);
-    }
-  }
+  // for (let i = 0; i < trueArr.length; i++) {
+  //   const element = trueArr[i];
+  //   if (!element) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`false removed: ${spliced}\n`);
+  //   }
+  //   if (element === null) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`null removed: ${spliced}\n`);
+  //   }
+  //   if (element === 0) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`0 removed: ${spliced}\n`);
+  //   }
+  //   if (element === "") {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`"" removed: ${spliced}\n`);
+  //   }
+  //   if (element === undefined) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`undefined removed: ${spliced}\n`);
+  //   }
+  //   if (typeof element === "number" && isNaN(element)) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`NaN removed: ${spliced}\n`);
+  //   }
+  // }
+  // console.log(`\nloop 1: ${trueArr}`)
 
-  return trueArr;
+  // for (let i = 0; i < trueArr.length; i++) {
+  //   const element = trueArr[i];
+  //   if (!element) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`false removed: ${spliced}\n`);
+  //   }
+  //   if (element === null) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`null removed: ${spliced}\n`);
+  //   }
+  //   if (element === 0) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`0 removed: ${spliced}\n`);
+  //   }
+  //   if (element === "") {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`"" removed: ${spliced}\n`);
+  //   }
+  //   if (element === undefined) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`undefined removed: ${spliced}\n`);
+  //   }
+  //   if (typeof element === "number" && isNaN(element)) {
+  //     let spliced = trueArr.splice(i, 1);
+  //     console.log(`NaN removed: ${spliced}\n`);
+  //   }
+  // }
+  // console.log(`loop 2: ${trueArr}\n`)
+
+  // return trueArr;
+
+  return arr.filter(Boolean);
 }
 
 console.log(bouncer([7, "ate", "", false, 9]));
