@@ -2025,7 +2025,7 @@ This method is a built-in JavaScript function that **formats a number using fixe
 
 &nbsp;
 
-## Functions (`f()`)
+## Functions
 
 Functions allow you to write **reusable** and **organized** code. They can take inputs (**parameters**), perform _actions_, and `return` **outputs**. Functions makes your code more **modular**, **easier to maintain**, and more **efficient**.
 
@@ -2229,6 +2229,106 @@ const greetings = (name) => {
     ```js
     const calculateArea = (width, height) => width * height;
     ```
+
+&nbsp;
+
+## The Arguments Object
+
+You can create a _function_ with a number of **parameters**, and call that function with **arguments**.
+
+```js
+// function definition
+function getSum(num1, num2) {
+  return num1 + num2;
+}
+
+// function call
+getSum(3, 4); // 7
+```
+
+- if a function is called with **more arguments than it was defined to accept**, JavaScript will **NOT throw an _error_**, in this case. it will instead **ignore the extra argument**, and only accept the _arguments_ defind by the _function parameter_.
+
+  ```js
+  // function definition
+  function getSum(num1, num2) {
+    return num1 + num2;
+  }
+
+  // function call with extra argument
+  console.log(getSum(3, 4, 5)); // 7
+  ```
+
+&nbsp;
+
+### Variadic Functions
+
+Functions that accept **a variable number of arguments** are known as _variadic functions_.
+
+if you are working with _variadic functions_, then you can utilize the `arguments` object.
+
+```js
+function logArgs() {
+  for (const arg of arguments) {
+    console.log(arg);
+  }
+}
+
+logArgs(1, 2, 3);
+// result:
+// 1
+// 2
+// 3
+
+logArgs("example"); // "example"
+```
+
+- This _array-like_ object contains the _values_ of the _arguments_ passed into the _function_.
+
+- And since the `arguments` object is _array-like_, you can access an argument at **a specific index**:
+
+  ```js
+  function getArg() {
+    return arguments[1];
+  }
+
+  console.log(getArg(2, 4, 6)); // 4
+  ```
+
+- You can also use the `length` property like this to get the number of _arguments_ the _function_ was called with:
+
+  ```js
+  function getArgs() {
+    return arguments.length;
+  }
+
+  console.log(getArgs("Example")); // 1
+  console.log(getArgs("Another", "Example")); // 2
+  ```
+
+&nbsp;
+
+Even though the `arguments` object appears to act like a real _array_, it does NOT have _built-in_ Array methods like `includes` or `push`.
+
+To have access to those _methods_, you would need to first convert the _arguments_ object to a real _array_ using something like `slice`, `Array.from()` _or_ the spread operator (`...`)
+
+```js
+function hasCat() {
+  return [...arguments].includes("cat");
+}
+
+console.log(hasCat("dog", "chicken", "cat")); // true
+console.log(hasCat("dog", "chicken", "horse")); // false
+```
+
+`Note`: While it is possible to work with the `arguments` object for _variadic functions_, **modern JavaScript** applications will normally use **rest parameter** syntax.
+
+&nbsp;
+
+## Rest Parameters
+
+
+
+
 
 &nbsp;
 
@@ -4220,7 +4320,7 @@ They allow you to **break your application into smaller**, **manageable pieces**
 
 &nbsp;
 
-## The Arguments Object
+##
 
 &nbsp;
 
