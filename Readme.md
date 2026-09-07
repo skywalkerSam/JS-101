@@ -2232,7 +2232,7 @@ const greetings = (name) => {
 
 &nbsp;
 
-## The Arguments Object
+## The `arguments` Object
 
 You can create a _function_ with a number of **parameters**, and call that function with **arguments**.
 
@@ -2320,15 +2320,65 @@ console.log(hasCat("dog", "chicken", "cat")); // true
 console.log(hasCat("dog", "chicken", "horse")); // false
 ```
 
-`Note`: While it is possible to work with the `arguments` object for _variadic functions_, **modern JavaScript** applications will normally use **rest parameter** syntax.
+`Note`: While it is possible to work with the `arguments` object for _variadic functions_, **modern JavaScript** applications will normally use **rest parameter syntax**.
 
 &nbsp;
 
-## Rest Parameters
+### Rest Parameter Syntax (`...args`)
 
+The `arguments` object is **NOT a real array** so it does NOT support methods like `includes`, `pop` and `push`.
 
+But the **rest parameter** is an `Array` instance. So you can use valid _built-in_ array methods without needing to convert it to a _real array_ first.
 
+This causes this _rest parameter_ to be placed within an `Array` object.
 
+```js
+function hasCat(...args) {
+  return args.includes("cat");
+}
+
+console.log(hasCat("dog", "chicken", "cat")); // true
+console.log(hasCat("dog", "chicken", "horse")); // false
+```
+
+- You can name this _rest parameter_ whatever you like.
+
+- But the _last parameter_ in the _function_ definition should be like this:
+
+  ```js
+  function someFunction(x, y, ...theArgs) {
+    // some code here
+  }
+
+  function anotherFunction(a, b, ...restOfArgs) {
+    // some code here
+  }
+  ```
+
+  - One **restriction** is that **_function_ definitions can only have one rest parameter**. So the following _example_ here would be considered **invalid**:
+
+    ```js
+    // This won't work.
+
+    function badFunction(...args, ...moreArgs) {
+      // some code here
+    }
+    ```
+
+  - Another **restriction** is that the **rest parameter can NOT have a _default value_**.
+    - Otherwise a `SyntaxError` will be thrown.
+
+    ```js
+    // This won't work, also.
+
+    function badFunction(...args = [1, 2]) {
+      // some code here
+    }
+    ```
+
+  - The next **restriction** is that _trailing commas_(`,`) are **NOT allowed after the rest parameter**:
+
+    `function exampleFunction(a, b, ...restOfArgs, )`
 
 &nbsp;
 
