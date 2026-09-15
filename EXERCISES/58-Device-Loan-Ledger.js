@@ -87,14 +87,24 @@ function listOverdueDevices(ledger, today) {
     const element = ledger[asset];
     if (
       element.status === "CheckedOut" &&
-      parseInt(today.split("/")[0]) - 1 ===
-        parseInt(element.dueDate.split("/")[0])
+      parseInt(element.dueDate.split("/")[0]) < parseInt(today.split("/")[0])
     ) {
       overdueDevices.push(element);
     }
   }
 
   // sort overdueDevices
+  objectLoop: for (let i = 0; i < overdueDevices.length - 1; i++) {
+    sortingLoop: for (let z = 0; z < overdueDevices.length - 1 - i; z++) {
+      const element = parseInt(overdueDevices[z].dueDate.split("/")[0]);
+      const nextElement = parseInt(overdueDevices[z + 1].dueDate.split("/")[0]);
+      if (nextElement < element) {
+        const box = overdueDevices[z];
+        overdueDevices[z] = overdueDevices[z + 1];
+        overdueDevices[z + 1] = box;
+      }
+    }
+  }
 
   return overdueDevices;
 }
