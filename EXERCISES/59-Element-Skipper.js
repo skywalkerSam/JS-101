@@ -5,8 +5,19 @@
  */
 
 function dropElements(arr, func) {
+  const filteredArr = [...arr];
+  for (let i = 0; i < filteredArr.length; i) {
+    const element = filteredArr[i];
 
-    
+    const funcOut = func(element);
+    // console.log(element, funcOut);
+    if (funcOut) {
+      break;
+    }
+    filteredArr.splice(i, 1);
+  }
+
+  return filteredArr;
 }
 
 console.log(
@@ -14,6 +25,7 @@ console.log(
     return n >= 3;
   }),
 );
+
 console.log(
   dropElements([0, 1, 0, 1], function (n) {
     return n === 1;
