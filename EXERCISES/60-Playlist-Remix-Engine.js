@@ -74,7 +74,7 @@ const aPlaylist = flattenPlaylists(playlists);
 
 /** You should create a function named scoreTracks that accepts an array of track objects as returned by flattenPlaylists (each with trackId, artist, title, votes, bpm, and source properties)
  *
- * @return a new array of track objects, each with a score property added using the formula: votes * 10 - Math.abs(bpm - 120).
+ * @returns a new array of track objects, each with a score property added using the formula: votes * 10 - Math.abs(bpm - 120).
  */
 function scoreTracks(aPlaylist) {
   const scoredPlaylist = [];
@@ -92,7 +92,7 @@ const scoredPlaylist = scoreTracks(aPlaylist);
 
 /** You should create a function named dedupeTracks that accepts an array of track objects as returned by scoreTracks
  *
- * @return a new array with duplicate trackId entries removed, keeping only the first occurrence of each.
+ * @returns a new array with duplicate trackId entries removed, keeping only the first occurrence of each.
  */
 function dedupeTracks(scoredPlaylist) {
   const dedupedPlaylist = [...scoredPlaylist];
@@ -116,13 +116,62 @@ const dedupedPlaylist = dedupeTracks(scoredPlaylist);
 
 /** You should create a function named enforceArtistQuota that accepts an array of track objects as returned by dedupeTracks and a number representing the maximum allowed occurrences per artist.
  *
- * @return a new array where no artist appears more times than the given number, keeping the earliest occurrences. */
+ * @returns a new array where no artist appears more times than the given number, keeping the earliest occurrences. */
 
-function enforceArtistQuota(dedupedPlaylist) {
-  const enforcedPlaylist = [];
+function enforceArtistQuota(dedupedPlaylist, maxPerArtist) {
+  const enforcedPlaylist = [...dedupedPlaylist];
+
+  let occCount = {};
+  for (let t = 0; t < enforcedPlaylist.length; t++) {
+    const track = enforcedPlaylist[t];
+    if (!Object.hasOwn(occCount, [track.artist])) {
+      occCount[track.artist] = 1;
+      continue;
+    }
+    occCount[track.artist] += 1;
+
+    if (occCount[track.artist] > maxPerArtist) {
+      enforcedPlaylist.splice(t, 1);
+      t -= 1;
+    }
+  }
 
   return enforcedPlaylist;
 }
 
-const enforcedPlaylist = enforceArtistQuota(dedupedPlaylist);
-console.log(enforcedPlaylist);
+const enforcedPlaylist = enforceArtistQuota(dedupedPlaylist, 1);
+// console.log(enforcedPlaylist);
+
+/** You should create a function named buildSchedule that accepts an array of track objects as returned by enforceArtistQuota
+ *
+ * @returns a new array of { slot, trackId } objects, where slot is a 1-based index representing each track's position in the broadcast order.
+ */
+function buildSchedule(enforcedPlaylist) {
+  let trackSchedule = [];
+
+  for (let t = 0; t < enforcedPlaylist.length; t++) {
+    const track = enforcedPlaylist[t];
+    trackSchedule.push({ slot: t + 1, trackId: track.trackId });
+  }
+
+  return trackSchedule;
+}
+
+const trackSchedule = buildSchedule(enforcedPlaylist);
+// console.log(trackSchedule);
+
+/** You should create a function named remixPlaylist that accepts an array of playlists and the maximum number of allowed occurrences per artist.
+ *
+ * The function should @return the final broadcast schedule as an array of { slot, trackId } objects, by calling flattenPlaylists, scoreTracks, dedupeTracks, enforceArtistQuota, and buildSchedule in order.
+ */
+function remixPlaylist(arrOfPlaylists, maxPerArtist) {
+  const aPlaylist = flattenPlaylists(arrOfPlaylists);
+  const scoredPlaylist = scoreTracks(aPlaylist);
+  const dedupedPlaylist = dedupeTracks(scoredPlaylist);
+  const enforcedPlaylist = enforceArtistQuota(dedupedPlaylist, maxPerArtist);
+  const trackSchedule = buildSchedule(enforcedPlaylist);
+  return trackSchedule;
+}
+
+const remix = remixPlaylist(playlists, 1);
+console.log(remix);
