@@ -4082,7 +4082,7 @@ Good coding practices:
 
 ## Closures
 
-A closure is **a function that has access to variables in its outer enclosing lexical scope**, **even after the outer function has returned**.
+A closure is **a function that has access to variables in its outer (_enclosing_) lexical scope**, **even after the outer function has returned**.
 
 ```js
 function outerFunction(x) {
@@ -4315,6 +4315,10 @@ console.log(PI); // Outputs: 3.14159
 
 - Here, we're _importing_ the specific functions and constant we need from the `math.js` module.
   - The `'./math.js'` part tells JavaScript **where to find the module file** _relative_ to the _current_ file.
+
+&nbsp;
+
+#### Namespace import
 
 Sometimes, you might want to **import everything** a module _exports_. You can do this using the asterisk (`*`) syntax:
 
