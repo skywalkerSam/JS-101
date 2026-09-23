@@ -4374,9 +4374,60 @@ They allow you to **break your application into smaller**, **manageable pieces**
 
 &nbsp;
 
-##
+## Callback Functions
+
+in JavaScript, a _callback function_ is **a _function_ that is passed as an _argument_ to another _function_**, so that the _outer function_ can invoke it at a specific point.
+
+imagine you have a _function_, and within the _function_ you want to do something multiple times.
+
+- instead of writing all the code in _one big function_, you can pass a _second function_ (**the callback**) to be executed whenever you need that specific something to be done.
+
+- This allows for more **flexible** and **modular** code.
 
 &nbsp;
+
+### `forEach()`
+
+`forEach` is a _built-in_ method for arrays in JavaScript.
+
+it allows you to **iterate over each element in an array** and **perform an operation on each element**.
+
+- The operation you want to perform is defined in a _callback function_ that you provide to `forEach`.
+
+  ```js
+  let numbers = [1, 2, 3, 4, 5];
+
+  numbers.forEach(function (number) {
+    console.log(number * 2);
+  });
+
+  // OR
+  numbers.forEach((number) => console.log(number * 2));
+  ```
+
+  - in this example, we have an array of `numbers`.
+
+  - We use the `forEach` method on this array, and we provide a _callback function_ as an _argument_ to `forEach`.
+
+  - This _callback function_ takes _one parameter_, which represents each element in the array.
+
+  - The `forEach` method will call this _callback function_ once for each element in the array.
+
+- The _callback function_ in `forEach` can actually take up to _three arguments_: the **current element**, the **index** of the current element, and the **array** that `forEach` was called upon.
+
+  ```js
+  let numbers = [1, 2, 3, 4, 5];
+
+  numbers.forEach((number, index, array) => {
+    console.log(`Element ${number} is at index ${index} in array ${array}`);
+  });
+  ```
+
+  - This would log information about each element, its index, and the original array.
+
+&nbsp;
+
+## Higher-Order Functions
 
 &nbsp;
 
