@@ -4413,7 +4413,12 @@ it allows you to **iterate over each element in an array** and **perform an oper
 
   - The `forEach` method will call this _callback function_ once for each element in the array.
 
-- The _callback function_ in `forEach` can actually take up to _three arguments_: the **current element**, the **index** of the current element, and the **array** that `forEach` was called upon.
+- The _callback function_ in `forEach` can actually take up to _three arguments_.
+  - The **current element** being processed
+
+  - The **index** of the current element
+
+  - The **array** that `forEach` was called upon.
 
   ```js
   let numbers = [1, 2, 3, 4, 5];
@@ -4520,9 +4525,45 @@ console.log(triple(5)); // 15
 
 &nbsp;
 
-## The Map Method (`map()`)
+## The Map Method (`.map()`)
+
+The `map` method **creates a new array by applying a given _function_ to each element** of the original array.
+
+- The `map` method **does NOT modify the original array**, but instead **returns a new array**, containing the results of the _function_ applied to each element.
+
+- The `map` method **accepts a callback _function_** where the _function_ is called on every single element in the array.
+
+  ```js
+  const numbers = [1, 2, 3, 4, 5];
+
+  const doubled = numbers.map((num) => num * 2);
+
+  console.log(numbers); // [1, 2, 3, 4, 5]
+  console.log(doubled); // [2, 4, 6, 8, 10]
+  ```
+
+  - The _callback function_ can accept up to _three arguments_.
+    - The **current element** being processed
+
+    - The **index** of the current element
+
+    - The **array** that `map` was called upon.
+
+      ```js
+      const numbers = [3, 4, 5, 6, 7];
+
+      numbers.map((element, index, array) => {
+        console.log(
+          `Element ${element} is at index ${index} in array ${array}`,
+        );
+
+        return element * 2;
+      });
+      ```
 
 &nbsp;
+
+## The Filter Method (`.filter()`)
 
 &nbsp;
 
