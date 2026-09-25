@@ -4565,6 +4565,88 @@ The `map` method **creates a new array by applying a given _function_ to each el
 
 ## The Filter Method (`.filter()`)
 
+The `filter` method is used to **create a new array with elements that pass a specified test**, making it useful for selectively extracting items based on criteria.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+```
+
+- in this example, we are using the `filter` method, to create a _new array_ of only _even numbers_.
+
+- in this example, the `filter` method **applies a _callback function_ to each element** of the `numbers` array.
+  - The _callback_ checks whether each number is _even_ using the remainder operator (`%`).
+    - if the number is _even_, the function returns `true`, and that number is _included_ in the _new array_.
+      - if it's _odd_, the function returns `false`, and that number is _excluded_.
+
+- if _no elements_ pass the test, the `filter` method returns an empty array`[]`.
+
+  ```js
+  const numbers = [2, 4, 6, 8].filter((num) => num > 10);
+
+  console.log(numbers); // []
+  ```
+
+&nbsp;
+
+Just like the `map` method, the _callback function_ for the `filter` method accepts the same _three arguments_:
+
+- The _current element_ being processed
+- The _index_
+- The _array_
+
+&nbsp;
+
+`filter` is incredibly **versatile** and can be used in many scenarios.
+
+You can use it to **remove** `null` _or_ `undefined` values from an array, to **filter objects** based on their _properties_, _or_ to **implement search** functionality.
+
+```js
+const developers = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 },
+  { name: "David", age: 25 },
+];
+
+const youngPeople = developers.filter((person) => person.age < 30);
+console.log(youngPeople);
+
+// [{ name: "Alice", age: 25 }, { name: "David", age: 25 }]
+```
+
+- Returns a new array of objects for individuals younger than 30 years old.
+
+&nbsp;
+
+## The Reduce Method (`.reduce()`)
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 &nbsp;
 
 &nbsp;
