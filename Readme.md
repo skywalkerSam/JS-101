@@ -4666,13 +4666,101 @@ console.log(sum); // 15
 
 ## Method Chaining
 
-&nbsp;
+_Method chaining_ is a technique where you **call several methods one after another**.
+
+You can use _method chaining_ on many types of values in JavaScript including _strings_, _arrays_, and _objects_.
+
+- Even though _strings_ are _primitive values_, JavaScript temporarily wraps them in a **String object** when you use a _string method_.
+
+  ```js
+  const result = "  Hello, World!  "
+    .trim()
+    .toLowerCase()
+    .replace("world", "JavaScript");
+
+  console.log(result); // "hello, JavaScript!"
+  ```
+
+  - in this example, we start with a _string_ and perform _three operations_ in sequence:
+    - Trim whitespace
+
+    - Convert to lowercase
+
+    - Replace the string world with JavaScript
+
+  - Each method returns a _new string_, which becomes the target of the _next method call_.
 
 &nbsp;
 
-&nbsp;
+For instance, consider this example using the `filter`, `map` and `reduce` methods:
+
+```js
+const transactions = [
+  { amount: 100, type: "credit" },
+  { amount: 20, type: "cash" },
+  { amount: 150, type: "credit" },
+  { amount: 50, type: "cash" },
+  { amount: 75, type: "credit" },
+];
+
+const totalCreditWithBonus = transactions
+  .filter((transaction) => transaction.type === "credit")
+  .map((transaction) => transaction.amount * 1.1)
+  .reduce((sum, amount) => sum + amount, 0);
+
+console.log(totalCreditWithBonus); // 357.5
+```
+
+- in this example, we have an _array_ of `transactions`, where each object has an `amount`, and a _credit card_ or _cash_ `type`.
+
+- We first `filter` through the `transactions` and create a _new array_ of just _credit card_ transactions.
+  - Then, we chain the `map` method to the _filtered result_ and for each transaction amount, we multiply it by `1.1` which represents a `10%` bonus.
+
+  - Then, we take that _result_ and chain the `reduce` method to **add up each of the amounts** which results in `357.5`.
 
 &nbsp;
+
+`NOTE`: While method chaining can make code more _concise_ and _readable_, it's important to **use it judiciously**.
+
+Very _long chains_ can become **difficult to debug**, as it's not immediately clear which _step_ in the chain might be causing an issue.
+
+it is often a good practice to **break very _long chains_ into multiple steps** for better _clarity_ and _easier debugging_.
+
+&nbsp;
+
+You can also **chain methods on an object**.
+
+in this case, _each method_ returns `this`, which refers to **the current object**, allowing the next method in the chain to run on it.
+
+```js
+const calculator = {
+  total: 0,
+  add(n) {
+    this.total += n;
+    return this;
+  },
+  multiply(n) {
+    this.total *= n;
+    return this;
+  },
+  subtract(n) {
+    this.total -= n;
+    return this;
+  },
+  getResult() {
+    return this.total;
+  },
+};
+
+const result = calculator.add(5).multiply(2).subtract(3).getResult();
+console.log(result); // 7
+```
+
+- This way, **each method returns the same object**, so you can keep chaining calls one after another.
+
+&nbsp;
+
+## The Sort Method (`.sort()`)
 
 &nbsp;
 
