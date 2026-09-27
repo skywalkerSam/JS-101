@@ -4762,13 +4762,97 @@ console.log(result); // 7
 
 ## The Sort Method (`.sort()`)
 
-&nbsp;
+it is used to **arrange the elements of an array**, and **returns a reference** to the _sorted array_.
+
+- No copy is made, because the **elements are sorted in place**.
+
+```js
+array.sort(compareFunction);
+```
+
+- The `compareFunction` is an **optional parameter** that _specifies a function_ that **defines the sort order**.
 
 &nbsp;
 
-&nbsp;
+### Sorting Strings
+
+The _result_ will be a _sorted array_ in an **alphabetical order**.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();
+
+console.log(fruits); // ["Apple", "Banana", "Mango", "Orange"]
+```
 
 &nbsp;
+
+### Sorting Numbers
+
+if you try to use the `sort` method on an _array_ that contains only _numbers_, **without the optional parameter**(`compareFunction`) , you'll get _unexpected results_.(
+
+```js
+const numbers = [414, 200, 5, 10, 3];
+numbers.sort();
+
+console.log(numbers); // [10, 200, 3, 414, 5]
+```
+
+- This is because the `sort` method **converts the elements to strings**, and then **compares their sequences of `UTF-16` code unit values**.
+  - `UTF-16` code units are the **numeric values that represent the characters in the string**.
+    - Examples of `UTF-16` code units are the numbers `65`, `66`, and `67` which represent the characters `A`, `B`, and `C` _respectively_.
+
+- So, the number `200` appears before the number `3` in the _sorted array_ above, because the string `200` comes before the string `3` when comparing their `UTF-16` code units.
+
+&nbsp;
+
+The _solution_ to this problem is to **provide a compare function** to the `sort` method.
+
+```js
+const numbers = [414, 200, 5, 10, 3];
+
+numbers.sort((a, b) => a - b);
+
+console.log(numbers); // [3, 5, 10, 200, 414]
+```
+
+- The parameters `a` and `b` are the two elements being compared.
+  - The compare function should return a **negative value** if `a` should come _before_ `b`.
+
+  - A **positive value** if `a` should come _after_ `b`. 
+
+  - And **zero** if `a` and `b` are _equal_.
+
+- The first comparison is between the numbers `414` and `200`. 
+  - The result of `414 - 200` is `214`, which is a **positive value**. 
+    - This means that `414` should come after `200` in the _sorted array_.
+
+- The next comparison is between the numbers `200` and `5`. 
+  - The result of `200 - 5` is `195`, which is also a **positive value**. 
+    - This means that `200` should come after `5` in the _sorted array_.
+
+- We repeat this process for all the elements in the array, and the _result_ is a _sorted array of numbers_.
+
+&nbsp;
+
+### `undefined` Values & Empty Slots
+
+When the `sort` method encounters an `undefined` _or_ an **empty slot** value, it does NOT pass that value to the compare function.
+
+instead, `undefined` and **empty slot** values are automatically **moved to the end of the array**.
+
+- The `undefined` values will **come first**, followed by the **empty slots** at the **very end**.
+
+```js
+const arr = [, undefined, "banana", "apple"];
+arr.sort();
+
+console.log(arr); // ["apple", "banana", undefined, ]
+```
+
+&nbsp;
+
+## `every()` & `some()` Methods
 
 &nbsp;
 
