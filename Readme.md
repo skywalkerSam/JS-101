@@ -4819,16 +4819,16 @@ console.log(numbers); // [3, 5, 10, 200, 414]
 - The parameters `a` and `b` are the two elements being compared.
   - The compare function should return a **negative value** if `a` should come _before_ `b`.
 
-  - A **positive value** if `a` should come _after_ `b`. 
+  - A **positive value** if `a` should come _after_ `b`.
 
   - And **zero** if `a` and `b` are _equal_.
 
-- The first comparison is between the numbers `414` and `200`. 
-  - The result of `414 - 200` is `214`, which is a **positive value**. 
+- The first comparison is between the numbers `414` and `200`.
+  - The result of `414 - 200` is `214`, which is a **positive value**.
     - This means that `414` should come after `200` in the _sorted array_.
 
-- The next comparison is between the numbers `200` and `5`. 
-  - The result of `200 - 5` is `195`, which is also a **positive value**. 
+- The next comparison is between the numbers `200` and `5`.
+  - The result of `200 - 5` is `195`, which is also a **positive value**.
     - This means that `200` should come after `5` in the _sorted array_.
 
 - We repeat this process for all the elements in the array, and the _result_ is a _sorted array of numbers_.
@@ -4854,7 +4854,60 @@ console.log(arr); // ["apple", "banana", undefined, ]
 
 ## `every()` & `some()` Methods
 
+Both `every()` and `some()` are very useful when you need to **validate** data or **check for certain conditions** in your arrays.
+
+They can often replace more verbose _loops_ and _conditional statements_, making your code _cleaner_ and more _expressive_.
+
+Both methods **stop executing as soon as they can determine the result**.
+
+- For `every()`, this means it stops **as soon as it finds a** `false` result.
+
+- For `some()`, it stops **as soon as it finds a** `true` result.
+  - This can be beneficial for **performance**, especially with **large arrays**.
+
 &nbsp;
+
+### `every()`
+
+This method tests whether all elements in an array pass a test implemented by a _provided function_.
+
+in simpler terms, it **checks if every single item in your array satisfies a condition** you specify.
+
+- The `every()` method returns `true`, **if the _provided function_ returns `true` for all elements** in the array.
+
+- if **any element fails the test**, the method _immediately returns_ `false`, and **stops checking the remaining elements**.
+
+```js
+const numbers = [2, 4, 6, 8, 10];
+const hasAllEvenNumbers = numbers.every((num) => num % 2 === 0);
+
+console.log(hasAllEvenNumbers); // true
+```
+
+`NOTE`: if you use the `every()` method on an **empty array**, it will it return `true`.
+
+&nbsp;
+
+### `some()`
+
+it checks if **at least one element passes the test**.
+
+- Returns `true`, as soon as it finds **an element** that **passes the test**.
+
+- if **no elements pass the test**, it returns `false`.
+
+```js
+const numbers = [1, 3, 5, 7, 8, 9];
+const hasSomeEvenNumbers = numbers.some((num) => num % 2 === 0);
+
+console.log(hasSomeEvenNumbers); // true
+```
+
+`NOTE`: if you use the `some()` method on an **empty array**, it will it return `false`.
+
+&nbsp;
+
+##
 
 &nbsp;
 
