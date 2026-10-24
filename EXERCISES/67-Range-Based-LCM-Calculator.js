@@ -20,12 +20,46 @@ function smallestCommons(arrOfTwoNums) {
     nums.push(i);
   }
 
+  
+}
+
+// console.log(smallestCommons([1, 5]));
+// console.log(smallestCommons([5, 1]));
+console.log(smallestCommons([2, 10]));
+// console.log(smallestCommons([1, 13]));
+// console.log(smallestCommons([23, 18]));
+
+
+
+
+/** Computational Barrier
+ * 
+ * function smallestCommons(arrOfTwoNums) {
+  if (arrOfTwoNums[0] === 0 || arrOfTwoNums[1] === 0) {
+    return 0;
+  }
+
+  let largeNum;
+  let smallNum;
+  if (arrOfTwoNums[0] < arrOfTwoNums[1]) {
+    smallNum = arrOfTwoNums[0];
+    largeNum = arrOfTwoNums[1];
+  } else {
+    largeNum = arrOfTwoNums[0];
+    smallNum = arrOfTwoNums[1];
+  }
+
+  const nums = [];
+  for (let i = smallNum; i <= largeNum; i++) {
+    nums.push(i);
+  }
+
   const multiples = [];
   for (let n = 0; n < nums.length; n++) {
     const num = nums[n];
 
     const multiplesOfNum = [];
-    for (let x = 1; x <= 100; x++) {
+    for (let x = 1; x <= 10000; x++) {
       multiplesOfNum.push(num * x);
     }
     multiples.push(multiplesOfNum);
@@ -57,9 +91,4 @@ function smallestCommons(arrOfTwoNums) {
   console.log(lcms)
   return lcms[0];
 }
-
-// console.log(smallestCommons([1, 5]));
-// console.log(smallestCommons([5, 1]));
-console.log(smallestCommons([2, 10]));
-// console.log(smallestCommons([1, 13]));
-// console.log(smallestCommons([23, 18]));
+ */
