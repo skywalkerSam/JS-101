@@ -1735,6 +1735,8 @@ console.log(result); // default
   console.log(theme); // light
   ```
 
+`NOTE`: Unlike `||`, it doesn't treat other falsy values (like `0` or `""`) as missing.
+
 &nbsp;
 
 ## The Math Object
