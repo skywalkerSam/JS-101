@@ -1,13 +1,21 @@
 // in this lab, you will create a function that takes an array of two numbers and returns the least common multiple (LCM) of those two numbers and all the numbers between them.
 
 function smallestCommons(arrOfTwoNums) {
-    
+  arrOfTwoNums.sort((a, b) => a - b);
+
+  const rangeOfNums = [];
+  for (let i = arrOfTwoNums[0]; i <= arrOfTwoNums[1]; i++) {
+    rangeOfNums.push(i);
+  }
+  // console.log(rangeOfNums);
+
+  
 }
 
 // console.log(smallestCommons([1, 5]));
 // console.log(smallestCommons([5, 1]));
 // console.log(smallestCommons([2, 10]));
-console.log(smallestCommons([1, 13]));
+console.log(smallestCommons([13, 1]));
 // console.log(smallestCommons([23, 18]));
 
 /** Computational Barrier: Brute force attempt failed!
