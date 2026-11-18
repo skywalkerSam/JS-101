@@ -903,9 +903,41 @@ console.log(copiedPerson.age); // 31
 
 - This occurs because both `originalPerson` and `copiedPerson` are **referencing the same object in memory**.
 
-in JavaScript, **when you assign an object to another variable, you're copying the reference to the object**, not the object itself. This is known as **shallow copying** by reference.
+&nbsp;
 
-- As a result, any changes made to the object through one reference are reflected in all references to that object.
+## Shallow Copies
+
+in JavaScript, **when you assign an object to another variable**, **you're copying the reference to the object**, NOT the object itself. This is known as **shallow copying** by reference.
+
+As a result, any **changes** made to the object through **one reference** are **reflected in all references** to that object.
+
+```js
+const originalArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const filteredArray = originalArray.filter((item) => item.id > 1);
+filteredArray[0].id = 4;
+
+console.log(originalArray); // [{ id: 1 }, { id: 4 }, { id: 3 }]
+```
+
+&nbsp;
+
+## Deep Copy
+
+To avoid the consequences of shallow copying, use deep copies.
+
+One way to do that is by **stringifying** the object to json and **parsing it back to a javascript object**.
+
+```js
+const originalArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+const newArray = JSON.parse(JSON.stringify(originalArray));
+// const newArray = originalArray;
+
+const filteredArray = newArray.filter((item) => item.id > 1);
+filteredArray[0].id = 4;
+
+console.log(originalArray); // [{ id: 1 }, Object { id: 2 }, Object { id: 3 }]
+```
 
 &nbsp;
 
@@ -1734,6 +1766,8 @@ console.log(result); // default
   let theme = userSettings.theme ?? "light";
   console.log(theme); // light
   ```
+
+`NOTE`: Unlike `||`, it doesn't treat other falsy values (like `0` or `""`) as missing.
 
 &nbsp;
 
@@ -4374,13 +4408,540 @@ They allow you to **break your application into smaller**, **manageable pieces**
 
 &nbsp;
 
+## Callback Functions
+
+in JavaScript, a _callback function_ is **a _function_ that is passed as an _argument_ to another _function_**, so that the _outer function_ can invoke it at a specific point.
+
+imagine you have a _function_, and within the _function_ you want to do something multiple times.
+
+- instead of writing all the code in _one big function_, you can pass a _second function_ (**the callback**) to be executed whenever you need that specific something to be done.
+
+- This allows for more **flexible** and **modular** code.
+
+&nbsp;
+
+### `forEach()`
+
+`forEach` is a _built-in_ method for arrays in JavaScript.
+
+it allows you to **iterate over each element in an array** and **perform an operation on each element**.
+
+- The operation you want to perform is defined in a _callback function_ that you provide to `forEach`.
+
+  ```js
+  let numbers = [1, 2, 3, 4, 5];
+
+  numbers.forEach(function (number) {
+    console.log(number * 2);
+  });
+
+  // OR
+  numbers.forEach((number) => console.log(number * 2));
+  ```
+
+  - in this example, we have an array of `numbers`.
+
+  - We use the `forEach` method on this array, and we provide a _callback function_ as an _argument_ to `forEach`.
+
+  - This _callback function_ takes _one parameter_, which represents each element in the array.
+
+  - The `forEach` method will call this _callback function_ once for each element in the array.
+
+- The _callback function_ in `forEach` can actually take up to _three arguments_.
+  - The **current element** being processed
+
+  - The **index** of the current element
+
+  - The **array** that `forEach` was called upon.
+
+  ```js
+  let numbers = [1, 2, 3, 4, 5];
+
+  numbers.forEach((number, index, array) => {
+    console.log(`Element ${number} is at index ${index} in array ${array}`);
+  });
+  ```
+
+  - This would log information about each element, its index, and the original array.
+
+&nbsp;
+
+## Higher-Order Functions
+
+in essence, a _higher order function_ is a _function_ that either **takes one or more _functions_ as arguments**, or **returns a _function_**, or _both_.
+
+The use of _higher order functions_ can lead to more **declarative** and _easier-to-understand_ code.
+
+- instead of describing _step-by-step_ how to accomplish a task (_imperative programming_), _higher order functions_ allow you to describe what you want to accomplish (_declarative programming_).
+  - This can make your code more _readable_ and _maintainable_.
+
+&nbsp;
+
+Functions are **first-class citizens** in JavaScript.
+
+- This means that **_functions_ can be treated like any other value**
+
+  They can be:
+  - **Assigned to variables**
+
+  - **Passed as arguments** to other _functions_
+
+  - **Returned from _functions_**
+
+This flexibility is what enables the creation and use of _higher order functions_.
+
+&nbsp;
+
+For example, you might have a _function_ that performs a specific operation on each element of an array.
+
+- instead of writing separate _functions_ for different operations, you can create a _higher order function_ that takes the **operation as an argument**.
+
+- This allows you to reuse the **same _function_ structure with different behaviors**.
+
+  ```js
+  function operateOnArray(arr, operation) {
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      result.push(operation(arr[i]));
+    }
+
+    return result;
+  }
+
+  function double(x) {
+    return x * 2;
+  }
+
+  let numbers = [1, 2, 3, 4, 5];
+  let doubledNumbers = operateOnArray(numbers, double);
+  console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+  ```
+
+  - in this example, `operateOnArray` is a _higher order function_.
+
+  - it takes an _array_ and a _function_ (operation) as _arguments_.
+
+  - it then applies the operation to each element of the array.
+
+  - The `double` function is passed as an _argument_ to `operateOnArray`, demonstrating how _functions_ can be used as _values_.
+
+&nbsp;
+
+### Function Factories
+
+_Higher order functions_ can also **return _functions_**.
+
+This is particularly useful for creating specialized _functions_ based on more general ones. This is often referred to as _function factories_.
+
+```js
+function multiplyBy(factor) {
+  return function (number) {
+    return number * factor;
+  };
+}
+
+let double = multiplyBy(2);
+let triple = multiplyBy(3);
+
+console.log(double(5)); // 10
+console.log(triple(5)); // 15
+```
+
+- in this case, `multiplyBy` is a _higher order function_ that **returns a new _function_**.
+  - This new _function_ is specialized based on the `factor` passed to `multiplyBy`.
+
+- This allows you to create custom multiplication functions with ease.
+
+&nbsp;
+
+`Note`: Many _built-in_ methods for arrays in JavaScript, such as `map()`, `filter()`, and `reduce()`, are _higher order functions_.
+
+&nbsp;
+
+## The Map Method (`.map()`)
+
+The `map` method **creates a new array by applying a given _function_ to each element** of the original array.
+
+- The `map` method **does NOT modify the original array**, but instead **returns a new array**, containing the results of the _function_ applied to each element.
+
+- The `map` method **accepts a callback _function_** where the _function_ is called on every single element in the array.
+
+  ```js
+  const numbers = [1, 2, 3, 4, 5];
+
+  const doubled = numbers.map((num) => num * 2);
+
+  console.log(numbers); // [1, 2, 3, 4, 5]
+  console.log(doubled); // [2, 4, 6, 8, 10]
+  ```
+
+  - The _callback function_ can accept up to _three arguments_.
+    - The **current element** being processed
+
+    - The **index** of the current element
+
+    - The **array** that `map` was called upon.
+
+      ```js
+      const numbers = [3, 4, 5, 6, 7];
+
+      numbers.map((element, index, array) => {
+        console.log(
+          `Element ${element} is at index ${index} in array ${array}`,
+        );
+
+        return element * 2;
+      });
+      ```
+
+&nbsp;
+
+## The Filter Method (`.filter()`)
+
+The `filter` method is used to **create a new array with elements that pass a specified test**, making it useful for selectively extracting items based on criteria.
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+```
+
+- in this example, we are using the `filter` method, to create a _new array_ of only _even numbers_.
+
+- in this example, the `filter` method **applies a _callback function_ to each element** of the `numbers` array.
+  - The _callback_ checks whether each number is _even_ using the remainder operator (`%`).
+    - if the number is _even_, the function returns `true`, and that number is _included_ in the _new array_.
+      - if it's _odd_, the function returns `false`, and that number is _excluded_.
+
+- if _no elements_ pass the test, the `filter` method returns an empty array`[]`.
+
+  ```js
+  const numbers = [2, 4, 6, 8].filter((num) => num > 10);
+
+  console.log(numbers); // []
+  ```
+
+&nbsp;
+
+Just like the `map` method, the _callback function_ for the `filter` method accepts the same _three arguments_:
+
+- The _current element_ being processed
+- The _index_
+- The _array_
+
+&nbsp;
+
+`filter` is incredibly **versatile** and can be used in many scenarios.
+
+You can use it to **remove** `null` _or_ `undefined` values from an array, to **filter objects** based on their _properties_, _or_ to **implement search** functionality.
+
+```js
+const developers = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 },
+  { name: "David", age: 25 },
+];
+
+const youngPeople = developers.filter((person) => person.age < 30);
+console.log(youngPeople);
+
+// [{ name: "Alice", age: 25 }, { name: "David", age: 25 }]
+```
+
+- Returns a new array of objects for individuals younger than 30 years old.
+
+&nbsp;
+
+## The Reduce Method (`.reduce()`)
+
+The `reduce` method allows you to **process an array** and **condense it into a single value**.
+
+- This _single value_ can be a _number_, a _string_, an _object_, or even another _array_.
+
+it is called `reduce` because it reduces an array to a _single output_.
+
+At its core, `reduce` works by **applying a function to each element** in the array, in order, **passing the result of each calculation on to the next**.
+
+- This _function_ is often called the **reducer _function_**.
+  - _The reducer function_ takes _two_ main _parameters_:
+    - The **accumulator**
+      - _The accumulator_ is where you **store** the **running result of the operations**.
+        - The **running result of the reduce operation**.
+
+    - The **current value**.
+      - _The current value_ is the **array element being processed**.
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0,
+);
+
+console.log(sum); // 15
+```
+
+- in this example, we're using `reduce` to get the _sum of all the numbers in the array_.
+
+- _The reducer function_ takes the `accumulator` (which starts at `0`, as specified by the _second argument_ to `reduce`) and _adds each number_ to it.
+  - The `reduce` method can also take an **initial value** as its **second argument**.
+    - This is the **value** that the `accumulator` **starts with**.
+
+    - in the example above, we set it to `0`.
+
+    - `NOTE`: if you do **NOT** provide an _initial value_, `reduce` will use the **first element** of the array **as the initial** `accumulator`, and **start the process from the second element**.
+
+- The **result** of _each addition_ **becomes the new** `accumulator` for the _next iteration_.
+
+&nbsp;
+
+## Method Chaining
+
+_Method chaining_ is a technique where you **call several methods one after another**.
+
+You can use _method chaining_ on many types of values in JavaScript including _strings_, _arrays_, and _objects_.
+
+- Even though _strings_ are _primitive values_, JavaScript temporarily wraps them in a **String object** when you use a _string method_.
+
+  ```js
+  const result = "  Hello, World!  "
+    .trim()
+    .toLowerCase()
+    .replace("world", "JavaScript");
+
+  console.log(result); // "hello, JavaScript!"
+  ```
+
+  - in this example, we start with a _string_ and perform _three operations_ in sequence:
+    - Trim whitespace
+
+    - Convert to lowercase
+
+    - Replace the string world with JavaScript
+
+  - Each method returns a _new string_, which becomes the target of the _next method call_.
+
+&nbsp;
+
+For instance, consider this example using the `filter`, `map` and `reduce` methods:
+
+```js
+const transactions = [
+  { amount: 100, type: "credit" },
+  { amount: 20, type: "cash" },
+  { amount: 150, type: "credit" },
+  { amount: 50, type: "cash" },
+  { amount: 75, type: "credit" },
+];
+
+const totalCreditWithBonus = transactions
+  .filter((transaction) => transaction.type === "credit")
+  .map((transaction) => transaction.amount * 1.1)
+  .reduce((sum, amount) => sum + amount, 0);
+
+console.log(totalCreditWithBonus); // 357.5
+```
+
+- in this example, we have an _array_ of `transactions`, where each object has an `amount`, and a _credit card_ or _cash_ `type`.
+
+- We first `filter` through the `transactions` and create a _new array_ of just _credit card_ transactions.
+  - Then, we chain the `map` method to the _filtered result_ and for each transaction amount, we multiply it by `1.1` which represents a `10%` bonus.
+
+  - Then, we take that _result_ and chain the `reduce` method to **add up each of the amounts** which results in `357.5`.
+
+&nbsp;
+
+`NOTE`: While method chaining can make code more _concise_ and _readable_, it's important to **use it judiciously**.
+
+Very _long chains_ can become **difficult to debug**, as it's not immediately clear which _step_ in the chain might be causing an issue.
+
+it is often a good practice to **break very _long chains_ into multiple steps** for better _clarity_ and _easier debugging_.
+
+&nbsp;
+
+You can also **chain methods on an object**.
+
+in this case, _each method_ returns `this`, which refers to **the current object**, allowing the next method in the chain to run on it.
+
+```js
+const calculator = {
+  total: 0,
+  add(n) {
+    this.total += n;
+    return this;
+  },
+  multiply(n) {
+    this.total *= n;
+    return this;
+  },
+  subtract(n) {
+    this.total -= n;
+    return this;
+  },
+  getResult() {
+    return this.total;
+  },
+};
+
+const result = calculator.add(5).multiply(2).subtract(3).getResult();
+console.log(result); // 7
+```
+
+- This way, **each method returns the same object**, so you can keep chaining calls one after another.
+
+&nbsp;
+
+## The Sort Method (`.sort()`)
+
+it is used to **arrange the elements of an array**, and **returns a reference** to the _sorted array_.
+
+- No copy is made, because the **elements are sorted in place**.
+
+```js
+array.sort(compareFunction);
+```
+
+- The `compareFunction` is an **optional parameter** that _specifies a function_ that **defines the sort order**.
+
+&nbsp;
+
+### Sorting Strings
+
+The _result_ will be a _sorted array_ in an **alphabetical order**.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();
+
+console.log(fruits); // ["Apple", "Banana", "Mango", "Orange"]
+```
+
+&nbsp;
+
+### Sorting Numbers
+
+if you try to use the `sort` method on an _array_ that contains only _numbers_, **without the optional parameter**(`compareFunction`) , you'll get _unexpected results_.(
+
+```js
+const numbers = [414, 200, 5, 10, 3];
+numbers.sort();
+
+console.log(numbers); // [10, 200, 3, 414, 5]
+```
+
+- This is because the `sort` method **converts the elements to strings**, and then **compares their sequences of `UTF-16` code unit values**.
+  - `UTF-16` code units are the **numeric values that represent the characters in the string**.
+    - Examples of `UTF-16` code units are the numbers `65`, `66`, and `67` which represent the characters `A`, `B`, and `C` _respectively_.
+
+- So, the number `200` appears before the number `3` in the _sorted array_ above, because the string `200` comes before the string `3` when comparing their `UTF-16` code units.
+
+&nbsp;
+
+The _solution_ to this problem is to **provide a compare function** to the `sort` method.
+
+```js
+const numbers = [414, 200, 5, 10, 3];
+
+numbers.sort((a, b) => a - b);
+
+console.log(numbers); // [3, 5, 10, 200, 414]
+```
+
+- The parameters `a` and `b` are the two elements being compared.
+  - The compare function should return a **negative value** if `a` should come _before_ `b`.
+
+  - A **positive value** if `a` should come _after_ `b`.
+
+  - And **zero** if `a` and `b` are _equal_.
+
+- The first comparison is between the numbers `414` and `200`.
+  - The result of `414 - 200` is `214`, which is a **positive value**.
+    - This means that `414` should come after `200` in the _sorted array_.
+
+- The next comparison is between the numbers `200` and `5`.
+  - The result of `200 - 5` is `195`, which is also a **positive value**.
+    - This means that `200` should come after `5` in the _sorted array_.
+
+- We repeat this process for all the elements in the array, and the _result_ is a _sorted array of numbers_.
+
+&nbsp;
+
+### `undefined` Values & Empty Slots
+
+When the `sort` method encounters an `undefined` _or_ an **empty slot** value, it does NOT pass that value to the compare function.
+
+instead, `undefined` and **empty slot** values are automatically **moved to the end of the array**.
+
+- The `undefined` values will **come first**, followed by the **empty slots** at the **very end**.
+
+```js
+const arr = [, undefined, "banana", "apple"];
+arr.sort();
+
+console.log(arr); // ["apple", "banana", undefined, ]
+```
+
+&nbsp;
+
+## `every()` & `some()` Methods
+
+Both `every()` and `some()` are very useful when you need to **validate** data or **check for certain conditions** in your arrays.
+
+They can often replace more verbose _loops_ and _conditional statements_, making your code _cleaner_ and more _expressive_.
+
+Both methods **stop executing as soon as they can determine the result**.
+
+- For `every()`, this means it stops **as soon as it finds a** `false` result.
+
+- For `some()`, it stops **as soon as it finds a** `true` result.
+  - This can be beneficial for **performance**, especially with **large arrays**.
+
+&nbsp;
+
+### `every()`
+
+This method tests whether all elements in an array pass a test implemented by a _provided function_.
+
+in simpler terms, it **checks if every single item in your array satisfies a condition** you specify.
+
+- The `every()` method returns `true`, **if the _provided function_ returns `true` for all elements** in the array.
+
+- if **any element fails the test**, the method _immediately returns_ `false`, and **stops checking the remaining elements**.
+
+```js
+const numbers = [2, 4, 6, 8, 10];
+const hasAllEvenNumbers = numbers.every((num) => num % 2 === 0);
+
+console.log(hasAllEvenNumbers); // true
+```
+
+`NOTE`: if you use the `every()` method on an **empty array**, it will it return `true`.
+
+&nbsp;
+
+### `some()`
+
+it checks if **at least one element passes the test**.
+
+- Returns `true`, as soon as it finds **an element** that **passes the test**.
+
+- if **no elements pass the test**, it returns `false`.
+
+```js
+const numbers = [1, 3, 5, 7, 8, 9];
+const hasSomeEvenNumbers = numbers.some((num) => num % 2 === 0);
+
+console.log(hasSomeEvenNumbers); // true
+```
+
+`NOTE`: if you use the `some()` method on an **empty array**, it will it return `false`.
+
+&nbsp;
+
 ##
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 &nbsp;
 
