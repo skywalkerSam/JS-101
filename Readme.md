@@ -903,9 +903,41 @@ console.log(copiedPerson.age); // 31
 
 - This occurs because both `originalPerson` and `copiedPerson` are **referencing the same object in memory**.
 
-in JavaScript, **when you assign an object to another variable, you're copying the reference to the object**, not the object itself. This is known as **shallow copying** by reference.
+&nbsp;
 
-- As a result, any changes made to the object through one reference are reflected in all references to that object.
+## Shallow Copies
+
+in JavaScript, **when you assign an object to another variable**, **you're copying the reference to the object**, NOT the object itself. This is known as **shallow copying** by reference.
+
+As a result, any **changes** made to the object through **one reference** are **reflected in all references** to that object.
+
+```js
+const originalArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const filteredArray = originalArray.filter((item) => item.id > 1);
+filteredArray[0].id = 4;
+
+console.log(originalArray); // [{ id: 1 }, { id: 4 }, { id: 3 }]
+```
+
+&nbsp;
+
+## Deep Copy
+
+To avoid the consequences of shallow copying, use deep copies.
+
+One way to do that is by **stringifying** the object to json and **parsing it back to a javascript object**.
+
+```js
+const originalArray = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+const newArray = JSON.parse(JSON.stringify(originalArray));
+// const newArray = originalArray;
+
+const filteredArray = newArray.filter((item) => item.id > 1);
+filteredArray[0].id = 4;
+
+console.log(originalArray); // [{ id: 1 }, Object { id: 2 }, Object { id: 3 }]
+```
 
 &nbsp;
 
