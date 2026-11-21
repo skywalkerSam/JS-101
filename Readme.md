@@ -4941,7 +4941,81 @@ console.log(hasSomeEvenNumbers); // true
 
 &nbsp;
 
-##
+## APIs (Application Programming Interfaces)
+
+APIs establish **a set of rules and protocols** that allow software applications **to communicate with each other** and **exchange data** efficiently.
+
+&nbsp;
+
+### Web APIs
+
+Web APIs are **specifically designed for web applications**, and are essential tools for building modern web applications that can interact with various services and data sources.
+
+There are different types of web APIs for _client-side_ JavaScript development.
+
+- They are NOT part of JavaScript itself.
+
+They are often divided into two main categories:
+
+1. Browser APIs
+
+2. Third-party APIs
+
+&nbsp;
+
+### Browser APIs
+
+Browser APIs **expose data from the browser**. They already come _built-in_ to the browser.
+
+There are various browser APIs that you can use to **handle user interactions**, and to **get more information** from the browser, like the user's current _location_, and more.
+
+They also provide **access to** various **functionalities**, such as:
+
+- Manipulating the structure of the website
+
+- Handling **events**
+
+- Working with **storage**
+
+- Communicating with the **network**
+
+&nbsp;
+
+Some examples of _commonly used Browser APIs_ include:
+
+- The **DOM API**, which you can use to _manipulate HTML elements_, their styles, and attributes.
+
+- The **Storage API**, to _store data_ locally on the users' device.
+
+&nbsp;
+
+### Third-party APIs
+
+They do NOT come _built-in_ to the browser. in order to use them, you need to retrieve their code in some way.
+
+Typically, they come with detailed _documentation_ explaining how to use their services.
+
+- The **Google Maps API**, which you can use to display interactive maps on your website.
+
+- Weather APIs
+
+- Social media APIs
+
+- Payment APIs
+
+- Data APIs
+
+- Translation APIs
+
+And more.
+
+You just need to **find the API that fits your needs**.
+
+&nbsp;
+
+## The DOM (Document Object Model)
+
+DOM is **a programming interface** that lets us **interact with HTML documents**.
 
 &nbsp;
 
@@ -4956,3 +5030,26 @@ console.log(hasSomeEvenNumbers); // true
 &nbsp;
 
 &nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
